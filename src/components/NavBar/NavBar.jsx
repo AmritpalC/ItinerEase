@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom'
-import * as userService from '../../utilities/users-service'
+import { useEffect } from 'react'
+import Toggle from "react-toggle"
+import "react-toggle/style.css"
 
-export default function NavBar({ user, setUser }) {
+import * as userService from '../../utilities/users-service'
+import './NavBar.css'
+
+export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
 
     function handleLogOut() {
         // Delegate to the users-service
@@ -9,6 +14,14 @@ export default function NavBar({ user, setUser }) {
         // Update state will also cause a re-render
         setUser(null);
     }
+
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.add('dark')
+        } else {
+            document.body.classList.remove('dark')
+        }
+    }, [darkMode]) 
 
     return (
         <nav>
@@ -21,6 +34,13 @@ export default function NavBar({ user, setUser }) {
             <span>Welcome, { user.name }</span>
             &nbsp; | &nbsp;
             <Link to="" onClick={handleLogOut}>Log Out</Link>
+            &nbsp; | &nbsp;
+            <Toggle
+                className='theme-toggle'
+                checked={darkMode}
+                onChange={({ target }) => setDarkMode(target.checked)}
+                icons={{ checked: "🌙", unchecked: "🔆" }}
+            />
         </nav>
     )
 }

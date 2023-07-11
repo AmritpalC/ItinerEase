@@ -23,10 +23,14 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--dark-grey);
-  color: var(--white);
+  background-color: var(--tan-1);
   padding: 2vmin;
   height: 100vh;
+}
+
+body.dark {
+  background-color: var(--dark-grey);
+  color: var(--white);
 }
 
 code {
@@ -34,9 +38,9 @@ code {
     monospace;
 }
 
-h1 {
+/* h1 {
   color: var(--white);
-}
+} */
 
 #root {
   height: 100%;

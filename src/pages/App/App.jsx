@@ -13,17 +13,21 @@ import CalendarPage from '../CalendarPage/CalendarPage'
 import NavBar from '../../components/NavBar/NavBar'
 
 // Test data
-import { itineraries } from "../../data"
+import { itineraries } from '../../data'
 import ItineraryDetailPage from '../ItineraryDetailPage/ItineraryDetailPage'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [darkMode, setDarkMode] = useState(true)
 
   return (
     <main className="App">
       { user ?
           <>
-            <NavBar user={user} setUser={setUser} />
+            <NavBar
+              user={user} setUser={setUser}
+              darkMode={darkMode} setDarkMode={setDarkMode} 
+            />
             <Routes>
               <Route 
                 path="/itineraries" 

@@ -1,0 +1,13 @@
+.itinerary-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 2vmin;
+  row-gap: 2vmin;
+}
+
+.itinerary-item {
+  border: 1vmin solid var(--cyan);
+  border-radius: 2vmin;
+  background-color: var(--purple);
+}

@@ -1,7 +1,18 @@
 nav {
-  color: var(--white);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1vmin 5vmin;
+  font-weight: bold;
 }
 
 nav a {
   color: var(--cyan);
+  text-decoration: none;
+}
+
+.react-toggle-track-check, .react-toggle-track-x {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
 }
