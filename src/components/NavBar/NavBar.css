@@ -1,0 +1,7 @@
+nav {
+  color: var(--white);
+}
+
+nav a {
+  color: var(--cyan);
+}

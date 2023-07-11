@@ -7,10 +7,14 @@ import { getUser } from '../../utilities/users-service'
 
 // Custom Components
 import AuthPage from '../AuthPage/AuthPage'
-import ItineraryHistoryPage from '../ItineraryHistoryPage/ItineraryHistoryPage'
+import ItinerariesPage from '../ItinerariesPage/ItinerariesPage'
 import NewItineraryPage from '../NewItineraryPage/NewItineraryPage'
 import CalendarPage from '../CalendarPage/CalendarPage'
 import NavBar from '../../components/NavBar/NavBar'
+
+// Test data
+import { itineraries } from "../../data"
+import ItineraryDetailPage from '../ItineraryDetailPage/ItineraryDetailPage'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -21,8 +25,17 @@ export default function App() {
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
+              <Route 
+                path="/itineraries" 
+                element={<ItinerariesPage 
+                itineraries={itineraries} />} 
+              />
+              <Route 
+                path="/itineraries/:itineraryName" 
+                element={<ItineraryDetailPage 
+                itineraries={itineraries} />} 
+              />
               <Route path="/itineraries/new" element={<NewItineraryPage />} />
-              <Route path="/itineraries" element={<ItineraryHistoryPage />} />
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/*" element={<Navigate to="/itineraries" />} />
             </Routes>

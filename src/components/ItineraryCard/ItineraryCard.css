@@ -1,0 +1,6 @@
+.itinerary-card {
+  border: 2px solid var(--cyan);
+  border-radius: 2vmin;
+  padding-bottom: 2vmin;
+  margin-bottom: 3vmin;
+}
