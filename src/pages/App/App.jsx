@@ -2,13 +2,14 @@ import './App.css'
 import { useState } from 'react'
 
 // Router
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 
 // Custom Components
 import AuthPage from '../AuthPage/AuthPage'
-import NewOrderPage from '../NewOrderPage/NewOrderPage'
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage'
+import ItineraryHistoryPage from '../ItineraryHistoryPage/ItineraryHistoryPage'
+import NewItineraryPage from '../NewItineraryPage/NewItineraryPage'
+import CalendarPage from '../CalendarPage/CalendarPage'
 import NavBar from '../../components/NavBar/NavBar'
 
 export default function App() {
@@ -20,8 +21,10 @@ export default function App() {
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
-              <Route path="/orders/new" element={<NewOrderPage />} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/itineraries/new" element={<NewItineraryPage />} />
+              <Route path="/itineraries" element={<ItineraryHistoryPage />} />
+              <Route path="/calendar" element={<CalendarPage />} />
+              <Route path="/*" element={<Navigate to="/itineraries" />} />
             </Routes>
           </>
           :
