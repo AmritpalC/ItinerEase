@@ -27,6 +27,10 @@ app.use(require('./config/checkToken'));
 // ? API ROUTES WILL GO HERE -> before the catch all route!
 app.use('/api/users', require('./routes/api/users'));
 
+// Protect the api routes below from anon users
+const ensureLoggedIn = require('./config/ensureLoggedIn');
+app.use('/api/itineraries', ensureLoggedIn, require('./routes/api/itineraries'));
+
 // API prefix will be used on every route so as not to clash with any client
 // side routing
 app.get('/api/example', (req, res) => {

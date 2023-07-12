@@ -7,7 +7,12 @@
 }
 
 .itinerary-item {
-  border: 1vmin solid var(--cyan);
+  height: 200px;
+  border: 1vmin solid var(--tan-4);
   border-radius: 2vmin;
   background-color: var(--purple);
+}
+
+.itinerary-item:hover {
+  border-color: var(--cyan);
 }

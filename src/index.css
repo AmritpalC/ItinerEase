@@ -5,11 +5,15 @@
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
   --tan-4: #D3C1AE;
-  --purple: #BB86FC;
-  --cyan: #03DAC5;
+  /* --purple: #BB86FC; */
+  --purple: rgb(187, 134, 252);
+  --cyan: rgb(3, 218, 197);
+  /* --cyan: #03DAC5; */
   --dark-grey: #1F1F1F;
-  --text-light: #968c84;
-  --text-dark: #615954;
+  --light-grey: #968c84;
+  --grey: #615954;
+  --green: rgb(0, 163, 129);
+  --blue: rgb(0, 116, 166);
 }
 
 *, *:before, *:after {
@@ -23,7 +27,8 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-1);
+  background-color: var(--white);
+  color: var(--dark-grey);
   padding: 2vmin;
   height: 100vh;
 }
@@ -81,7 +86,7 @@ code {
   justify-content: space-around;
   align-items: center;
   background-color: var(--tan-1);
-  color: var(--text-dark);
+  color: var(--grey);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
   padding: .6vmin;
@@ -91,7 +96,7 @@ code {
 
 .form-container {
   padding: 3vmin;
-  background-color: var(--text-dark);
+  background-color: var(--tan-4);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
 }
@@ -105,21 +110,21 @@ form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.25vmin;
-  color: var(--white);
+  /* color: var(--white); */
 }
 
 label {
-  font-size: 2vmin;
+  font-size: 3vmin;
   display: flex;
   align-items: center;
 }
 
 input {
   padding: 1vmin;
-  font-size: 2vmin;
+  font-size: 3vmin;
   border: .1vmin solid var(--tan-3);
   border-radius: .5vmin;
-  color: var(--text-dark);
+  color: var(--grey);
   background-image: none !important; /* prevent lastpass */
   outline: none;
 }

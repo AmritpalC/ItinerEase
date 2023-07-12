@@ -25,13 +25,13 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
 
     return (
         <nav>
+            <span>Welcome, { user.name }</span>
+            &nbsp; | &nbsp;
             <Link to="/itineraries">Itineraries</Link>
             &nbsp; | &nbsp;
             <Link to="/itineraries/new">New Itinerary</Link>
             &nbsp; | &nbsp;
             <Link to="/calendar">Calendar</Link>
-            &nbsp; | &nbsp;
-            <span>Welcome, { user.name }</span>
             &nbsp; | &nbsp;
             <Link to="" onClick={handleLogOut}>Log Out</Link>
             &nbsp; | &nbsp;

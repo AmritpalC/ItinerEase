@@ -7,7 +7,7 @@ export default function ItineraryDetailPage({ itineraries }) {
 
     return (
         <>
-            <h1>Itinerary Details Page for {itinerary.name}!</h1>
+            <h1>Itinerary Details Page for {itinerary.name}</h1>
             <button>Delete Button</button>
             <h4>Will have all holiday information here in sections</h4>
             <div className="itinerary-sections">

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Adding bcrypt library
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 12;
 

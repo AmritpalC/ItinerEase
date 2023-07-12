@@ -1,7 +1,12 @@
 .itinerary-card {
+  text-decoration: none;
+}
+
+.itinerary-card-details {
   border: 2px solid var(--cyan);
   border-radius: 2vmin;
   padding-bottom: 2vmin;
   margin-bottom: 3vmin;
   background-color: rgb(0, 163, 129);
+  color: var(--tan-1);
 }

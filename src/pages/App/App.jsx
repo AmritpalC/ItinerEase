@@ -28,6 +28,7 @@ export default function App() {
               user={user} setUser={setUser}
               darkMode={darkMode} setDarkMode={setDarkMode} 
             />
+            <hr/>
             <Routes>
               <Route 
                 path="/itineraries" 
