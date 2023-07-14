@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 import './NewItineraryPage.css'
+import { getUser } from '../../utilities/users-service'
 
 export default function NewItineraryPage() {
     const navigate = useNavigate()
@@ -12,6 +13,7 @@ export default function NewItineraryPage() {
         date: '',
         transport: '',
         accommodation: '',
+        user: getUser()._id,
         error: ''
     })
 

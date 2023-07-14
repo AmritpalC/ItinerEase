@@ -3,7 +3,7 @@ import './ItineraryCard.css'
 
 export default function ItineraryCard({ itinerary }) {
   return (
-    <Link to={`/itineraries/${itinerary.name}`} className="itinerary-card">
+    <Link to={{ pathname: `/itineraries/${itinerary.name}`, state: { itinerary } }} className="itinerary-card">
       <div className="itinerary-card-details">
         <h1>{itinerary.destination} - Itinerary Card</h1>
         <p>This card will contain some basic information, such as the title, location and countdown</p>
@@ -11,6 +11,7 @@ export default function ItineraryCard({ itinerary }) {
         <div>Holiday name: { itinerary.name }</div>
         <div>Destination: { itinerary.destination }</div>
         <div>Countdown (days): { itinerary.countdown }</div>
+        
       </div>
     </Link>
   )

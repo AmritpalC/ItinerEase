@@ -20,11 +20,21 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
-  const itineraries = await Itinerary.find({}).sort('destination')
-  res.json(itineraries)
+  try {
+    const userId = req.user._id
+    const itineraries = await Itinerary.find({ user: userId }).sort('destination')
+    res.json(itineraries)
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' })
+  }
 }
 
 async function show(req, res) {
-  const itinerary = await Itinerary.findById(req.params.id)
-  res.json(itinerary)
+  try {
+    const itinerary = await Itinerary.findById(req.params.id)
+    res.json(itinerary)
+    console.log(itinerary)
+  } catch (error) {
+    console.log("Error message ->", error)
+  }
 }
