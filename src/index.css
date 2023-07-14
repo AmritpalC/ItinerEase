@@ -5,13 +5,12 @@
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
   --tan-4: #D3C1AE;
-  /* --purple: #BB86FC; */
-  --purple: rgb(187, 134, 252);
-  --cyan: rgb(3, 218, 197);
-  /* --cyan: #03DAC5; */
+  --black: rgb(0, 0, 0);
   --dark-grey: #1F1F1F;
   --light-grey: #968c84;
   --grey: #615954;
+  --purple: rgb(187, 134, 252);
+  --cyan: rgb(3, 218, 197);
   --green: rgb(0, 163, 129);
   --blue: rgb(0, 116, 166);
 }

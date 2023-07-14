@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 import './NewItineraryPage.css'
 
 export default function NewItineraryPage() {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: '',
         destination: '',
@@ -23,8 +26,13 @@ export default function NewItineraryPage() {
     async function handleSubmit(e) {
         e.preventDefault()
         delete formData.error
-        // alert(JSON.stringify(formData))
-        itinerariesAPI.createItinerary(formData)
+        
+        try {   
+            await itinerariesAPI.createItinerary(formData)
+            navigate('/itineraries')
+        } catch (error) {
+            setFormData({ ...formData, error: error.message})
+        }
     }
 
     function handleChange(e) {

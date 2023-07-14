@@ -7,6 +7,10 @@ export function getAll() {
   return sendRequest(BASE_URL)
 }
 
-export function createItinerary(itinerary) {
+export function getItinerary(id) {
+  return sendRequest(`${BASE_URL}/${id}`)
+}
+
+export async function createItinerary(itinerary) {
   return sendRequest(`${BASE_URL}/new`, 'POST', itinerary)
 } 

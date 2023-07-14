@@ -1,12 +1,29 @@
-import { useParams } from "react-router-dom"
+import { useParams } from 'react-router-dom'
+// import { useState, useEffect } from 'react'
+// import * as itinerariesAPI from '../../utilities/itineraries-api'
 import './ItineraryDetailPage.css'
 
 export default function ItineraryDetailPage({ itineraries }) {
     let { itineraryName } = useParams();
     let itinerary = itineraries.find((iti) => iti.name === itineraryName)
 
+    // const [itin, setItin] = useState([])
+
+    // useEffect(function() {
+    //     async function getItinerary() {
+    //         const itinerary = await itinerariesAPI.getItinerary()
+    //         setItin(itinerary)
+    //     }
+    //     getItinerary()
+    // }, [])
+
     return (
         <>
+            {/* <h1>Itinerary Details Page for {itin.name}</h1>
+            <div>Name: {itin.name}</div>
+            <div>Destination: {itin.destination}</div>
+            <div>Date: {itin.date}</div>
+            <hr />   */}
             <h1>Itinerary Details Page for {itinerary.name}</h1>
             <button>Delete Button</button>
             <h4>Will have all holiday information here in sections</h4>
