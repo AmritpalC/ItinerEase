@@ -1,10 +1,20 @@
 import { useParams } from 'react-router-dom'
-// import { useState, useEffect } from 'react'
-// import * as itinerariesAPI from '../../utilities/itineraries-api'
+import { useState, useEffect } from 'react'
+import * as itinerariesAPI from '../../utilities/itineraries-api'
 import './ItineraryDetailPage.css'
 // import { useLocation } from 'react-router-dom'
 
 export default function ItineraryDetailPage({ itinerariesList }) {
+    // const [itinerariesList, setItinerariesList] = useState([])
+
+    // useEffect(function() {
+    //     async function getItineraries() {
+    //         const itineraries = await itinerariesAPI.getAllForUser()
+    //         setItinerariesList(itineraries)
+    //     }
+    //     getItineraries()
+    // }, [])
+
     let { itineraryName } = useParams();
     let itinerary = itinerariesList.find((i) => i.name === itineraryName)
 
@@ -23,6 +33,14 @@ export default function ItineraryDetailPage({ itinerariesList }) {
     // const itinerary = location.state?.itinerary
     // console.log(itinerary)
 
+    async function handleDelete(itinerary) {
+        try {
+            await itinerariesAPI.deleteItinerary(itinerary._id)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <>
             {/* <h1>Itinerary Details Page for {itin.name}</h1>
@@ -30,10 +48,10 @@ export default function ItineraryDetailPage({ itinerariesList }) {
             <div>Destination: {itin.destination}</div>
             <div>Date: {itin.date}</div>
             <hr />   */}
-            <h1>Hi Ben</h1>
             <h1>Itinerary Details Page for {itinerary.name}</h1>
-            <button>Delete Button</button>
+            <button onClick={handleDelete}>Delete Button</button>
             <h4>Will have all holiday information here in sections</h4>
+            <h5>ID - {itinerary._id}</h5>
             <div className="itinerary-sections">
                 <div className="itinerary-item">1 - Itinerary - {itinerary.destination}</div>
                 <div className="itinerary-item">2 - Budget - {itinerary.budget}</div>

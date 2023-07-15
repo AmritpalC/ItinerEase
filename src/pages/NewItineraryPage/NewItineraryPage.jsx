@@ -5,7 +5,7 @@ import * as itinerariesAPI from '../../utilities/itineraries-api'
 import './NewItineraryPage.css'
 import { getUser } from '../../utilities/users-service'
 
-export default function NewItineraryPage() {
+export default function NewItineraryPage({ setRefreshItineraries }) {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         name: '',
@@ -31,6 +31,7 @@ export default function NewItineraryPage() {
         
         try {   
             await itinerariesAPI.createItinerary(formData)
+            setRefreshItineraries(true)
             navigate('/itineraries')
         } catch (error) {
             setFormData({ ...formData, error: error.message})

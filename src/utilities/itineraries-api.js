@@ -13,4 +13,8 @@ export function getItinerary(id) {
 
 export async function createItinerary(itinerary) {
   return sendRequest(`${BASE_URL}/new`, 'POST', itinerary)
+}
+
+export function deleteItinerary(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 } 

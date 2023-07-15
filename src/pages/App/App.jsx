@@ -23,14 +23,37 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [darkMode, setDarkMode] = useState(true)
   const [itinerariesList, setItinerariesList] = useState([])
+  const [refreshItineraries, setRefreshItineraries] = useState(false)
 
-  useEffect(function() {
-      async function getItineraries() {
-          const itineraries = await itinerariesAPI.getAllForUser()
-          setItinerariesList(itineraries)
-      }
-      getItineraries()
+  useEffect(() => {
+    getItineraries()
   }, [])
+
+  useEffect(() => {
+    if (refreshItineraries) {
+      getItineraries()
+      setRefreshItineraries(false)
+    }
+  }, [refreshItineraries])
+
+  async function getItineraries() {
+    try {
+      const itineraries = await itinerariesAPI.getAllForUser()
+      setItinerariesList(itineraries)
+    } catch (err) {
+      console.log('Error fetching itineraries:', err)
+    }
+  }
+
+
+  
+  // useEffect(function() {
+  //     async function getItineraries() {
+  //         const itineraries = await itinerariesAPI.getAllForUser()
+  //         setItinerariesList(itineraries)
+  //     }
+  //     getItineraries()
+  // }, [])
 
   return (
     <main className="App">
@@ -60,7 +83,7 @@ export default function App() {
                 path="/itineraries/:itineraryName" 
                 element={<ItineraryDetailPage itinerariesList={itinerariesList} />} 
               />
-              <Route path="/itineraries/new" element={<NewItineraryPage />} />
+              <Route path="/itineraries/new" element={<NewItineraryPage setRefreshItineraries={setRefreshItineraries} />} />
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/*" element={<Navigate to="/itineraries" />} />
             </Routes>

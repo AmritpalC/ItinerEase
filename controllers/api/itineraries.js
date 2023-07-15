@@ -3,7 +3,8 @@ const Itinerary = require('../../models/itinerary')
 module.exports = {
   create,
   index,
-  show
+  show,
+  delete: deleteItinerary
 }
 
 async function create(req, res) {
@@ -36,5 +37,14 @@ async function show(req, res) {
     console.log(itinerary)
   } catch (error) {
     console.log("Error message ->", error)
+  }
+}
+
+async function deleteItinerary(req, res) {
+  try {
+    const deletedItinerary = await Itinerary.findByIdAndDelete(req.params.id)
+    res.json(deletedItinerary)
+  } catch (err) {
+    res.status(400).json(err)
   }
 }

@@ -6,9 +6,9 @@ import ItineraryCard from "../../components/ItineraryCard/ItineraryCard"
 import ItineraryDetailPage from "../ItineraryDetailPage/ItineraryDetailPage"
 import './ItinerariesPage.css'
 
-export default function ItinerariesPage({ itinerariesList }) {
+export default function ItinerariesPage() {
 
-    // const [itinerariesList, setItinerariesList] = useState([])
+    const [itinerariesList, setItinerariesList] = useState([])
     // const [selectedItinerary, setSelectedItinerary] = useState(null)
     // const [showDetailPage, setShowDetailPage] = useState(false)
 
@@ -17,13 +17,13 @@ export default function ItinerariesPage({ itinerariesList }) {
         console.log(expDate)
     }
 
-    // useEffect(function() {
-    //     async function getItineraries() {
-    //         const itineraries = await itinerariesAPI.getAllForUser()
-    //         setItinerariesList(itineraries)
-    //     }
-    //     getItineraries()
-    // }, [])
+    useEffect(function() {
+        async function getItineraries() {
+            const itineraries = await itinerariesAPI.getAllForUser()
+            setItinerariesList(itineraries)
+        }
+        getItineraries()
+    }, [])
 
     // function handleItineraryCardClick(itinerary) {
     //     setSelectedItinerary(itinerary)
