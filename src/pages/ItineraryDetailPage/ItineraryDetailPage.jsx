@@ -66,10 +66,10 @@ export default function ItineraryDetailPage({ itinerariesList }) {
                     <h5>ID - {itinerary._id}</h5>
                     <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5>
                     <div className="itinerary-sections">
-                        <div className="itinerary-item">1 - Itinerary - {itinerary.destination}</div>
-                        <div className="itinerary-item">2 - Budget - {itinerary.budget}</div>
-                        <div className="itinerary-item">3 - Places to Visit {itinerary.pointsOfInterest}</div>
-                        <div className="itinerary-item">4 - Restaurants {itinerary.restaurants}</div>
+                        <div className="itinerary-item">🗓️ - Itinerary - {itinerary.destination}</div>
+                        <div className="itinerary-item">£ - Budget - {itinerary.budget}</div>
+                        <div className="itinerary-item">🏰 - Places to Visit {itinerary.pointsOfInterest}</div>
+                        <div className="itinerary-item">🍱 - Restaurants {itinerary.restaurants}</div>
                     </div>
                     <button onClick={showConfirmation}>Delete Itinerary</button>
                     </>

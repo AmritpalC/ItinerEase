@@ -8,8 +8,6 @@ module.exports = {
 }
 
 async function create(req, res) {
-  console.log(req.body)
-  console.log(req.user)
   try {
   const itinerary = await Itinerary.create(req.body)
   res.json(itinerary)
