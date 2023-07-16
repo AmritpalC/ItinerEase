@@ -53,7 +53,7 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
               <label>Destination</label>
               <input type="text" name="destination" value={formData.destination} onChange={handleChange} required />
               <label>Date</label>
-              <input type="date" name="date" value={formData.date} onChange={handleChange} />
+              <input type="date" name="date" value={formData.date} onChange={handleChange} required/>
               <label>Transport</label>
               <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
               <label>Accomodation</label>

@@ -25,7 +25,7 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
 
     return (
         <nav>
-            <span>Welcome, { user.name }</span>
+            <span>Welcome, { user.name }&nbsp;<Link to="/"><span>📔</span></Link></span>
             &nbsp; | &nbsp;
             <Link to="/itineraries">Itineraries</Link>
             &nbsp; | &nbsp;

@@ -32,7 +32,7 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
         try {   
             await itinerariesAPI.createItinerary(formData)
             setRefreshItineraries(true)
-            navigate('/itineraries')
+            navigate('/itineraries', {state: {message: 'Itinerary Created!'}})
         } catch (error) {
             setFormData({ ...formData, error: error.message})
         }
@@ -53,7 +53,7 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
                     <label>Destination</label>
                     <input type="text" name="destination" value={formData.destination} onChange={handleChange} required />
                     <label>Date</label>
-                    <input type="date" name="date" value={formData.date} onChange={handleChange} />
+                    <input type="date" name="date" value={formData.date} onChange={handleChange} required/>
                     <label>Transport</label>
                     <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
                     <label>Accomodation</label>

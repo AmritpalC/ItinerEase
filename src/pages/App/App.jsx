@@ -7,10 +7,12 @@ import { getUser } from '../../utilities/users-service'
 
 // Custom Components
 import AuthPage from '../AuthPage/AuthPage'
+import HomePage from '../HomePage/HomePage'
 import ItinerariesPage from '../ItinerariesPage/ItinerariesPage'
 import NewItineraryPage from '../NewItineraryPage/NewItineraryPage'
 import CalendarPage from '../CalendarPage/CalendarPage'
 import NavBar from '../../components/NavBar/NavBar'
+
 import ItineraryDetailPage from '../ItineraryDetailPage/ItineraryDetailPage'
 
 // Test data
@@ -76,6 +78,10 @@ export default function App() {
                 itineraries={itineraries} />} 
               /> */}
               <Route 
+                path="/" 
+                element={<HomePage />} 
+              />
+              <Route 
                 path="/itineraries" 
                 element={<ItinerariesPage itinerariesList={itinerariesList}/>} 
               />
@@ -85,7 +91,7 @@ export default function App() {
               />
               <Route path="/itineraries/new" element={<NewItineraryPage setRefreshItineraries={setRefreshItineraries} />} />
               <Route path="/calendar" element={<CalendarPage />} />
-              <Route path="/*" element={<Navigate to="/itineraries" />} />
+              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </>
           :

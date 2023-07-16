@@ -1,3 +1,7 @@
 .itineraries-page-list {
   padding-bottom: 1vmin;
 }
+
+.message {
+  color: var(--cyan);
+}

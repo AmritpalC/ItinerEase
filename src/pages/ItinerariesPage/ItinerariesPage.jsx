@@ -63,7 +63,7 @@ export default function ItinerariesPage() {
         <>
             <h1>My Holidays</h1>
             <button onClick={handleCheckToken}>Check When My Login Expires</button>
-            {messageVisible && <div>{message}</div>}
+            {messageVisible && <div className="message">{message}</div>}
             {/* {messageVisible && <div>{message? message : ''}</div>} */}
             <hr />
             {itinerariesList.length > 0 ? (

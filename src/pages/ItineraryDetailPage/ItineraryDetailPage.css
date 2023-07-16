@@ -15,6 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
 }
 
 body.dark .itinerary-item {
@@ -23,4 +24,8 @@ body.dark .itinerary-item {
 
 .itinerary-item:hover {
   border-color: var(--cyan);
+}
+
+.message {
+  color: var(--cyan)
 }
