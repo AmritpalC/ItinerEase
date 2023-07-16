@@ -11,6 +11,10 @@ router.get('/:id', itinerariesCtrl.show)
 // POST /api/itineraries/new
 router.post('/new', itinerariesCtrl.create)
 
+// DELETE /api/itineraries/:id
 router.delete('/:id', itinerariesCtrl.delete)
+
+// PUT /api/itineraries/:id
+router.put('/:id', itinerariesCtrl.update)
 
 module.exports = router

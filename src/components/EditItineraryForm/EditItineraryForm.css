@@ -1,0 +1,17 @@
+/* .itinerary-card {
+  text-decoration: none;
+}
+
+.itinerary-card-details {
+  border: 2px solid var(--cyan);
+  border-radius: 2vmin;
+  padding-bottom: 2vmin;
+  margin-bottom: 3vmin;
+  background-color: var(--green);
+  color: var(--black);
+}
+
+body.dark .itinerary-card-details {
+  background-color: var(--blue);
+  color: var(--white);
+} */

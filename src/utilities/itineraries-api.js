@@ -18,3 +18,7 @@ export async function createItinerary(itinerary) {
 export function deleteItinerary(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE', { id })
 }
+
+export function updateItinerary(id, itinerary) {
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', itinerary)
+}

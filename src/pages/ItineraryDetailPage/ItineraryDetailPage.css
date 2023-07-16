@@ -10,6 +10,14 @@
   height: 200px;
   border: 1vmin solid var(--tan-4);
   border-radius: 2vmin;
+  background-color: var(--green);
+  font-size: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.dark .itinerary-item {
   background-color: var(--purple);
 }
 
