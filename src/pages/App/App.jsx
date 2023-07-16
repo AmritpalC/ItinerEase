@@ -47,16 +47,6 @@ export default function App() {
     }
   }
 
-
-  
-  // useEffect(function() {
-  //     async function getItineraries() {
-  //         const itineraries = await itinerariesAPI.getAllForUser()
-  //         setItinerariesList(itineraries)
-  //     }
-  //     getItineraries()
-  // }, [])
-
   return (
     <main className="App">
       { user ?
@@ -67,16 +57,6 @@ export default function App() {
             />
             <hr/>
             <Routes>
-              {/* <Route 
-                path="/itineraries" 
-                element={<ItinerariesPage 
-                itineraries={itineraries} />} 
-              /> */}
-              {/* <Route 
-                path="/itineraries/:itineraryName" 
-                element={<ItineraryDetailPage 
-                itineraries={itineraries} />} 
-              /> */}
               <Route 
                 path="/" 
                 element={<HomePage />} 

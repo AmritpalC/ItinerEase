@@ -17,14 +17,6 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
         error: ''
     })
 
-    // useEffect(function() {
-    //     async function getItineraries() {
-    //         const itineraries = await itinerariesAPI.getAll()
-    //         setFormData(itineraries)
-    //     }
-    //     getItineraries()
-    // }, [])
-
     async function handleSubmit(e) {
         e.preventDefault()
         delete formData.error

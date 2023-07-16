@@ -28,11 +28,6 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
 
     const [messageVisible, setMessageVisible] = useState(false)
 
-    // const [showBudgetTable, setShowBudgetTable] = useState(false)
-    // function toggleBudgetTable() {
-    //     setShowBudgetTable((prevShowBudgetTable) => !prevShowBudgetTable)
-    // }
-
     const [selectedComponent, setSelectedComponent] = useState(null)
     const handleComponentClick = (componentName) => {setSelectedComponent(componentName)}
     
@@ -124,18 +119,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
-                    //     <div>
-                    //         <BudgetTable itinerary={itinerary} />
-                    //         <button onClick={toggleBudgetTable}>Toggle Budget Table</button>
-                    //     </div>
-                    // ) : (
                         <div className="itinerary-sections">
                             <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>🗓️ - Itinerary - {itinerary.destination}</div>
-                            <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>
-                                💷 - Budget 
-                                {/* <button onClick={toggleBudgetTable}>Toggle Budget Table</button>
-                                {showBudgetTable && <BudgetTable itinerary={itinerary} />} */}
-                            </div>
+                            <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>💷 - Budget</div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('places')}>🏰 - Places to Visit {itinerary.pointsOfInterest}</div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>🍱 - Restaurants {itinerary.restaurants}</div>
                         </div>
@@ -145,48 +131,10 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                         <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
                     )}
 
-                    {/* <div className="itinerary-sections">
-                        <Link
-                            className='itinerary-item'
-                            to={{
-                                pathname: `/itineraries/${itineraryName}/itinerary`,
-                                state: { itinerary }
-                            }}
-                        >
-                            🗓️ - Itinerary
-                        </Link>
-                        <Link 
-                            className='itinerary-item' 
-                            to={{
-                                pathname: `/itineraries/${itineraryName}/budget`,
-                                state: { itinerary }
-                            }}
-                        >
-                            💷 - Budget
-                        </Link>
-                        <Link 
-                            className='itinerary-item' 
-                            to={{
-                                pathname: `/itineraries/${itineraryName}/places`,
-                                state: { itinerary }
-                            }}
-                        >
-                            🏰 - Places to Visit
-                        </Link>
-                        <Link
-                            className='itinerary-item'
-                            to={{
-                                pathname: `/itineraries/${itineraryName}/restaurants`,
-                                state: { itinerary }
-                            }}
-                        >
-                            🍱 - Restaurants
-                        </Link>
-                    </div> */}
                     {!selectedComponent && (
                         <>
-                            <button onClick={showConfirmation}>Delete Itinerary</button>
                             <button onClick={handleEdit}>Edit Itinerary</button>
+                            <button onClick={showConfirmation}>Delete Itinerary</button>
                         </>
                     )}
                 </>

@@ -16,7 +16,7 @@ export default function ItinerariesPage() {
     const message = location.state?.message
     const [messageVisible, setMessageVisible] = useState(false)
 
-    // // ? 3 second timer for message when itinerary deleted
+    // ? 3 second timer for message when itinerary deleted
     useEffect(() => {
         if (message) {
             setMessageVisible(true)
@@ -64,7 +64,6 @@ export default function ItinerariesPage() {
             <h1>My Holidays</h1>
             <button onClick={handleCheckToken}>Check When My Login Expires</button>
             {messageVisible && <div className="message">{message}</div>}
-            {/* {messageVisible && <div>{message? message : ''}</div>} */}
             <hr />
             {itinerariesList.length > 0 ? (
                 <>
