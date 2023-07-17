@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const budgetItemSchema = new Schema({
   name: { type: String, required: true },
-  cost: { type: Schema.Types.Decimal128, required: true, default: 0 }
+  cost: { type: Number, required: true, default: 0 }
 }, {
   timestamps: true,
   toJSON: { virtuals: true }

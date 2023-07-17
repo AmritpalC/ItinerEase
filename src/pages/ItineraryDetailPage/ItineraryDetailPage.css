@@ -8,9 +8,9 @@
 
 .itinerary-item {
   height: 200px;
-  border: 1vmin solid var(--tan-4);
+  border: 1vmin solid var(--blue);
   border-radius: 2vmin;
-  background-color: var(--green);
+  background-color: var(--forest);
   font-size: 3vw;
   display: flex;
   justify-content: center;

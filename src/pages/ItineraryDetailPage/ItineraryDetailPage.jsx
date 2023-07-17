@@ -35,7 +35,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
         if (selectedComponent === 'itinerary') {
             return <ItineraryList itinerary={itinerary} />
         } else if (selectedComponent === 'budget') {
-            return <BudgetTable itinerary={itinerary} />
+            return <BudgetTable itinerary={itinerary} setRefreshItineraries={setRefreshItineraries} />
         } else if (selectedComponent === 'places') {
             return <PlacesToVisitList itinerary={itinerary} />
         } else if (selectedComponent === 'restaurants') {

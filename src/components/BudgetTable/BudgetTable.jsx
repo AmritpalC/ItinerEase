@@ -1,32 +1,64 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./BudgetTable.css"
+import * as itinerariesAPI from "../../utilities/itineraries-api"
 
 
-export default function BudgetTable() {
+export default function BudgetTable({ itinerary, setRefreshItineraries }) {
 
   const [budgetItems, setBudgetItems] = useState([])
   const [newItem, setNewItem] = useState('')
   const [newCost, setNewCost] = useState('')
 
-  const handleAddItem = () => {
+  useEffect(() => {
+    setBudgetItems(itinerary.budget)
+  }, [itinerary.budget])
+
+  // const handleAddItem = () => {
+  //   if (newItem && newCost) {
+  //     const newBudgetItem = { name: newItem, cost: Number(newCost)}
+  //     setBudgetItems([...budgetItems, newBudgetItem])
+  //     setNewItem('')
+  //     setNewCost('')
+  //   }
+  // }
+
+  const handleAddItem = async () => {
     if (newItem && newCost) {
-      const newBudgetItem = { name: newItem, cost: Number(newCost)}
-      setBudgetItems([...budgetItems, newBudgetItem])
+      const newBudgetItem = { name: newItem, cost: parseFloat(newCost)}
+      const updatedItems = [...budgetItems, newBudgetItem]
+      setBudgetItems(updatedItems)
       setNewItem('')
       setNewCost('')
+      await itinerariesAPI.updateItinerary(itinerary._id, { budget: updatedItems })
+      setRefreshItineraries(true)
     }
   }
 
-  const handleUpdateItem = (index, field, value) => {
+  // const handleUpdateItem = (index, field, value) => {
+  //   const updatedItems = [...budgetItems];
+  //   updatedItems[index][field] = value;
+  //   setBudgetItems(updatedItems);
+  // };
+
+  const handleUpdateItem = async (index, field, value) => {
     const updatedItems = [...budgetItems];
-    updatedItems[index][field] = value;
+    updatedItems[index][field] = parseFloat(value) || 0;
     setBudgetItems(updatedItems);
+    await itinerariesAPI.updateItinerary(itinerary._id, { budget: updatedItems })
   };
 
-  const handleRemoveItem = (index) => {
+  // const handleRemoveItem = (index) => {
+  //   const updatedItems = [...budgetItems]
+  //   updatedItems.splice(index, 1)
+  //   setBudgetItems(updatedItems)
+  // }
+
+  const handleRemoveItem = async (index) => {
     const updatedItems = [...budgetItems]
     updatedItems.splice(index, 1)
     setBudgetItems(updatedItems)
+    await itinerariesAPI.updateItinerary(itinerary._id, { budget: updatedItems })
+    setRefreshItineraries(true)
   }
 
   const calculateTotalCost = () => {
@@ -37,9 +69,15 @@ export default function BudgetTable() {
     <>
       <div>This is the BudgetTable Page</div>
       <hr />
-      <h2>Budget Table</h2>
+      <h2>Budget Table for {itinerary.name}</h2>
+      <h4>List of budget items:</h4>
+      <ul>
+        {itinerary.budget.map((item, idx) => (
+          <li key={idx}>{item.name} - {item.cost}</li>
+        ))}
+      </ul>
       <hr />
-      <table>
+      <table className="budget-table">
         <thead>
           <tr>
             <th>Item</th>
@@ -64,7 +102,7 @@ export default function BudgetTable() {
                   type="number"
                   value={item.cost}
                   onChange={(e) =>
-                    handleUpdateItem(index, 'cost', Number(e.target.value))
+                    handleUpdateItem(index, 'cost', parseFloat(e.target.value))
                   }
                 />
               </td>
