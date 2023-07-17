@@ -6,6 +6,7 @@ import * as itinerariesAPI from "../../utilities/itineraries-api"
 import ItineraryCard from "../../components/ItineraryCard/ItineraryCard"
 // import ItineraryDetailPage from "../ItineraryDetailPage/ItineraryDetailPage"
 import './ItinerariesPage.css'
+import { Alert } from 'reactstrap'
 
 export default function ItinerariesPage() {
 
@@ -22,7 +23,7 @@ export default function ItinerariesPage() {
             setMessageVisible(true)
             const timer = setTimeout(() => {
                 setMessageVisible(false)
-            }, 4000)
+            }, 5000)
             return () => clearTimeout(timer)
         }
     }, [message])
@@ -63,7 +64,7 @@ export default function ItinerariesPage() {
         <>
             <h1>My Holidays</h1>
             <button onClick={handleCheckToken}>Check When My Login Expires</button>
-            {messageVisible && <div className="message">{message}</div>}
+            {messageVisible && <Alert color="primary">{message}</Alert>}
             <hr />
             {itinerariesList.length > 0 ? (
                 <>

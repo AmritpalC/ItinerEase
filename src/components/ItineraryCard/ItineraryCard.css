@@ -1,5 +1,6 @@
 .itinerary-card {
   text-decoration: none;
+  margin-bottom: 2vmin;
 }
 
 .itinerary-card-details {
@@ -17,5 +18,22 @@ body.dark .itinerary-card-details {
 }
 
 .itinerary-card-details:hover {
+  border-color: var(--purple);
+}
+
+/* ! Using Reactstrap */
+
+.itinerary-card-reactstrap {
+  background-color: var(--forest);
+  border: 1vmin solid var(--green);
+  border-radius: 0.5vmin;
+}
+
+body.dark .itinerary-card-reactstrap {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+.itinerary-card-reactstrap:hover {
   border-color: var(--purple);
 }

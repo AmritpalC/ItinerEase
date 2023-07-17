@@ -5,3 +5,13 @@
 .message {
   color: var(--cyan);
 }
+
+/* Alert {
+  background-color: var(--blue);
+  color: var(--dark-grey);
+}
+
+body.dark Alert {
+  background-color: var(--purple);
+  color: white;
+} */

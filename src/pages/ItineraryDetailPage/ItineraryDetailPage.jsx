@@ -8,7 +8,7 @@ import EditItineraryForm from '../../components/EditItineraryForm/EditItineraryF
 import BudgetTable from '../../components/BudgetTable/BudgetTable'
 import PlacesToVisitList from '../../components/PlacesToVisitList/PlacesToVisitList'
 import RestaurantList from '../../components/RestaurantsList/RestaurantsList'
-import ItineraryList from '../../components/ItineraryList/ItineraryList'
+import ItineraryCalendar from '../../components/ItineraryCalendar/ItineraryCalendar'
 
 import './ItineraryDetailPage.css'
 
@@ -33,7 +33,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
     
     const renderComponent = () => {
         if (selectedComponent === 'itinerary') {
-            return <ItineraryList itinerary={itinerary} />
+            return <ItineraryCalendar itinerary={itinerary} />
         } else if (selectedComponent === 'budget') {
             return <BudgetTable itinerary={itinerary} setRefreshItineraries={setRefreshItineraries} />
         } else if (selectedComponent === 'places') {

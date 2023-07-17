@@ -5,7 +5,8 @@ export default function HomePage() {
     <>
       <div>Home Page</div>
       <div>ItinerEase</div>
-      <div>Holiday Itinerary Planning Made Easy</div>
+      <div>Logo</div>
+      <div>Holiday Planning Made Easy</div>
     </>
   )
 }
