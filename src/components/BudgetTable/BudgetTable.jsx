@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./BudgetTable.css"
 import * as itinerariesAPI from "../../utilities/itineraries-api"
 
+import { Table } from 'reactstrap'
+
 
 export default function BudgetTable({ itinerary, setRefreshItineraries }) {
 
@@ -12,15 +14,6 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
   useEffect(() => {
     setBudgetItems(itinerary.budget)
   }, [itinerary.budget])
-
-  // const handleAddItem = () => {
-  //   if (newItem && newCost) {
-  //     const newBudgetItem = { name: newItem, cost: Number(newCost)}
-  //     setBudgetItems([...budgetItems, newBudgetItem])
-  //     setNewItem('')
-  //     setNewCost('')
-  //   }
-  // }
 
   const handleAddItem = async () => {
     if (newItem && newCost) {
@@ -34,24 +27,12 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
     }
   }
 
-  // const handleUpdateItem = (index, field, value) => {
-  //   const updatedItems = [...budgetItems];
-  //   updatedItems[index][field] = value;
-  //   setBudgetItems(updatedItems);
-  // };
-
   const handleUpdateItem = async (index, field, value) => {
     const updatedItems = [...budgetItems];
-    updatedItems[index][field] = parseFloat(value) || 0;
+    updatedItems[index][field] = field === 'cost' ? parseFloat(value) || 0 : value || '';
     setBudgetItems(updatedItems);
     await itinerariesAPI.updateItinerary(itinerary._id, { budget: updatedItems })
   };
-
-  // const handleRemoveItem = (index) => {
-  //   const updatedItems = [...budgetItems]
-  //   updatedItems.splice(index, 1)
-  //   setBudgetItems(updatedItems)
-  // }
 
   const handleRemoveItem = async (index) => {
     const updatedItems = [...budgetItems]
@@ -77,7 +58,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
         ))}
       </ul>
       <hr />
-      <table className="budget-table">
+      <table className="table table-primary table-striped budget-table">
         <thead>
           <tr>
             <th>Item</th>
@@ -100,7 +81,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
               <td>
                 <input
                   type="number"
-                  value={item.cost}
+                  defaultValue={item.cost.toString()}
                   onChange={(e) =>
                     handleUpdateItem(index, 'cost', parseFloat(e.target.value))
                   }

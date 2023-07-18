@@ -30,6 +30,7 @@ app.use('/api/users', require('./routes/api/users'));
 // Protect the api routes below from anon users
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/itineraries', ensureLoggedIn, require('./routes/api/itineraries'));
+app.use('/api/calendars', ensureLoggedIn, require('./routes/api/calendars'));
 
 // API prefix will be used on every route so as not to clash with any client
 // side routing

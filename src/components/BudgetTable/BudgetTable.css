@@ -1,4 +1,4 @@
-.budget-table {
-  display: flex;
-  justify-content: center;
+body.dark .budget-table {
+  background-color: var(--grey);
+  color: var(--white);
 }

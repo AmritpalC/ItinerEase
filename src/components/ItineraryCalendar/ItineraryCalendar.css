@@ -1,4 +1,27 @@
-.react-calendar {
+.modal-content {
+  background-color: var(--forest);
+
+}
+body.dark .modal-content {
+  background-color: slateblue;
+}
+
+body.dark .form-control {
+  background-color: var(--dark-grey);
+  color: var(--white);
+}
+
+.react-calendar__tile--active {
+  background: #006edc;
+  color: white;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #1087ff;
+}
+
+/* .react-calendar {
   width: 350px;
   max-width: 100%;
   background: white;
@@ -140,4 +163,4 @@
 
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
-}
+} */

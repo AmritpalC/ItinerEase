@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 // const restaurantSchema = require('./restaurantSchema');
 
 const budgetItemSchema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String },
   cost: { type: Number, required: true, default: 0 }
 }, {
   timestamps: true,

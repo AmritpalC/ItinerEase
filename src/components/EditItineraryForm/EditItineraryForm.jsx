@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import './EditItineraryForm.css'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 
-export default function EditItineraryForm({ itinerary, setRefreshItineraries, setMessageVisible,handleFormClose }) {
+export default function EditItineraryForm({ itinerary, setRefreshItineraries, setMessageVisible, handleFormClose }) {
   // const itineraryDate = new Date(itinerary.date).toLocaleDateString()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
@@ -41,7 +41,6 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
     }
   }
 
-
   return (
     <div>
       <h1>Edit Itinerary</h1>
@@ -59,6 +58,7 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
               <label>Accomodation</label>
               <input type="text" name="accommodation" value={formData.accommodation} onChange={handleChange} />
               <button type="submit">Update Itinerary</button>
+              <button type="button" onClick={handleFormClose}>Go Back</button>
           </form>
       </div>
     </div>

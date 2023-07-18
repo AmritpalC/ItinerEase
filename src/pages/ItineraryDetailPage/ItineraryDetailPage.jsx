@@ -11,9 +11,9 @@ import RestaurantList from '../../components/RestaurantsList/RestaurantsList'
 import ItineraryCalendar from '../../components/ItineraryCalendar/ItineraryCalendar'
 
 import './ItineraryDetailPage.css'
+import { Button, Alert } from 'reactstrap'
 
 export default function ItineraryDetailPage({ itinerariesList, setRefreshItineraries }) {
-    // const [itinerariesList, setItinerariesList] = useState([])
     const navigate = useNavigate()
     const [deleteConfirmation, setDeleteConfirmation] = useState(false)
     const showConfirmation = () => setDeleteConfirmation(true)
@@ -27,6 +27,8 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
     const message = location.state?.message
 
     const [messageVisible, setMessageVisible] = useState(false)
+
+    const handleGoBack = () => {navigate('/itineraries')}
 
     const [selectedComponent, setSelectedComponent] = useState(null)
     const handleComponentClick = (componentName) => {setSelectedComponent(componentName)}
@@ -54,34 +56,12 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
         }
     }, [messageVisible])
 
-    // useEffect(function() {
-    //     async function getItineraries() {
-    //         const itineraries = await itinerariesAPI.getAllForUser()
-    //         setItinerariesList(itineraries)
-    //     }
-    //     getItineraries()
-    // }, [])
-
     let { itineraryName } = useParams();
     let itinerary = itinerariesList.find((i) => i.name === itineraryName)
 
     if (!itinerary) {
         return <div>Itinerary not found</div>
     }
-    // const [itinerary, setItinerary] = useState([])
-
-    // useEffect(function() {
-    //     async function getItinerary() {
-    //         const fetchedItinerary = await itinerariesAPI.getItinerary()
-    //         setItinerary(fetchedItinerary)
-    //         console.log(itinerary)
-    //     }
-    //     getItinerary()
-    // }, [itinerary])
-
-    // const location = useLocation()
-    // const itinerary = location.state?.itinerary
-    // console.log(itinerary)
 
     async function handleDelete() {
         try {
@@ -111,11 +91,15 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
             ) : (
                 <>
                     <h1>Itinerary Details Page for {itinerary.name}</h1>
-                    <h4>Will have all holiday information here in sections</h4>
-                    {messageVisible && message && <div className="message">{message}</div>}
-                    <h5>ID - {itinerary._id}</h5>
-                    <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5>
-                    <h5>Date: { itinerary.date ? itinerary.date : 'no date' }</h5>
+                    {!selectedComponent && (
+                        <>
+                            <h4>Will have all holiday information here in sections</h4>
+                            {messageVisible && message && <Alert className="message">{message}</Alert>}
+                            <h5>ID - {itinerary._id}</h5>
+                            <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5>
+                            <h5>Date: { itinerary.date ? itinerary.date : 'no date' }</h5>
+                        </>
+                    )}
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
@@ -133,8 +117,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
 
                     {!selectedComponent && (
                         <>
-                            <button onClick={handleEdit}>Edit Itinerary</button>
-                            <button onClick={showConfirmation}>Delete Itinerary</button>
+                            <Button className="go-back-button" onClick={handleGoBack}>Back to all Itineraries</Button>
+                            <Button color="primary" onClick={handleEdit}>Edit Itinerary</Button>
+                            <Button color="warning" onClick={showConfirmation}>Delete Itinerary</Button>
                         </>
                     )}
                 </>

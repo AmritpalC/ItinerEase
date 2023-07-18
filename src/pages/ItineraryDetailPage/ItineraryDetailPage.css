@@ -29,3 +29,8 @@ body.dark .itinerary-item {
 .message {
   color: var(--cyan)
 }
+
+.go-back-button {
+  background-color: var(--cyan);
+  color: var(--dark-grey)
+}

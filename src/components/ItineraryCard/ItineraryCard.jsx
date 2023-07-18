@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import './ItineraryCard.css'
-import { Card, CardBody, CardTitle, CardText, Button } from 'reactstrap'
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap'
 
 export default function ItineraryCard({ itinerary }) {
   return (
@@ -29,11 +29,14 @@ export default function ItineraryCard({ itinerary }) {
           <CardTitle tag="h4">
             {itinerary.destination} - itinerary card
           </CardTitle>
+          <CardSubtitle>
+            Holiday name: { itinerary.name }&nbsp;
+            Destination: { itinerary.destination }&nbsp;
+            Countdown (days): { itinerary.countdown }
+          </CardSubtitle>
           <CardText>
-            This card will contain some basic information, such as the title, location and countdown. The card will be a link to the actual itinerary itself. Example of card details:
-            <div>Holiday name: { itinerary.name }</div>
-            <div>Destination: { itinerary.destination }</div>
-            <div>Countdown (days): { itinerary.countdown }</div>
+            This card will contain some basic information, such as the title, location and countdown. 
+            The card will be a link to the actual itinerary itself. Example of card details above.
           </CardText>
         </CardBody>
       </Card>

@@ -11,8 +11,6 @@ import { Alert } from 'reactstrap'
 export default function ItinerariesPage() {
 
     const [itinerariesList, setItinerariesList] = useState([])
-    // const [selectedItinerary, setSelectedItinerary] = useState(null)
-    // const [showDetailPage, setShowDetailPage] = useState(false)
     const location = useLocation()
     const message = location.state?.message
     const [messageVisible, setMessageVisible] = useState(false)
@@ -41,25 +39,6 @@ export default function ItinerariesPage() {
         getItineraries()
     }, [])
 
-    // function handleItineraryCardClick(itinerary) {
-    //     setSelectedItinerary(itinerary)
-    //     setShowDetailPage(true)
-    // }
-
-    // function handleBackToItineraries() {
-    //     setSelectedItinerary(null)
-    //     setShowDetailPage(false)
-    // }
-
-    // if (showDetailPage) {
-    //     return (
-    //         <ItineraryDetailPage 
-    //             itinerary={selectedItinerary}
-    //             onBack={handleBackToItineraries}        
-    //         />
-    //     )
-    // }
-
     return (
         <>
             <h1>My Holidays</h1>
@@ -72,10 +51,6 @@ export default function ItinerariesPage() {
                     <div className="itineraries-page-list">
                         {itinerariesList.map((i, idx) => {
                             return <ItineraryCard itinerary={i} key={idx} />
-                            // return <Link to={`/itineraries/${i.name}`} key={idx}>
-                            //             <ItineraryCard itinerary={i} />
-                            //         </Link>
-                            // return <ItineraryCard itinerary={i} key={idx} onClick={() => handleItineraryCardClick(i)} />
                         })}
                     </div>
                 </>
