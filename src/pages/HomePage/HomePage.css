@@ -1,0 +1,10 @@
+.home-logo {
+  max-width: 600px;
+  border-radius: 5vmin;
+}
+
+/* @media (min-width: 768px) {
+  .home-logo {
+    max-width: 500px;
+  }
+} */

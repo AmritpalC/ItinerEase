@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 // import { Link, useParams } from "react-router-dom"
-import { checkToken } from "../../utilities/users-service"
+// import { checkToken } from "../../utilities/users-service"
 import * as itinerariesAPI from "../../utilities/itineraries-api"
 import ItineraryCard from "../../components/ItineraryCard/ItineraryCard"
 // import ItineraryDetailPage from "../ItineraryDetailPage/ItineraryDetailPage"
@@ -14,11 +14,13 @@ export default function ItinerariesPage() {
     const location = useLocation()
     const message = location.state?.message
     const [messageVisible, setMessageVisible] = useState(false)
+    const [alertColor, setAlertColor] = useState("primary") 
 
-    // ? 3 second timer for message when itinerary deleted
+    // ? 5 second timer for message when itinerary deleted
     useEffect(() => {
         if (message) {
             setMessageVisible(true)
+            setAlertColor(message.includes("Deleted") ? "danger" : "primary")
             const timer = setTimeout(() => {
                 setMessageVisible(false)
             }, 5000)
@@ -26,10 +28,10 @@ export default function ItinerariesPage() {
         }
     }, [message])
 
-    async function handleCheckToken() {
-        const expDate = await checkToken()
-        console.log(expDate)
-    }
+    // async function handleCheckToken() {
+    //     const expDate = await checkToken()
+    //     console.log(expDate)
+    // }
 
     useEffect(function() {
         async function getItineraries() {
@@ -42,12 +44,11 @@ export default function ItinerariesPage() {
     return (
         <>
             <h1>My Holidays</h1>
-            <button onClick={handleCheckToken}>Check When My Login Expires</button>
-            {messageVisible && <Alert color="primary">{message}</Alert>}
+            {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
+            {messageVisible && <Alert color={alertColor}>{message}</Alert>}
             <hr />
             {itinerariesList.length > 0 ? (
                 <>
-                    <h1>My Holidays</h1>
                     <div className="itineraries-page-list">
                         {itinerariesList.map((i, idx) => {
                             return <ItineraryCard itinerary={i} key={idx} />

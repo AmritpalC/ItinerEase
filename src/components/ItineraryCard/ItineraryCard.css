@@ -25,15 +25,20 @@ body.dark .itinerary-card-details {
 
 .itinerary-card-reactstrap {
   background-color: var(--forest);
-  border: 1vmin solid var(--green);
+  border: 1vmin solid var(--turquoise);
   border-radius: 0.5vmin;
 }
 
 body.dark .itinerary-card-reactstrap {
   background-color: var(--blue);
+  border-color: var(--cyan);
   color: var(--white);
 }
 
 .itinerary-card-reactstrap:hover {
-  border-color: var(--purple);
+  border-color: var(--green);
+}
+
+body.dark .itinerary-card-reactstrap:hover {
+  border-color: cornflowerblue;
 }

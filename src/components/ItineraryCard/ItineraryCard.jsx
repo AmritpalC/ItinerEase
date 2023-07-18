@@ -24,19 +24,17 @@ export default function ItineraryCard({ itinerary }) {
         <div>Destination: { itinerary.destination }</div>
         <div>Countdown (days): { itinerary.countdown }</div>
       </div> */}
-      <Card>
+      <Card className="my-3">
         <CardBody className="itinerary-card-reactstrap">
           <CardTitle tag="h4">
-            {itinerary.destination} - itinerary card
+            {itinerary.name}
           </CardTitle>
           <CardSubtitle>
-            Holiday name: { itinerary.name }&nbsp;
             Destination: { itinerary.destination }&nbsp;
             Countdown (days): { itinerary.countdown }!
           </CardSubtitle>
           <CardText>
-            This card will contain some basic information, such as the title, location and countdown. 
-            The card will be a link to the actual itinerary itself. Example of card details above.
+            Sample Text
           </CardText>
         </CardBody>
       </Card>

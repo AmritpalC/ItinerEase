@@ -4,6 +4,8 @@ import Toggle from "react-toggle"
 import "react-toggle/style.css"
 
 import * as userService from '../../utilities/users-service'
+// import Logo from '../../components/Logo/Logo'
+import logo from '../../assets/logo.png'
 import './NavBar.css'
 
 export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
@@ -25,7 +27,7 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
 
     return (
         <nav>
-            <span>Welcome, { user.name }&nbsp;<Link to="/"><span>📕</span></Link></span>
+            <span>Welcome, { user.name }&nbsp;<Link to="/"><img src={logo} alt="ItinerEase" className="nav-logo"/></Link></span>
             &nbsp; | &nbsp;
             <Link to="/itineraries">Itineraries</Link>
             &nbsp; | &nbsp;

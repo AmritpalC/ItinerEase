@@ -36,3 +36,8 @@ body.dark nav a:hover {
   display: flex;
   align-items: center;
 }
+
+.nav-logo {
+  max-width: 5vmin;
+  border-radius: 1vmin;
+}
