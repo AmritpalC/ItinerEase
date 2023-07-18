@@ -73,6 +73,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
         }
     }
 
+    const formattedDate = itinerary.date ? new Date(itinerary.date) : null
+    const holidayDate = formattedDate ? formattedDate.toDateString() : 'no date'
+
     return (
         <>
             {deleteConfirmation ? (
@@ -97,7 +100,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                             {messageVisible && message && <Alert className="message">{message}</Alert>}
                             <h5>ID - {itinerary._id}</h5>
                             <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5>
-                            <h5>Date: { itinerary.date ? itinerary.date : 'no date' }</h5>
+                            {/* <h5>Date: { itinerary.date ? itinerary.date : 'no date' }</h5> */}
+                            <h5>Date: {holidayDate}</h5>
+                            <h5>Countdown (days): {itinerary.countdown}!</h5>
                         </>
                     )}
                     {selectedComponent ? (

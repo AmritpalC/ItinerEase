@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const calendarsCtrl = require('../../controllers/api/calendars')
 
-// // GET /api/calendars
-// router.get('/', calendarsCtrl.index)
+// GET /api/calendars
+router.get('/', calendarsCtrl.index)
 
 //GET /api/calendars/:date
 router.get('/:date', calendarsCtrl.show)

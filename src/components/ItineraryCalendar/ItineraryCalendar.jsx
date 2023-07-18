@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input } from "reactstrap"
 
@@ -6,12 +6,13 @@ import "./ItineraryCalendar.css"
 
 import * as calendarsAPI from "../../utilities/calendars-api"
 import { getUser } from '../../utilities/users-service'
-import { formatDate } from "react-calendar/dist/cjs/shared/dateFormatter";
+// import { formatDate } from "react-calendar/dist/cjs/shared/dateFormatter";
 
 export default function ItineraryCalendar({ itinerary }) {
 
   const [date, setDate] = useState(new Date())
   const [showModal, setShowModal] = useState(false)
+  const [entries, setEntries] = useState([])
 
   // ? To match my calendarEntry Model
   const [entryData, setEntryData] = useState({
@@ -25,6 +26,37 @@ export default function ItineraryCalendar({ itinerary }) {
     setShowModal(!showModal)
   }
 
+  const [highlightedDates, setHighlightedDates] = useState([])
+
+  useEffect(() => {
+    fetchHighlightedDates()
+  }, [])
+
+  async function fetchHighlightedDates() {
+    try {
+      const allDates = await calendarsAPI.getAllCalendarEntries()
+      setHighlightedDates(allDates)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  
+  const getTileClassName = ({ date }) => {
+    return highlightedDates.includes(date.toISOString()) ? 'highlighted' : ''
+  }
+
+  // ? Markers - markers vs tile colours
+
+  // const getTileContent = ({ date }) => {
+  //   return (
+  //     highlightedDates.includes(date.toISOString()) && (
+  //       <div className="marker">
+  //         <span className="dot"></span>
+  //       </div>
+  //     )
+  //   )
+  // }
+
   async function handleEntrySubmit() {
     try {
       await calendarsAPI.createCalendarEntry(entryData)
@@ -36,6 +68,7 @@ export default function ItineraryCalendar({ itinerary }) {
         activity: ""
       })
       toggleModal()
+      fetchHighlightedDates()
     } catch (err) {
       console.log(err)
     }
@@ -44,11 +77,9 @@ export default function ItineraryCalendar({ itinerary }) {
   async function fetchEntriesForDay(date) {
     try {
       console.log(date)
-      // const formattedDate = formatDate(date)
       const formattedDate = date.toISOString()
       const entries = await calendarsAPI.getCalendarEntriesForDay(formattedDate)
-      // const entries = await calendarsAPI.getCalendarEntriesForDay(date)
-      console.log(entries)
+      setEntries(entries)
     } catch (err) {
       console.log(err)
     }
@@ -69,10 +100,29 @@ export default function ItineraryCalendar({ itinerary }) {
         <>
           <h2>This is the Itinerary Calendar Page for {itinerary.name}</h2>
           <hr />
-          <Calendar onChange={handleDateChange} value={date} />
+          <Calendar
+            onChange={handleDateChange}
+            value={date}
+            tileClassName={getTileClassName}
+            // tileContent={getTileContent}
+          />
           <div>Selected date: {date.toDateString()}</div>
 
           <Button color="primary" onClick={toggleModal}>Add Entry</Button>
+          
+          <hr />
+          <div>Activities planned:</div>
+          {entries.length > 0 ? (
+            <ul>
+              {entries.map((entry) => (
+                <li key={entry._id}>
+                  Time: {entry.time}, Activity: {entry.activity}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No activities planned for this date</p>
+          )}
 
           <Modal isOpen={showModal} toggle={toggleModal}>
             <ModalHeader toggle={toggleModal}>Add Entry for {date.toDateString()}</ModalHeader>

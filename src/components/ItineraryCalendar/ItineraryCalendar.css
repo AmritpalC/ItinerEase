@@ -21,6 +21,24 @@ body.dark .form-control {
   background: #1087ff;
 }
 
+.highlighted {
+  background: var(--forest);
+}
+
+/* .marker {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--blue);
+  border-radius: 50%;
+  left: 12px;
+  right: 11px;
+  top: 11px;
+} */
+
+
+
 /* .react-calendar {
   width: 350px;
   max-width: 100%;
@@ -81,7 +99,7 @@ body.dark .form-control {
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
   background-color: #e6e6e6;
-}
+} */
 
 .react-calendar__month-view__weekdays {
   text-align: center;
@@ -103,9 +121,10 @@ body.dark .form-control {
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: #d10000;
+  color: lime;
 }
 
+/*
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #757575;
 }

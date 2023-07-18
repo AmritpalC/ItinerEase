@@ -32,7 +32,7 @@ export default function ItineraryCard({ itinerary }) {
           <CardSubtitle>
             Holiday name: { itinerary.name }&nbsp;
             Destination: { itinerary.destination }&nbsp;
-            Countdown (days): { itinerary.countdown }
+            Countdown (days): { itinerary.countdown }!
           </CardSubtitle>
           <CardText>
             This card will contain some basic information, such as the title, location and countdown. 
