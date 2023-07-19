@@ -41,3 +41,12 @@ body.dark nav a:hover {
   max-width: 5vmin;
   border-radius: 1vmin;
 }
+
+body.dark .navbar-toggler {
+  background-color: var(--white);
+  border-color: var(--white);
+}
+
+body.dark .navbar-toggler-icon {
+  color: var(--cyan);
+}

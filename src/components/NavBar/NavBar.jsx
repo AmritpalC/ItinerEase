@@ -1,12 +1,26 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
-import Toggle from "react-toggle"
+import { useState, useEffect } from 'react'
+import Toggle from 'react-toggle'
 import "react-toggle/style.css"
 
 import * as userService from '../../utilities/users-service'
-// import Logo from '../../components/Logo/Logo'
 import logo from '../../assets/logo.png'
 import './NavBar.css'
+
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    NavbarText
+} from 'reactstrap'
 
 export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
 
@@ -23,26 +37,78 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
         } else {
             document.body.classList.remove('dark')
         }
-    }, [darkMode]) 
+    }, [darkMode])
+
+    const [isOpen, setIsOpen] = useState(false);
+      
+    const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <nav>
-            <span>Welcome, { user.name }&nbsp;<Link to="/"><img src={logo} alt="ItinerEase" className="nav-logo"/></Link></span>
-            &nbsp; | &nbsp;
-            <Link to="/itineraries">Itineraries</Link>
-            &nbsp; | &nbsp;
-            <Link to="/itineraries/new">New Itinerary</Link>
-            &nbsp; | &nbsp;
-            <Link to="/calendar">Calendar</Link>
-            &nbsp; | &nbsp;
-            <Link to="" onClick={handleLogOut}>Log Out</Link>
-            &nbsp; | &nbsp;
-            <Toggle
-                className='theme-toggle'
-                checked={darkMode}
-                onChange={({ target }) => setDarkMode(target.checked)}
-                icons={{ checked: "🌙", unchecked: "🔆" }}
-            />
-        </nav>
+        // <nav>
+        //     <span>Welcome, { user.name }&nbsp;<Link to="/"><img src={logo} alt="ItinerEase" className="nav-logo"/></Link></span>
+        //     &nbsp; | &nbsp;
+        //     <Link to="/itineraries">Itineraries</Link>
+        //     &nbsp; | &nbsp;
+        //     <Link to="/itineraries/new">New Itinerary</Link>
+        //     &nbsp; | &nbsp;
+        //     <Link to="/calendar">Calendar</Link>
+        //     &nbsp; | &nbsp;
+        //     <Link to="" onClick={handleLogOut}>Log Out</Link>
+        //     &nbsp; | &nbsp;
+        //     <Toggle
+        //         className='theme-toggle'
+        //         checked={darkMode}
+        //         onChange={({ target }) => setDarkMode(target.checked)}
+        //         icons={{ checked: "🌙", unchecked: "🔆" }}
+        //     />
+        // </nav>
+
+        <div>
+            <Navbar>
+                <NavbarToggler onClick={toggle} />
+                <NavbarBrand>
+                    Welcome, { user.name }&nbsp;
+                    <Link to="/">
+                        <img 
+                            src={logo} 
+                            alt="ItinerEase" 
+                            className="nav-logo"
+                        />
+                    </Link>
+                </NavbarBrand>
+                <Toggle
+                    className='theme-toggle'
+                    checked={darkMode}
+                    onChange={({ target }) => setDarkMode(target.checked)}
+                    icons={{ checked: "🌙", unchecked: "🔆" }}
+                />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className='me-auto' navbar>
+                        {/* <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Itineraries
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem><Link to="/itineraries">My Itineraries</Link></DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem><Link to="/itineraries/new">New Itinerary</Link></DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown> */}
+                        <NavItem>
+                            <NavLink><Link to="/itineraries">Itineraries</Link></NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink><Link to="/itineraries/new">New Itinerary</Link></NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink><Link to="/calendar">Calendar</Link></NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink><Link to="" onClick={handleLogOut}>Log Out</Link></NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        </div>
     )
 }
