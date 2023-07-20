@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <h1>ItinerEase</h1>
-      <CardImg src={logo} alt="ItinerEase" className="img-fluid home-logo"/>
+      <img src={logo} alt="ItinerEase" className="img-fluid home-logo"/>
       <h4>Holiday Planning Made Easy</h4>
       <p>ItinerEase is your all-in-one travel planning companion. 
         Effortlessly create, track, and manage itineraries for your trips. 

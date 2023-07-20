@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 import './NewItineraryPage.css'
 import { getUser } from '../../utilities/users-service'
+import { Link } from 'react-router-dom'
 
 export default function NewItineraryPage({ setRefreshItineraries }) {
     const navigate = useNavigate()
@@ -36,7 +37,10 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
     
     return (
         <div>
-            <h1>New Itinerary</h1>
+            <div className='new-itinerary-title'>
+                <Link to="/itineraries" className='back-btn'><h3 >Back</h3></Link>
+                <h1>New Itinerary</h1>
+            </div>
             <p>Create your new holiday below</p>
             <div className='new-itinerary-form'>
                 <form onSubmit={handleSubmit}>

@@ -2,8 +2,12 @@ body.dark .new-itinerary-form {
   color: var(--white);
 }
 
-body.dark input {
-  background-color: var(--grey);
-  color: white;
-  /* font-weight: bold; */
+.back-btn {
+  text-decoration: none;
+}
+
+.new-itinerary-title {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
 }

@@ -36,7 +36,7 @@ body.dark .itinerary-card-reactstrap {
 }
 
 .itinerary-card-reactstrap:hover {
-  border-color: var(--green);
+  border-color: var(--dark-grey);
 }
 
 body.dark .itinerary-card-reactstrap:hover {

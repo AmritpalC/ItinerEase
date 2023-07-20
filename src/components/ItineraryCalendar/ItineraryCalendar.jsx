@@ -11,7 +11,8 @@ import { getUser } from '../../utilities/users-service'
 export default function ItineraryCalendar({ itinerary }) {
 
   const [date, setDate] = useState(new Date())
-  const [showModal, setShowModal] = useState(false)
+  const [showAddModal, setShowAddModal] = useState(false)
+  const [showKeyModal, setShowKeyModal] = useState(false)
   const [entries, setEntries] = useState([])
 
   // ? To match my calendarEntry Model
@@ -22,8 +23,12 @@ export default function ItineraryCalendar({ itinerary }) {
     activity: ""
   })
 
-  const toggleModal = () => {
-    setShowModal(!showModal)
+  const toggleAddModal = () => {
+    setShowAddModal(!showAddModal)
+  }
+
+  const toggleKeyModal = () => {
+    setShowKeyModal(!showKeyModal)
   }
 
   const [highlightedDates, setHighlightedDates] = useState([])
@@ -67,8 +72,9 @@ export default function ItineraryCalendar({ itinerary }) {
         time: "",
         activity: ""
       })
-      toggleModal()
+      toggleAddModal()
       fetchHighlightedDates()
+      fetchEntriesForDay(date)
     } catch (err) {
       console.log(err)
     }
@@ -98,7 +104,9 @@ export default function ItineraryCalendar({ itinerary }) {
 
     return (
         <>
-          <h2>This is the Itinerary Calendar Page for {itinerary.name}</h2>
+        {/* Commented out so can re-use calendar component without itinerary prop */}
+          {/* <h2>This is the Itinerary Calendar Page for {itinerary.name}</h2> */}
+          <h2>This is the Itinerary Calendar Page</h2>
           <hr />
           <Calendar
             onChange={handleDateChange}
@@ -106,12 +114,13 @@ export default function ItineraryCalendar({ itinerary }) {
             tileClassName={getTileClassName}
             // tileContent={getTileContent}
           />
-          <div>Selected date: {date.toDateString()}</div>
+          <div className="my-2"><strong>Selected date: {date.toDateString()}</strong></div>
 
-          <Button color="primary" onClick={toggleModal}>Add Entry</Button>
+          <Button color="primary" onClick={toggleAddModal}>Add Entry</Button>&nbsp;
+          <Button color="light" onClick={toggleKeyModal}>Key</Button>
           
           <hr />
-          <div>Activities planned:</div>
+          <div><strong>Activities planned:</strong></div>
           {entries.length > 0 ? (
             <ul>
               {entries.map((entry) => (
@@ -124,8 +133,8 @@ export default function ItineraryCalendar({ itinerary }) {
             <p>No activities planned for this date</p>
           )}
 
-          <Modal isOpen={showModal} toggle={toggleModal}>
-            <ModalHeader toggle={toggleModal}>Add Entry for {date.toDateString()}</ModalHeader>
+          <Modal isOpen={showAddModal} toggle={toggleAddModal}>
+            <ModalHeader toggle={toggleAddModal}>Add Entry for {date.toDateString()}</ModalHeader>
             <ModalBody>
               <FormGroup>
                 <Label for="entryTime">Time</Label>
@@ -138,7 +147,20 @@ export default function ItineraryCalendar({ itinerary }) {
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={handleEntrySubmit}>Add</Button>
-              <Button color="secondary" onClick={toggleModal}>Cancel</Button>
+              <Button color="secondary" onClick={toggleAddModal}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
+
+          <Modal isOpen={showKeyModal} toggle={toggleKeyModal}>
+            <ModalHeader toggle={toggleKeyModal}>Calendar Key</ModalHeader>
+            <ModalBody>
+              <p><strong>Color 1:</strong> Today's date</p>
+              <p><strong>Color 2:</strong> Selected date</p>
+              <p><strong>Color 3:</strong> Itinerary activities</p>
+              <p><strong>Color 4:</strong> All activities</p>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="light" onClick={toggleKeyModal}>Close</Button>
             </ModalFooter>
           </Modal>
         </>

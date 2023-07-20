@@ -7,8 +7,8 @@
 }
 
 .itinerary-item {
-  height: 200px;
-  border: 1vmin solid var(--blue);
+  height: 120px;
+  border: 1vmin solid var(--green);
   border-radius: 2vmin;
   background-color: var(--forest);
   font-size: 3vw;
@@ -20,17 +20,28 @@
 
 body.dark .itinerary-item {
   background-color: var(--purple);
+  border-color: var(--blue);
 }
 
 .itinerary-item:hover {
+  border-color: var(--turquoise);
+}
+
+body.dark .itinerary-item:hover {
   border-color: var(--cyan);
 }
 
 .message {
-  color: var(--cyan)
+  color: var(--white);
+  background-color: var(--grey);
 }
 
-.go-back-button {
+.go-back-btn {
   background-color: var(--cyan);
   color: var(--dark-grey)
+}
+
+body.dark .go-back-btn {
+  background-color: var(--blue);
+  color: var(--white)
 }

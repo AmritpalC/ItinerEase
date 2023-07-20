@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import "./BudgetTable.css"
 import * as itinerariesAPI from "../../utilities/itineraries-api"
 
@@ -28,9 +28,9 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
   }
 
   const handleUpdateItem = async (index, field, value) => {
-    const updatedItems = [...budgetItems];
-    updatedItems[index][field] = field === 'cost' ? parseFloat(value) || 0 : value || '';
-    setBudgetItems(updatedItems);
+    const updatedItems = [...budgetItems]
+    updatedItems[index][field] = field === 'cost' ? parseFloat(value) || 0 : value || ''
+    setBudgetItems(updatedItems)
     await itinerariesAPI.updateItinerary(itinerary._id, { budget: updatedItems })
   };
 
@@ -52,11 +52,11 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
       <hr />
       <h2>Budget Table for {itinerary.name}</h2>
       <h4>List of budget items:</h4>
-      <ul>
+      {/* <ul className="budget-list">
         {itinerary.budget.map((item, idx) => (
           <li key={idx}>{item.name} - {item.cost}</li>
         ))}
-      </ul>
+      </ul> */}
       <hr />
       <table className="table table-primary table-striped budget-table">
         <thead>

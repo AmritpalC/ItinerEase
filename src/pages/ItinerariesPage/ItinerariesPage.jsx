@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
-// import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 // import { checkToken } from "../../utilities/users-service"
 import * as itinerariesAPI from "../../utilities/itineraries-api"
 import ItineraryCard from "../../components/ItineraryCard/ItineraryCard"
@@ -43,9 +43,12 @@ export default function ItinerariesPage() {
 
     return (
         <>
-            <h1>My Holidays</h1>
+            <div className="itineraries-page-title">
+                <h1>My Holidays</h1>
+                <Link to="/itineraries/new" className="add-btn"><h3>+</h3></Link>
+            </div>
             {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
-            {messageVisible && <Alert color={alertColor}>{message}</Alert>}
+            {messageVisible && <Alert color={alertColor}><strong>{message}</strong></Alert>}
             <hr />
             {itinerariesList.length > 0 ? (
                 <>

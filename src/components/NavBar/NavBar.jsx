@@ -64,8 +64,9 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
         // </nav>
 
         <div>
-            <Navbar>
-                <NavbarToggler onClick={toggle} />
+            <Navbar className="">
+            {/* <Navbar className="navbar-dark bg-dark"> */}
+                <NavbarToggler className="dark" onClick={toggle} />
                 <NavbarBrand>
                     Welcome, { user.name }&nbsp;
                     <Link to="/">

@@ -96,10 +96,10 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     <h1>Itinerary Details Page for {itinerary.name}</h1>
                     {!selectedComponent && (
                         <>
-                            <h4>Will have all holiday information here in sections</h4>
-                            {messageVisible && message && <Alert className="message">{message}</Alert>}
-                            <h5>ID - {itinerary._id}</h5>
-                            <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5>
+                            {/* <h4>Will have all holiday information here in sections</h4> */}
+                            {messageVisible && message && <Alert className="message"><strong>{message}</strong></Alert>}
+                            {/* <h5>ID - {itinerary._id}</h5>
+                            <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5> */}
                             {/* <h5>Date: { itinerary.date ? itinerary.date : 'no date' }</h5> */}
                             <h5>Date: {holidayDate}</h5>
                             <h5>Countdown (days): {itinerary.countdown}!</h5>
@@ -108,7 +108,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
-                        <div className="itinerary-sections">
+                        <div className="itinerary-sections my-3">
                             <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>🗓️ - Itinerary - {itinerary.destination}</div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>💷 - Budget</div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('places')}>🏰 - Places to Visit {itinerary.pointsOfInterest}</div>
@@ -122,8 +122,8 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
 
                     {!selectedComponent && (
                         <>
-                            <Button className="go-back-button" onClick={handleGoBack}>Back to all Itineraries</Button>
-                            <Button color="primary" onClick={handleEdit}>Edit Itinerary</Button>
+                            <Button color="success" className="go-back-btn" onClick={handleGoBack}>Back to all Itineraries</Button>
+                            <Button color="primary" className="mx-2" onClick={handleEdit}>Edit Itinerary</Button>
                             <Button color="warning" onClick={showConfirmation}>Delete Itinerary</Button>
                         </>
                     )}

@@ -12,13 +12,13 @@ nav span {
 }
 
 nav a {
-  color: var(--blue);
+  color: var(--blue-light);
   text-decoration: none;
   padding: 1vmin 2vmin;
 }
 
 body.dark nav a {
-  color: var(--cyan);
+  color: var(--pink-dark);
 }
 
 nav a:hover {
@@ -42,11 +42,16 @@ body.dark nav a:hover {
   border-radius: 1vmin;
 }
 
-body.dark .navbar-toggler {
-  background-color: var(--white);
-  border-color: var(--white);
+.navbar-toggler {
+  /* background-color: var(--cyan); */
+  border-color: var(--pink-light);
 }
 
-body.dark .navbar-toggler-icon {
-  color: var(--cyan);
+/* .navbar-toggler-icon {
+  background-color: white;
+} */
+
+body.dark .navbar-toggler {
+  background-color: var(--pink-dark);
+  /* border-color: var(--white); */
 }

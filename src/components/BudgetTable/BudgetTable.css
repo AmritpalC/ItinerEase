@@ -2,3 +2,7 @@ body.dark .budget-table {
   background-color: var(--grey);
   color: var(--white);
 }
+
+.budget-list {
+  list-style: none;
+}

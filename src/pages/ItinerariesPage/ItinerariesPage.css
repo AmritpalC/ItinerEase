@@ -6,6 +6,16 @@
   color: var(--cyan);
 }
 
+.add-btn {
+  text-decoration: none;
+}
+
+.itineraries-page-title {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
 /* Alert {
   background-color: var(--blue);
   color: var(--dark-grey);
