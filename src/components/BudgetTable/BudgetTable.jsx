@@ -100,7 +100,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
           </tr>
         </tfoot>
       </table>
-      <div>
+      <div className="add-budget-item">
         <input
           type="text"
           placeholder="Item"

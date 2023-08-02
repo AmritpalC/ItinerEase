@@ -1,5 +1,5 @@
 import './HomePage.css'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/tree.jpg'
 import { Card, CardImg } from 'reactstrap'
 
 export default function HomePage() {

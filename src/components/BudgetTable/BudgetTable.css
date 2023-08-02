@@ -6,3 +6,11 @@ body.dark .budget-table {
 .budget-list {
   list-style: none;
 }
+
+.budget-table input {
+  font-weight: bold;
+}
+
+.add-budget-item input {
+  font-weight: bold;
+}

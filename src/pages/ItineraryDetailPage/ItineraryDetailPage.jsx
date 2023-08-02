@@ -105,6 +105,11 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                             <h5>Countdown (days): {itinerary.countdown}!</h5>
                         </>
                     )}
+                    <hr/>
+                    { selectedComponent && (
+                        <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
+                    )}
+
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
@@ -116,9 +121,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                         </div>
                     )}
 
-                    { selectedComponent && (
+                    {/* { selectedComponent && (
                         <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
-                    )}
+                    )} */}
 
                     {!selectedComponent && (
                         <>
