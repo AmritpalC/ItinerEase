@@ -71,7 +71,7 @@ export default function App() {
               />
               <Route path="/itineraries/new" element={<NewItineraryPage setRefreshItineraries={setRefreshItineraries} />} />
               <Route path="/calendar" element={<CalendarPage />} />
-              <Route path="/*" element={<Navigate to="/" />} />
+              {/* <Route path="/*" element={<Navigate to="/" />} /> */}
             </Routes>
           </>
           :

@@ -52,7 +52,7 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
                     <input type="date" name="date" value={formData.date} onChange={handleChange} />
                     <label>Transport</label>
                     <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
-                    <label>Accomodation</label>
+                    <label>Accommodation</label>
                     <input type="text" name="accommodation" value={formData.accommodation} onChange={handleChange} />
                     <button type="submit">Create Itinerary</button>
                 </form>

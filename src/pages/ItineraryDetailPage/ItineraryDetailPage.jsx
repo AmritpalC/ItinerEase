@@ -109,7 +109,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     { selectedComponent && (
                         <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
                     )}
-
+                    <hr/>
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
