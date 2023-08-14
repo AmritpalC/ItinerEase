@@ -40,7 +40,7 @@ export default function PlacesToVisitList() {
   //   } = usePlacesAutocomplete()
   // }
 
-  const [inputValue, setInputValue] = useState("")
+  // const [inputValue, setInputValue] = useState("")
 
   const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center)
