@@ -8,6 +8,11 @@
 
 .add-btn {
   text-decoration: none;
+  color: var(--blue-light);
+}
+
+body.dark .add-btn {
+  color: var(--cyan-dark);
 }
 
 .itineraries-page-title {
@@ -15,6 +20,7 @@
   grid-template-columns: 1fr auto;
   align-items: center;
 }
+
 
 /* Alert {
   background-color: var(--blue);

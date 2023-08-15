@@ -80,6 +80,17 @@ export default function ItineraryCalendar({ itinerary }) {
     }
   }
 
+  async function handleEntryDelete(entryId) {
+    try {
+      console.log('Deleting entry with ID: ', entryId)
+      await calendarsAPI.deleteCalendarEntry(entryId)
+      console.log('Entry deleted successfully ->', entryId)
+      fetchEntriesForDay(date)
+    } catch (err) {
+      console.log('Error deleting entry:', err)
+    }
+  }
+
   async function fetchEntriesForDay(date) {
     try {
       console.log(date)
@@ -126,6 +137,7 @@ export default function ItineraryCalendar({ itinerary }) {
               {entries.map((entry) => (
                 <li key={entry._id}>
                   Time: {entry.time}, Activity: {entry.activity}
+                  <button onClick={() => handleEntryDelete(entry._id)}>Delete</button>
                 </li>
               ))}
             </ul>

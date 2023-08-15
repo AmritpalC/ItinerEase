@@ -15,9 +15,9 @@ export async function createCalendarEntry(entryData) {
   return sendRequest(`${BASE_URL}/new`, 'POST', entryData)
 }
 
-// export function deleteCalendarEntry(id) {
-//   return sendRequest(`${BASE_URL}/${id}`, 'DELETE', { id })
-// }
+export function deleteCalendarEntry(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+}
 
 // export function updateCalendar(id, itinerary) {
 //   return sendRequest(`${BASE_URL}/${id}`, 'PUT', itinerary)

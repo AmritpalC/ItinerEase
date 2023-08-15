@@ -4,6 +4,11 @@ body.dark .new-itinerary-form {
 
 .back-btn {
   text-decoration: none;
+  color: var(--blue-light);
+}
+
+body.dark .back-btn {
+  color: var(--cyan-dark);
 }
 
 .new-itinerary-title {
