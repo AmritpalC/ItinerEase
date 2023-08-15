@@ -127,8 +127,8 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
 
                     {!selectedComponent && (
                         <>
-                            <Button color="success" className="go-back-btn" onClick={handleGoBack}>Back to all Itineraries</Button>
-                            <Button color="primary" className="mx-2" onClick={handleEdit}>Edit Itinerary</Button>
+                            <Button color="primary" className="go-back-btn btn" onClick={handleGoBack}>Back to all Itineraries</Button>
+                            <Button color="success" className="mx-2" onClick={handleEdit}>Edit Itinerary</Button>
                             <Button color="warning" onClick={showConfirmation}>Delete Itinerary</Button>
                         </>
                     )}

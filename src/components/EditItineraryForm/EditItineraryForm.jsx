@@ -5,12 +5,14 @@ import './EditItineraryForm.css'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 
 export default function EditItineraryForm({ itinerary, setRefreshItineraries, setMessageVisible, handleFormClose }) {
-  // const itineraryDate = new Date(itinerary.date).toLocaleDateString()
+  const isoDate = new Date(itinerary.date)
+  const formattedDate = isoDate.toISOString().split("T")[0]
+
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: itinerary.name,
     destination: itinerary.destination,
-    date: itinerary.date,
+    date: formattedDate,
     transport: itinerary.transport,
     accommodation: itinerary.accommodation,
   })

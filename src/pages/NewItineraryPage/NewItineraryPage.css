@@ -11,3 +11,9 @@ body.dark .new-itinerary-form {
   grid-template-columns: auto 1fr;
   align-items: center;
 }
+
+/* .create-btn {
+  background-color: var(--blue-light);
+  color: var(--black);
+} */
+

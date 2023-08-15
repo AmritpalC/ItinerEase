@@ -54,7 +54,7 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
                     <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
                     <label>Accommodation</label>
                     <input type="text" name="accommodation" value={formData.accommodation} onChange={handleChange} />
-                    <button type="submit">Create Itinerary</button>
+                    <button type="submit" className="create-btn">Create Itinerary</button>
                 </form>
             </div>
             <p className='error-message'>&nbsp;{formData.error}</p>

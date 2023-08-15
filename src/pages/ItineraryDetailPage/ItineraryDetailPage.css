@@ -37,11 +37,11 @@ body.dark .itinerary-item:hover {
 }
 
 .go-back-btn {
-  background-color: var(--cyan);
-  color: var(--dark-grey)
+  background-color: var(--blue-light);
+  color: var(--dark-grey);
 }
 
 body.dark .go-back-btn {
   background-color: var(--blue);
-  color: var(--white)
+  color: var(--white);
 }
