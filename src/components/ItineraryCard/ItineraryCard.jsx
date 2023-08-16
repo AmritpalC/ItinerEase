@@ -17,6 +17,7 @@ export default function ItineraryCard({ itinerary }) {
     // </Link>
     <Link to={{ pathname: `/itineraries/${itinerary.name}`, state: { itinerary } }} className="itinerary-card">
       <Card className="my-3 mx-5">
+      {/* <Card className="my-3 mx-5 bg-card dark:bg-card-dark rounded-2xl shadow-inner-border dark:shadow-inner-border-dark text-base text-secondary dark:text-secondary-dark"> */}
         <CardBody className="itinerary-card-reactstrap">
           <CardTitle tag="h4">
             {itinerary.name}

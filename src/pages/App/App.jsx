@@ -22,7 +22,7 @@ import ItineraryDetailPage from '../ItineraryDetailPage/ItineraryDetailPage'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 
 export default function App() {
-  const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState(getUser())
   const [darkMode, setDarkMode] = useState(true)
   const [itinerariesList, setItinerariesList] = useState([])
   const [refreshItineraries, setRefreshItineraries] = useState(false)
@@ -50,32 +50,33 @@ export default function App() {
   return (
     <main className="App">
       { user ?
-          <>
-            <NavBar
-              user={user} setUser={setUser}
-              darkMode={darkMode} setDarkMode={setDarkMode} 
+        <>
+          <NavBar
+            user={user} setUser={setUser}
+            darkMode={darkMode} setDarkMode={setDarkMode} 
+          />
+          <hr/>
+          <Routes>
+            <Route 
+              path="/" 
+              element={<HomePage user={user} setUser={setUser} />} 
             />
-            <hr/>
-            <Routes>
-              <Route 
-                path="/" 
-                element={<HomePage />} 
-              />
-              <Route 
-                path="/itineraries" 
-                element={<ItinerariesPage itinerariesList={itinerariesList}/>} 
-              />
-              <Route 
-                path="/itineraries/:itineraryName" 
-                element={<ItineraryDetailPage itinerariesList={itinerariesList} setRefreshItineraries={setRefreshItineraries} />} 
-              />
-              <Route path="/itineraries/new" element={<NewItineraryPage setRefreshItineraries={setRefreshItineraries} />} />
-              <Route path="/calendar" element={<CalendarPage />} />
-              {/* <Route path="/*" element={<Navigate to="/" />} /> */}
-            </Routes>
-          </>
-          :
-          <AuthPage setUser={setUser} />
+            <Route 
+              path="/itineraries" 
+              element={<ItinerariesPage itinerariesList={itinerariesList}/>} 
+            />
+            <Route 
+              path="/itineraries/:itineraryName" 
+              element={<ItineraryDetailPage itinerariesList={itinerariesList} setRefreshItineraries={setRefreshItineraries} />} 
+            />
+            <Route path="/itineraries/new" element={<NewItineraryPage setRefreshItineraries={setRefreshItineraries} />} />
+            <Route path="/calendar" element={<CalendarPage />} />
+            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
+          </Routes>
+        </>
+        :
+        // <AuthPage setUser={setUser} />
+        <HomePage setUser={setUser} />
       }
     </main>
   );

@@ -14,3 +14,7 @@ body.dark .budget-table {
 .add-budget-item input {
   font-weight: bold;
 }
+
+.t-head, .t-foot {
+  background-color: var(--blue-light);
+}

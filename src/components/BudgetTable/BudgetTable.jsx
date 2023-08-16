@@ -58,8 +58,8 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
         ))}
       </ul> */}
       <hr />
-      <table className="table table-primary table-striped budget-table">
-        <thead>
+      <table className="table table-primary table-striped budget-table mb-4">
+        <thead className="t-head table-success">
           <tr>
             <th>Item</th>
             <th>Cost</th>
@@ -92,15 +92,37 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
               </td>
             </tr>
           ))}
+          <tr className="add-budget-item">
+            <td>
+              <input
+                type="text"
+                placeholder="Item"
+                value={newItem}
+                onChange={(e) => setNewItem(e.target.value)}
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                placeholder="Cost"
+                value={newCost}
+                onChange={(e) => setNewCost(e.target.value)}
+              />
+            </td>
+            <td>
+              <button onClick={handleAddItem}>Add Item</button>
+            </td>
+          </tr>
         </tbody>
-        <tfoot>
+        <tfoot className="t-foot table-success">
           <tr>
-            <td colSpan={2}>Total</td>
-            <td>{calculateTotalCost()}</td>
+            <th colSpan={1}>Total</th>
+            <th>{calculateTotalCost()}</th>
+            <td></td>
           </tr>
         </tfoot>
       </table>
-      <div className="add-budget-item">
+      {/* <div className="add-budget-item">
         <input
           type="text"
           placeholder="Item"
@@ -114,7 +136,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
           onChange={(e) => setNewCost(e.target.value)}
         />
         <button onClick={handleAddItem}>Add Item</button>
-      </div>
+      </div> */}
     </>
   )
 }
