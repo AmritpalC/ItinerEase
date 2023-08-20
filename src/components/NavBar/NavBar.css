@@ -2,9 +2,14 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 1vmin 2vmin;
+  /* margin: 0 2vmin; */
   font-weight: bold;
+  background-color: var(--white);
   /* border-bottom: 2px solid; */
+}
+
+body.dark nav {
+  background-color: var(--dark-grey);
 }
 
 nav span {
@@ -14,7 +19,7 @@ nav span {
 nav a {
   color: var(--blue-light);
   text-decoration: none;
-  padding: 1vmin 2vmin;
+  padding: 1vmin 1vmin;
 }
 
 body.dark nav a {
@@ -25,6 +30,7 @@ nav a:hover {
   background-color: rgba(64, 156, 255, 0.3);
   /* background-color: rgba(var(--purple), 0.5); */
   border-radius: 3vmin;
+  /* border: 1px solid rgba(64, 156, 255, 0.3) */
 }
 
 body.dark nav a:hover {
@@ -37,26 +43,43 @@ body.dark nav a:hover {
   align-items: center;
 }
 
-.nav-logo {
-  max-width: 5vmin;
+nav img, .nav-logo {
+  max-width: 6vmin;
   border-radius: 1vmin;
 }
 
-.navbar-toggler {
-  /* background-color: var(--cyan); */
-  border-color: var(--pink-light);
+.react-toggle-track, .react-toggle-thumb {
+  zoom: 1.2;
 }
 
-nav img {
-  max-width: 5vmin;
-  border-radius: 1vmin;
-}
+/* .navbar-toggler {
+  max-width: 6vmin;
+  background-color: var(--cyan);
+} */
 
 /* .navbar-toggler-icon {
   background-color: white;
 } */
 
-body.dark .navbar-toggler {
+/* body.dark .navbar-toggler {
   background-color: var(--pink-dark);
-  /* border-color: var(--white); */
+  border-color: var(--white);
+} */
+
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1vmin 0;
+    /* border-top: 1px solid var(--blue)  */
+    box-shadow: 0 -3px 5px rgba(0, 116, 166, 0.5);
+  }
+  .welcome-message {
+    display: none;
+  }
+  nav img, .nav-logo {
+    max-width: 8vmin;
+  }
 }
