@@ -1,5 +1,5 @@
 import './HomePage.css'
-import logo from '../../assets/tree.jpg'
+import logo from '../../assets/plane.png'
 import { Card, CardImg } from 'reactstrap'
 import { useState } from 'react';
 import LoginForm from "../../components/LoginForm/LoginForm";

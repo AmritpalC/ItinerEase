@@ -4,7 +4,23 @@ import Toggle from 'react-toggle'
 import "react-toggle/style.css"
 
 import * as userService from '../../utilities/users-service'
-import logo from '../../assets/tree.jpg'
+
+import logo from '../../assets/plane.png'
+import addDark from '../../assets/add-dark.png'
+import addLight from '../../assets/add-light.png'
+import calendarDark from '../../assets/calendar-dark.png'
+import calendarLight from '../../assets/calendar-light.png'
+import coinDark from '../../assets/coin-dark.png'
+import coinLight from '../../assets/coin-light.png'
+import coinsDark from '../../assets/coins-dark.png'
+import coinsLight from '../../assets/coins-light.png'
+import itineraryDark from '../../assets/itinerary-dark.png'
+import itineraryLight from '../../assets/itinerary-light.png'
+import logOutDark from '../../assets/log-out-dark.png'
+import logOutLight from '../../assets/log-out-light.png'
+import pizzaDark from '../../assets/pizza-dark.png'
+import pizzaLight from '../../assets/pizza-light.png'
+
 import './NavBar.css'
 
 import {
@@ -47,13 +63,21 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
         <nav>
             <span>Welcome, { user.name }&nbsp;<Link to="/"><img src={logo} alt="ItinerEase" className="nav-logo"/></Link></span>
             &nbsp; | &nbsp;
-            <Link to="/itineraries">Itineraries</Link>
+            <Link to="/itineraries">
+                <img src={darkMode ? itineraryDark : itineraryLight} alt="Itineraries" title="Itineraries" />
+            </Link>
             &nbsp; | &nbsp;
-            <Link to="/itineraries/new">New Itinerary</Link>
+            <Link to="/itineraries/new">
+                <img src={darkMode ? addDark : addLight} alt="New Itinerary" title="New Itinerary" />
+            </Link>
             &nbsp; | &nbsp;
-            <Link to="/calendar">Calendar</Link>
+            <Link to="/calendar">
+                <img src={darkMode ? calendarDark : calendarLight} alt="Calendar" title="Calendar" />
+            </Link>
             &nbsp; | &nbsp;
-            <Link to="" onClick={handleLogOut}>Log Out</Link>
+            <Link to="" onClick={handleLogOut}>
+                <img src={darkMode ? logOutDark : logOutLight} alt="Log Out" title="Log Out" />
+            </Link>
             &nbsp; | &nbsp;
             <Toggle
                 className='theme-toggle'

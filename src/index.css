@@ -27,6 +27,20 @@
   --pink-dark: rgb(255, 100, 130);
 }
 
+/* 
+  blue-light - 0040DD
+  blue-dark - 409CFF
+  cyan-dark - 70D7FF
+  purple-light - 641590 (100, 21, 144)
+  purple-dark - DA8FFF (218, 143, 255)
+  yellow-dark - FFD426 (255, 212, 38)
+  yellow-light - A05A00 (160, 90, 0)
+  orange-dark - FFB340 (255, 179, 64)
+  orange-light - C93400 (201, 52, 0)
+  green-dark - 30DB5B (48, 219, 91)
+  teal-light - 0C817B (12, 129, 123)
+*/
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
