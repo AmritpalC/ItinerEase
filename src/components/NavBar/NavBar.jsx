@@ -61,22 +61,40 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
 
     return (
         <nav>
-            <span><span className='welcome-message'>Welcome, { user.name }&nbsp;</span><Link to="/"><img src={logo} alt="ItinerEase" title="Home" className="nav-logo"/></Link></span>
+            <span className='welcome-message'>Welcome, { user.name }&nbsp;</span>
+            <Link to="/">
+                <div className='icon'>
+                    <img src={logo} alt="ItinerEase" title="Home" className="nav-logo"/>
+                    <span>Home</span>
+                </div>
+            </Link>
             &nbsp; &nbsp;
             <Link to="/itineraries">
-                <img src={darkMode ? itineraryDark : itineraryLight} alt="Itineraries" title="Itineraries" />
+                <div className='icon'>
+                    <img src={darkMode ? itineraryDark : itineraryLight} alt="Itineraries" title="Itineraries" />
+                    <span>Itineraries</span>
+                </div>
             </Link>
             &nbsp; &nbsp;
             <Link to="/itineraries/new">
-                <img src={darkMode ? addDark : addLight} alt="New Itinerary" title="New Itinerary" />
+                <div className='icon'>
+                    <img src={darkMode ? addDark : addLight} alt="New Itinerary" title="New Itinerary" />
+                    <span>New Itinerary</span>
+                </div>
             </Link>
             &nbsp; &nbsp;
             <Link to="/calendar">
-                <img src={darkMode ? calendarDark : calendarLight} alt="Calendar" title="Calendar" />
+                <div className='icon'>
+                    <img src={darkMode ? calendarDark : calendarLight} alt="Calendar" title="Calendar" />
+                    <span>Calendar</span>
+                </div>
             </Link>
             &nbsp; &nbsp;
             <Link to="" onClick={handleLogOut}>
-                <img src={darkMode ? logOutDark : logOutLight} alt="Log Out" title="Log Out" />
+                <div className='icon'>
+                    <img src={darkMode ? logOutDark : logOutLight} alt="Log Out" title="Log Out" />
+                    <span>Log Out</span>
+                </div>
             </Link>
             &nbsp; &nbsp;
             <Toggle

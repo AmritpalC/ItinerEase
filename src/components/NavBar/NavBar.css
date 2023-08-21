@@ -12,14 +12,17 @@ body.dark nav {
   background-color: var(--dark-grey);
 }
 
-nav span {
-  padding: 1vmin 2vmin;
+.welcome-message {
+  padding: 1vmin 1vmin;
+}
+
+nav a {
+  padding: 1vmin 1vmin;
 }
 
 nav a {
   color: var(--blue-light);
   text-decoration: none;
-  padding: 1vmin 1vmin;
 }
 
 body.dark nav a {
@@ -43,13 +46,26 @@ body.dark nav a:hover {
   align-items: center;
 }
 
-nav img, .nav-logo {
+nav div img, .nav-logo {
   max-width: 6vmin;
   border-radius: 1vmin;
 }
 
 .react-toggle-track, .react-toggle-thumb {
   zoom: 1.2;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vmin;
+  color: var(--dark-grey);
+}
+
+body.dark .icon {
+  color: var(--white);
 }
 
 /* .navbar-toggler {
@@ -79,7 +95,10 @@ nav img, .nav-logo {
   .welcome-message {
     display: none;
   }
-  nav img, .nav-logo {
+  nav div img, .nav-logo {
     max-width: 8vmin;
+  }
+  .react-toggle {
+    margin: 0 2vmin;
   }
 }
