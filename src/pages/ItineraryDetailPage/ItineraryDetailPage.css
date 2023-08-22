@@ -8,9 +8,9 @@
 
 .itinerary-item {
   height: 120px;
-  border: 1vmin solid var(--green);
+  border: 1vmin solid var(--blue);
   border-radius: 2vmin;
-  background-color: var(--forest);
+  background-color: var(--tan-1);
   font-size: 3vw;
   display: flex;
   justify-content: center;
@@ -18,13 +18,19 @@
   text-decoration: none;
 }
 
+.itinerary-item img {
+  max-width: 10vmin;
+}
+
 body.dark .itinerary-item {
-  background-color: var(--purple);
-  border-color: var(--blue);
+  /* background-color: #1F1F1F; */
+  background-color: var(--dark-grey);
+  border-color: var(--teal-light);
 }
 
 .itinerary-item:hover {
   border-color: var(--turquoise);
+  /* box-shadow: 3px 3px 5px rgba(0, 116, 166, 0.5); */
 }
 
 body.dark .itinerary-item:hover {

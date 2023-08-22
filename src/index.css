@@ -8,14 +8,20 @@
   --tan-4: #D3C1AE;
   --black: rgb(0, 0, 0);
   /* --dark-grey: #1F1F1F; */
-  --dark-grey: rgb(31, 31, 31);
+  /* --dark-grey: rgb(31, 31, 31); */
+  /* --dark-grey: #1A1628; */
+  --dark-blue-grey: #120C25;
+  --dark-grey: rgb(26, 22, 40);
   --light-grey: #968c84;
   --grey: rgb(97, 89, 84);
   --purple: rgb(187, 134, 252);
+  --purple-light: rgb(100, 21, 144);
+  --purple-dark: rgb(218, 143, 255);
   --cyan: rgb(3, 218, 197);
   --green: rgb(0, 163, 129);
   --turquoise: rgb(2, 192, 152);
   --forest: rgb(48, 214, 135);
+  --teal-light: rgb(12, 129, 123);
   --green-dark: rgb(48, 219, 91);
   --blue: rgb(0, 116, 166);
   --blue-light: rgb(0, 64, 221);
@@ -28,9 +34,9 @@
 }
 
 /* 
-  blue-light - 0040DD
-  blue-dark - 409CFF
-  cyan-dark - 70D7FF
+  blue-light - 0040DD (0, 64, 221)
+  blue-dark - 409CFF (64, 156, 255)
+  cyan-dark - 70D7FF (112, 215, 255)
   purple-light - 641590 (100, 21, 144)
   purple-dark - DA8FFF (218, 143, 255)
   yellow-dark - FFD426 (255, 212, 38)
@@ -39,6 +45,9 @@
   orange-light - C93400 (201, 52, 0)
   green-dark - 30DB5B (48, 219, 91)
   teal-light - 0C817B (12, 129, 123)
+  red-light - D70015 (215, 0, 21)
+  red-dark - FF6961 (255, 105, 97)
+  dark-grey (blue): 1A1628 (26, 22, 40);
 */
 
 *, *:before, *:after {
@@ -54,12 +63,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--white);
   color: var(--dark-grey);
-  padding: 2vmin;
+  /* padding: 2vmin; */
   height: 100vh;
 }
 
 body.dark {
-  background-color: var(--dark-grey);
+  /* background-color: var(--dark-grey); */
+  background-color: var(--dark-blue-grey);
   color: var(--white);
 }
 

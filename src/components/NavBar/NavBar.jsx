@@ -10,16 +10,10 @@ import addDark from '../../assets/add-dark.png'
 import addLight from '../../assets/add-light.png'
 import calendarDark from '../../assets/calendar-dark.png'
 import calendarLight from '../../assets/calendar-light.png'
-import coinDark from '../../assets/coin-dark.png'
-import coinLight from '../../assets/coin-light.png'
-import coinsDark from '../../assets/coins-dark.png'
-import coinsLight from '../../assets/coins-light.png'
-import itineraryDark from '../../assets/itinerary-dark.png'
-import itineraryLight from '../../assets/itinerary-light.png'
+import itinerariesDark from '../../assets/itineraries-dark.png'
+import itinerariesLight from '../../assets/itineraries-light.png'
 import logOutDark from '../../assets/log-out-dark.png'
 import logOutLight from '../../assets/log-out-light.png'
-import pizzaDark from '../../assets/pizza-dark.png'
-import pizzaLight from '../../assets/pizza-light.png'
 
 import './NavBar.css'
 
@@ -71,7 +65,7 @@ export default function NavBar({ user, setUser, darkMode, setDarkMode }) {
             &nbsp; &nbsp;
             <Link to="/itineraries">
                 <div className='icon'>
-                    <img src={darkMode ? itineraryDark : itineraryLight} alt="Itineraries" title="Itineraries" />
+                    <img src={darkMode ? itinerariesDark : itinerariesLight} alt="Itineraries" title="Itineraries" />
                     <span>Itineraries</span>
                 </div>
             </Link>

@@ -6,9 +6,12 @@ nav {
   font-weight: bold;
   background-color: var(--white);
   /* border-bottom: 2px solid; */
+  box-shadow: 0 3px 5px rgba(0, 116, 166, 0.5);
 }
 
 body.dark nav {
+  /* background-color: var(--dark-grey); */
+  /* background-color: #2B2A2A; */
   background-color: var(--dark-grey);
 }
 
@@ -18,9 +21,6 @@ body.dark nav {
 
 nav a {
   padding: 1vmin 1vmin;
-}
-
-nav a {
   color: var(--blue-light);
   text-decoration: none;
 }
@@ -100,5 +100,8 @@ body.dark .icon {
   }
   .react-toggle {
     margin: 0 2vmin;
+  }
+  nav span {
+    padding-top: 1vmin;
   }
 }

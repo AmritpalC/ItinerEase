@@ -1,5 +1,6 @@
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Button, Alert } from 'reactstrap'
 
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 
@@ -10,10 +11,18 @@ import PlacesToVisitList from '../../components/PlacesToVisitList/PlacesToVisitL
 import RestaurantList from '../../components/RestaurantsList/RestaurantsList'
 import ItineraryCalendar from '../../components/ItineraryCalendar/ItineraryCalendar'
 
-import './ItineraryDetailPage.css'
-import { Button, Alert } from 'reactstrap'
+import coins from '../../assets/coins.png'
+import itineraryDark from '../../assets/itinerary-dark.png'
+import itineraryLight from '../../assets/itinerary-light.png'
+import landmarkDark from '../../assets/landmark-dark.png'
+import landmarkLight from '../../assets/landmark-light.png'
+import pizzaDark from '../../assets/pizza-dark.png'
+import pizzaLight from '../../assets/pizza-light.png'
 
-export default function ItineraryDetailPage({ itinerariesList, setRefreshItineraries }) {
+import './ItineraryDetailPage.css'
+
+
+export default function ItineraryDetailPage({ itinerariesList, setRefreshItineraries, darkMode }) {
     const navigate = useNavigate()
     const [deleteConfirmation, setDeleteConfirmation] = useState(false)
     const showConfirmation = () => setDeleteConfirmation(true)
@@ -107,17 +116,37 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     )}
                     <hr/>
                     { selectedComponent && (
-                        <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
+                        <>
+                            <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
+                            <hr/>
+                        </>
                     )}
-                    <hr/>
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
+                        // <div className="itinerary-sections my-3">
+                        //     <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>🗓️ - Itinerary - {itinerary.destination}</div>
+                        //     <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>💷 - Budget</div>
+                        //     <div className="itinerary-item" onClick={() => handleComponentClick('places')}>🏰 - Places to Visit {itinerary.pointsOfInterest}</div>
+                        //     <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>🍱 - Restaurants {itinerary.restaurants}</div>
+                        // </div>
                         <div className="itinerary-sections my-3">
-                            <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>🗓️ - Itinerary - {itinerary.destination}</div>
-                            <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>💷 - Budget</div>
-                            <div className="itinerary-item" onClick={() => handleComponentClick('places')}>🏰 - Places to Visit {itinerary.pointsOfInterest}</div>
-                            <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>🍱 - Restaurants {itinerary.restaurants}</div>
+                            <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>
+                                <img src={darkMode ? itineraryDark : itineraryLight} alt="Itinerary" title="Itinerary" className='img-fluid' />                               
+                                <span>Itinerary</span>
+                            </div>
+                            <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>
+                                <img src={coins} alt="Budget" title="Budget" className='img-fluid' />                               
+                                <span>Budget</span>
+                            </div>
+                            <div className="itinerary-item" onClick={() => handleComponentClick('places')}>
+                                <img src={darkMode ? landmarkDark : landmarkLight} alt="Places to Visit" title="Places to Visit" className='img-fluid' />                               
+                                <span>Places to Visit</span>
+                            </div>
+                            <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>
+                            <img src={darkMode ? pizzaDark : pizzaLight} alt="Restaurants" title="Restaurants" className='img-fluid' />                               
+                                <span>Restaurants</span>
+                            </div>
                         </div>
                     )}
 
