@@ -55,7 +55,7 @@ export default function App() {
             user={user} setUser={setUser}
             darkMode={darkMode} setDarkMode={setDarkMode} 
           />
-          <hr/>
+          <hr className='my-2'/>
           <Routes>
             <Route 
               path="/" 

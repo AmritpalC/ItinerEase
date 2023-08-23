@@ -36,7 +36,7 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
     }
     
     return (
-        <div>
+        <div className='padding'>
             <div className='new-itinerary-title'>
                 <Link to="/itineraries" className='back-btn'><h3 >Back</h3></Link>
                 <h1>New Itinerary</h1>

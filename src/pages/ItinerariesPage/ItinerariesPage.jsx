@@ -43,7 +43,7 @@ export default function ItinerariesPage() {
 
     return (
         <>
-            <div className="itineraries-page-title">
+            <div className="itineraries-page-title px-4">
                 <h1>My Holidays</h1>
                 <Link to="/itineraries/new" className="add-btn"><h3>+</h3></Link>
             </div>

@@ -8,10 +8,18 @@
   --tan-4: #D3C1AE;
   --black: rgb(0, 0, 0);
   /* --dark-grey: #1F1F1F; */
-  /* --dark-grey: rgb(31, 31, 31); */
+  --dark-grey: rgb(31, 31, 31);
+
+  --dark-grey-2: rgb(49, 44, 44);
+  /* --dark-grey-2: #1A1628; */
+
   /* --dark-grey: #1A1628; */
+  /* --dark-grey: rgb(26, 22, 40); */
   --dark-blue-grey: #120C25;
-  --dark-grey: rgb(26, 22, 40);
+
+  --dark-greyy: #161225;
+  /* --dark-greyy: #151027; */
+
   --light-grey: #968c84;
   --grey: rgb(97, 89, 84);
   --purple: rgb(187, 134, 252);
@@ -68,9 +76,14 @@ body {
 }
 
 body.dark {
-  /* background-color: var(--dark-grey); */
-  background-color: var(--dark-blue-grey);
+  background-color: var(--dark-grey);
+  /* background-color: var(--dark-greyy); */
+  /* background-color: var(--dark-blue-grey); */
   color: var(--white);
+}
+
+.padding {
+  padding: 0 2vmin;
 }
 
 code {
