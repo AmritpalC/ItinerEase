@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import './EditItineraryForm.css'
@@ -44,11 +43,11 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
   }
 
   return (
-    <div>
+    <div className='px-4 my-3'>
       <h1>Edit Itinerary</h1>
       <p>Edit your plan below</p>
-      <div className='edit-itinerary-form'>
-          <form onSubmit={handleSubmit}>
+      <div>
+          <form className='edit-itinerary-form' onSubmit={handleSubmit}>
               <label>Name</label>
               <input type="text" name="name" value={formData.name} onChange={handleChange} required />
               <label>Destination</label>

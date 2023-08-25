@@ -3,6 +3,10 @@ import './ItineraryCard.css'
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap'
 
 export default function ItineraryCard({ itinerary }) {
+
+  const formattedDate = itinerary.date ? new Date(itinerary.date) : null
+  const holidayDate = formattedDate ? formattedDate.toDateString() : 'no date'
+
   return (
     // <Link to={{ pathname: `/itineraries/${itinerary.name}`, state: { itinerary } }} className="itinerary-card">
     //   <div className="itinerary-card-details">
@@ -16,18 +20,18 @@ export default function ItineraryCard({ itinerary }) {
     //   </div>
     // </Link>
     <Link to={{ pathname: `/itineraries/${itinerary.name}`, state: { itinerary } }} className="itinerary-card">
-      <Card className="my-3 mx-5">
+      <Card className="my-4 col-10 offset-1">
       {/* <Card className="my-3 mx-5 bg-card dark:bg-card-dark rounded-2xl shadow-inner-border dark:shadow-inner-border-dark text-base text-secondary dark:text-secondary-dark"> */}
         <CardBody className="itinerary-card-reactstrap">
           <CardTitle tag="h4">
             {itinerary.name}
           </CardTitle>
           <CardSubtitle>
-            <strong>Destination:</strong> { itinerary.destination }&nbsp;&nbsp;&nbsp;
-            <strong>Countdown (days):</strong> { itinerary.countdown }!
+            <strong>Date:</strong> { holidayDate }
           </CardSubtitle>
           <CardText>
-            Sample Text
+            <strong>Destination:</strong> { itinerary.destination } &nbsp;&nbsp;&nbsp;
+            <strong>Countdown:</strong> { itinerary.countdown }!
           </CardText>
         </CardBody>
       </Card>

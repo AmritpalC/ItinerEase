@@ -22,10 +22,10 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 export default function HomePage({ user, setUser }) {
 
   const [showSignUp, setShowSignUp] = useState(false);
-  const [open, setOpen] = useState(null)
+  const [open, setOpen] = useState('')
   const toggle = (id) => {
     if (open === id ) {
-      setOpen()
+      setOpen('')
     } else {
       setOpen(id)
     }
@@ -35,7 +35,7 @@ export default function HomePage({ user, setUser }) {
     <>
       <div className='row'>
         <div className='col-4 offset-4'>
-          <img src={logo} alt="ItinerEase" className="img-fluid home-logo"/>
+          <img src={logo} alt="ItinerEase" className="img-fluid home-logo my-3"/>
         </div>
       </div>
       <h1 className=''>ItinerEase</h1>
@@ -58,9 +58,9 @@ export default function HomePage({ user, setUser }) {
               <h5>Junior Software Engineer</h5>
               <div>
                 I recently got in to programming thanks to a software engineering immersive with 
-                General Assembly. I thoroughly enjoy travelling and usually make an itinerary for my
-                holiday. I have built this app as part of my projects to showcase what I 
-                have learned so far, to push myself and so that I can use an app instead of a spreadsheet! 
+                General Assembly. I thoroughly enjoy travelling and usually make an itinerary when
+                going on holiday. I have built this app to showcase what I have learned so far, to 
+                push myself and so that I can use an app instead of a spreadsheet! 
               </div>
             </AccordionBody>
           </AccordionItem>

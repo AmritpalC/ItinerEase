@@ -69,21 +69,17 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--white);
-  color: var(--dark-grey);
-  /* padding: 2vmin; */
+  background-color: var(--tan-1) !important;
+  color: var(--dark-grey) !important;
   height: 100vh;
 }
 
+
 body.dark {
-  background-color: var(--dark-grey);
+  background-color: var(--dark-grey) !important;
   /* background-color: var(--dark-greyy); */
   /* background-color: var(--dark-blue-grey); */
-  color: var(--white);
-}
-
-.padding {
-  padding: 0 2vmin;
+  color: var(--white) !important;
 }
 
 code {
@@ -91,15 +87,11 @@ code {
     monospace;
 }
 
-/* h1 {
-  color: var(--white);
-} */
-
 #root {
   height: 100%;
 }
 
-.align-ctr {
+/* .align-ctr {
   text-align: center;
 }
 
@@ -109,7 +101,7 @@ code {
 
 .smaller {
   font-size: smaller;
-}
+} */
 
 .flex-ctr-ctr {
   display: flex;
@@ -121,13 +113,13 @@ code {
   flex-direction: column;
 }
 
-.flex-j-end {
+/* .flex-j-end {
   justify-content: flex-end;
 }
 
 .scroll-y {
   overflow-y: scroll;
-}
+} */
 
 .section-heading {
   display: flex;
@@ -143,6 +135,7 @@ code {
 }
 
 .form-container {
+  margin: 3vmin;
   padding: 3vmin;
   background-color: var(--tan-2);
   border: .1vmin solid var(--tan-3);
@@ -161,18 +154,17 @@ p.error-message {
   text-align: center;
 }
 
-form {
+/* form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.25vmin;
-  /* color: var(--white); */
-}
+} */
 
-label {
+/* label {
   font-size: 3vmin;
   display: flex;
   align-items: center;
-}
+} */
 
 input {
   padding: 1vmin;
@@ -209,7 +201,7 @@ button, a.button {
   cursor: pointer;
 }
 
-button.btn-sm {
+/* button.btn-sm {
   font-size: 1.5vmin;
   padding: .6vmin .8vmin;
 }
@@ -217,7 +209,7 @@ button.btn-sm {
 button.btn-xs {
   font-size: 1vmin;
   padding: .4vmin .5vmin;
-}
+} */
 
 button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;

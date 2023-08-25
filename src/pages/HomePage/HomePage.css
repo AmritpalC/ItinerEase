@@ -22,9 +22,7 @@ body.dark .app-summary {
 }
 
 .accordion-body {
-  /* border: 1px solid var(--blue-dark);
-  border-radius: 1vmin; */
-  background-color: var(--tan-1);
+  background-color: var(--white);
 }
 
 body.dark .accordion-header button {
@@ -39,9 +37,6 @@ body.dark .accordion-header button:not(.collapsed) {
 }
 
 body.dark .accordion-body {
-  /* border: 1px solid var(--blue-dark);
-  border-radius: 1vmin; */
-  /* background-color: var(--grey); */
   background-color: var(--dark-grey-2);
   color: var(--white);
 }

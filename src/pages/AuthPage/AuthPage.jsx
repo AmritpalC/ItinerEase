@@ -2,6 +2,8 @@ import { useState } from 'react';
 import LoginForm from "../../components/LoginForm/LoginForm";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
+// ! Delete as component no longer required?
+
 export default function AuthPage({ setUser }) {
     const [showSignUp, setShowSignUp] = useState(false);
     return (

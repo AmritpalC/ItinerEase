@@ -36,14 +36,14 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
     }
     
     return (
-        <div className='padding'>
-            <div className='new-itinerary-title'>
-                <Link to="/itineraries" className='back-btn'><h3 >Back</h3></Link>
-                <h1>New Itinerary</h1>
+        <div className='px-4 my-3'>
+            <div className='row'>
+                <Link to="/itineraries" className='back-btn col-1'><h3>Back</h3></Link>
+                <h1 className='col-10'>New Itinerary</h1>
             </div>
             <p>Create your new holiday below</p>
-            <div className='new-itinerary-form'>
-                <form onSubmit={handleSubmit}>
+            <div>
+                <form className='new-itinerary-form' onSubmit={handleSubmit}>
                     <label>Name</label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required />
                     <label>Destination</label>
@@ -57,6 +57,21 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
                     <button type="submit" className="create-btn">Create Itinerary</button>
                 </form>
             </div>
+            {/* <div className='new-itinerary-form'>
+                <form onSubmit={handleSubmit}>
+                    <label className='col-3'>Name</label>
+                    <input className="col-9 my-1" type="text" name="name" value={formData.name} onChange={handleChange} required />
+                    <label className='col-3'>Destination</label>
+                    <input className="col-9 my-1" type="text" name="destination" value={formData.destination} onChange={handleChange} required />
+                    <label className='col-3'>Date</label>
+                    <input className="col-9 my-1" type="date" name="date" value={formData.date} onChange={handleChange} />
+                    <label className='col-3'>Transport</label>
+                    <input className="col-9 my-1" type="text" name="transport" value={formData.transport} onChange={handleChange} />
+                    <label className='col-3'>Accommodation</label>
+                    <input className="col-9 my-1" type="text" name="accommodation" value={formData.accommodation} onChange={handleChange} />
+                    <button type="submit" className="create-btn">Create Itinerary</button>
+                </form>
+            </div> */}
             <p className='error-message'>&nbsp;{formData.error}</p>
         </div>
     )

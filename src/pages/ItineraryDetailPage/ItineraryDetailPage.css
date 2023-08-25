@@ -8,10 +8,10 @@
 
 .itinerary-item {
   height: 120px;
-  border: 1vmin solid var(--blue);
+  border: 0.5vmin solid var(--blue);
   border-radius: 2vmin;
   background-color: var(--white);
-  font-size: 3vw;
+  font-size: 4vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@
 
 body.dark .itinerary-item {
   /* background-color: #1F1F1F; */
-  background-color: var(--dark-grey);
+  background-color: var(--dark-grey-2);
   border-color: var(--teal-light);
 }
 
@@ -42,12 +42,34 @@ body.dark .itinerary-item:hover {
   background-color: var(--grey);
 }
 
-.go-back-btn {
+#go-back-btn {
   background-color: var(--blue-light);
-  color: var(--dark-grey);
 }
 
-body.dark .go-back-btn {
-  background-color: var(--blue);
+#edit-btn {
+  background-color: var(--teal-light);
+}
+
+#del-btn {
+  background-color: var(--pink-light);
+}
+
+#go-back-btn, #edit-btn, #del-btn {
   color: var(--white);
+}
+
+body.dark #go-back-btn {
+  background-color: var(--blue-dark);
+}
+
+body.dark #edit-btn {
+  background-color: var(--green-dark);
+}
+
+body.dark #del-btn {
+  background-color: var(--pink-dark);
+}
+
+body.dark #go-back-btn, body.dark #edit-btn, body.dark #del-btn {
+  color: var(--dark-grey-2)
 }

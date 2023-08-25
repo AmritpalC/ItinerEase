@@ -36,6 +36,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
     const message = location.state?.message
 
     const [messageVisible, setMessageVisible] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const handleGoBack = () => {navigate('/itineraries')}
 
@@ -88,10 +89,10 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
     return (
         <>
             {deleteConfirmation ? (
-                <div>
+                <div className='position-absolute top-50 start-50 translate-middle'>
                     <h4>Are you sure you want to delete this itinerary?</h4>
-                    <button onClick={handleDelete}>Yes</button>
-                    <button onClick={hideConfirmation}>No</button>
+                    <button onClick={handleDelete} className='mx-3'>Yes</button>
+                    <button onClick={hideConfirmation} className='mx-3'>No</button>
                 </div>
             ) : showEditForm ? (
                 <EditItineraryForm 
@@ -102,7 +103,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     onClose={handleFormClose} />
             ) : (
                 <>
-                    <h1>Itinerary Details Page for {itinerary.name}</h1>
+                    <h1 className='px-4 my-3'>Itinerary Details Page for {itinerary.name}</h1>
                     {!selectedComponent && (
                         <>
                             {/* <h4>Will have all holiday information here in sections</h4> */}
@@ -130,21 +131,21 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                         //     <div className="itinerary-item" onClick={() => handleComponentClick('places')}>🏰 - Places to Visit {itinerary.pointsOfInterest}</div>
                         //     <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>🍱 - Restaurants {itinerary.restaurants}</div>
                         // </div>
-                        <div className="itinerary-sections my-3">
+                        <div className="itinerary-sections px-4 my-3">
                             <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>
                                 <img src={darkMode ? itineraryDark : itineraryLight} alt="Itinerary" title="Itinerary" className='img-fluid' />                               
                                 <span>Itinerary</span>
                             </div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>
                                 <img src={coins} alt="Budget" title="Budget" className='img-fluid' />                               
-                                <span>Budget</span>
+                                <span>&nbsp;Budget</span>
                             </div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('places')}>
                                 <img src={darkMode ? landmarkDark : landmarkLight} alt="Places to Visit" title="Places to Visit" className='img-fluid' />                               
                                 <span>Places to Visit</span>
                             </div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>
-                            <img src={darkMode ? pizzaDark : pizzaLight} alt="Restaurants" title="Restaurants" className='img-fluid' />                               
+                                <img src={darkMode ? pizzaDark : pizzaLight} alt="Restaurants" title="Restaurants" className='img-fluid' />                               
                                 <span>Restaurants</span>
                             </div>
                         </div>
@@ -156,9 +157,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
 
                     {!selectedComponent && (
                         <>
-                            <Button color="primary" className="go-back-btn btn" onClick={handleGoBack}>Back to all Itineraries</Button>
-                            <Button color="success" className="mx-2" onClick={handleEdit}>Edit Itinerary</Button>
-                            <Button color="warning" onClick={showConfirmation}>Delete Itinerary</Button>
+                            <Button id="go-back-btn" onClick={handleGoBack}>Back to itineraries</Button>
+                            <Button className="mx-2" id='edit-btn' onClick={handleEdit}>Edit Itinerary</Button>
+                            <Button id='del-btn' onClick={showConfirmation}>Delete Itinerary</Button>
                         </>
                     )}
                 </>

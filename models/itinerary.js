@@ -38,8 +38,10 @@ itinerarySchema.virtual('countdown').get(function() {
     // So I convert the difference in milliseconds to seconds, then hours, then days
     // rounding up, so it shows the current number of days until the holiday
     const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24))
-    if (daysRemaining >= 0) {
-      return daysRemaining
+    if (daysRemaining === 1) {
+      return `${daysRemaining} day to go - hope you are packed!`
+    } else if (daysRemaining >= 0) {
+      return `${daysRemaining} days!`
     } else {
       return 'Holiday has passed'
     }

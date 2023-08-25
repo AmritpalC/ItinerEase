@@ -6,7 +6,7 @@ import * as itinerariesAPI from "../../utilities/itineraries-api"
 import ItineraryCard from "../../components/ItineraryCard/ItineraryCard"
 // import ItineraryDetailPage from "../ItineraryDetailPage/ItineraryDetailPage"
 import './ItinerariesPage.css'
-import { Alert } from 'reactstrap'
+import { Alert, Button, Spinner } from 'reactstrap'
 
 export default function ItinerariesPage() {
 
@@ -15,6 +15,7 @@ export default function ItinerariesPage() {
     const message = location.state?.message
     const [messageVisible, setMessageVisible] = useState(false)
     const [alertColor, setAlertColor] = useState("primary") 
+    const [loading, setLoading] = useState(true)
 
     // ? 5 second timer for message when itinerary deleted
     useEffect(() => {
@@ -37,20 +38,30 @@ export default function ItinerariesPage() {
         async function getItineraries() {
             const itineraries = await itinerariesAPI.getAllForUser()
             setItinerariesList(itineraries)
+            setLoading(false)
         }
         getItineraries()
     }, [])
 
     return (
         <>
-            <div className="itineraries-page-title px-4">
+            <div className="itineraries-page-title px-4 my-3">
                 <h1>My Holidays</h1>
-                <Link to="/itineraries/new" className="add-btn"><h3>+</h3></Link>
+                <Link to="/itineraries/new" className="add-btn"><h1>+</h1></Link>
             </div>
             {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
             {messageVisible && <Alert color={alertColor}><strong>{message}</strong></Alert>}
             <hr />
-            {itinerariesList.length > 0 ? (
+            {loading ? (
+                <Button color="primary" disabled>
+                    <Spinner size="sm">
+                        Loading...
+                    </Spinner>
+                    <span>
+                        {' '}Loading
+                    </span>
+                </Button>
+            ) : itinerariesList.length > 0 ? (
                 <>
                     <div className="itineraries-page-list">
                         {itinerariesList.map((i, idx) => {
