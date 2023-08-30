@@ -10,7 +10,7 @@ export default function CalendarPage() {
             <input type="text" />
             <hr />
             <Calendar /> */}
-            <h1 className="my-3">Calendar Page</h1>
+            <h1 className="my-3">Calendar</h1>
             <hr />
             <ItineraryCalendar />
         </>

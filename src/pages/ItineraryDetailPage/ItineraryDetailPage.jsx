@@ -115,13 +115,12 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                             <h5>Countdown (days): {itinerary.countdown}!</h5>
                         </>
                     )}
-                    <hr/>
-                    { selectedComponent && (
+                    {selectedComponent && (
                         <>
-                            <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
-                            <hr/>
+                            <button className='back-to-iti-btn' onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
                         </>
                     )}
+                    <hr/>
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
@@ -157,9 +156,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
 
                     {!selectedComponent && (
                         <>
-                            <Button id="go-back-btn" onClick={handleGoBack}>Back to itineraries</Button>
-                            <Button className="mx-2" id='edit-btn' onClick={handleEdit}>Edit Itinerary</Button>
-                            <Button id='del-btn' onClick={showConfirmation}>Delete Itinerary</Button>
+                            <Button className="mx-1" id="go-back-btn" onClick={handleGoBack}>Back to itineraries</Button>
+                            <Button className="mx-1" id='edit-btn' onClick={handleEdit}>Edit Itinerary</Button>
+                            <Button className="mx-1" id='del-btn' onClick={showConfirmation}>Delete Itinerary</Button>
                         </>
                     )}
                 </>

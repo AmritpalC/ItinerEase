@@ -89,6 +89,7 @@ body.dark .icon {
     width: 100%;
     z-index: 1000;
     padding: 1vmin 0.5vmin;
+    /* padding-left: 2vmin; */
     /* border-top: 1px solid var(--blue)  */
     box-shadow: 0 -3px 5px rgba(0, 116, 166, 0.5);
   }

@@ -114,11 +114,9 @@ export default function ItineraryCalendar({ itinerary }) {
   }
 
     return (
-        <>
+        <div className="calendar-page">
         {/* Commented out so can re-use calendar component without itinerary prop */}
-          {/* <h2>This is the Itinerary Calendar Page for {itinerary.name}</h2> */}
-          <h2>This is the Itinerary Calendar Page</h2>
-          <hr />
+          {/* { itinerary && <h2>Itinerary Calendar Page for {itinerary.name}</h2>} */}
           <Calendar
             onChange={handleDateChange}
             value={date}
@@ -127,20 +125,24 @@ export default function ItineraryCalendar({ itinerary }) {
           />
           <div className="my-2"><strong>Selected date: {date.toDateString()}</strong></div>
 
-          <Button color="primary" onClick={toggleAddModal}>Add Entry</Button>&nbsp;
-          <Button color="light" onClick={toggleKeyModal}>Key</Button>
+          <Button color="primary" id="add-act-btn" onClick={toggleAddModal}>Add Entry</Button>&nbsp;
+          <Button color="success" id="key-btn" onClick={toggleKeyModal}>Key</Button>
           
           <hr />
-          <div><strong>Activities planned:</strong></div>
+          <div className="mb-2"><strong>Activities planned:</strong></div>
           {entries.length > 0 ? (
-            <ul>
+            <div className="activities-list">
               {entries.map((entry) => (
-                <li key={entry._id}>
-                  Time: {entry.time}, Activity: {entry.activity}
-                  <button onClick={() => handleEntryDelete(entry._id)}>Delete</button>
-                </li>
+                <>
+                  <div className="row mx-1" key={entry._id}>
+                    <div className="col-2">{entry.time}</div>
+                    <div className="col-8">{entry.activity}</div>
+                    <button className="col-2 del-act-btn" onClick={() => handleEntryDelete(entry._id)}>X</button>
+                  </div>
+                  <hr />
+                </>
               ))}
-            </ul>
+            </div>
           ) : (
             <p>No activities planned for this date</p>
           )}
@@ -166,15 +168,13 @@ export default function ItineraryCalendar({ itinerary }) {
           <Modal isOpen={showKeyModal} toggle={toggleKeyModal}>
             <ModalHeader toggle={toggleKeyModal}>Calendar Key</ModalHeader>
             <ModalBody>
-              <p><strong>Color 1:</strong> Today's date</p>
-              <p><strong>Color 2:</strong> Selected date</p>
-              <p><strong>Color 3:</strong> Itinerary activities</p>
-              <p><strong>Color 4:</strong> All activities</p>
+              <p><strong className="sel-date">Color 1:</strong> Selected date</p>
+              <p><strong className="act-date">Color 2:</strong> Activity planned</p>
             </ModalBody>
             <ModalFooter>
               <Button color="light" onClick={toggleKeyModal}>Close</Button>
             </ModalFooter>
           </Modal>
-        </>
+        </div>
     )
 }

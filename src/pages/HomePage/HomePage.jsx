@@ -1,6 +1,6 @@
 import './HomePage.css'
 import logo from '../../assets/plane.png'
-import { Card, CardImg, Accordion, AccordionBody, AccordionHeader, AccordionItem, } from 'reactstrap'
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem, } from 'reactstrap'
 import { useState } from 'react';
 import LoginForm from "../../components/LoginForm/LoginForm";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
@@ -81,9 +81,9 @@ export default function HomePage({ user, setUser }) {
           </AccordionBody>
         </Accordion>
       </div> */}
-      <div>
+      <div className='home-page col-10 offset-1'>
         { user && (
-          <p><strong>Create a new itinerary to get started 😃</strong></p>
+          <p><strong>If you have not already, create a new itinerary to get started 😃</strong></p>
           // <h5>Create a new itinerary to get started 😃</h5>
           )
         }

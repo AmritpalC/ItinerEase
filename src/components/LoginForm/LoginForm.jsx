@@ -44,8 +44,8 @@ export default function LoginForm({ setUser }) {
     <div className='form-container col-8 offset-2'>
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <FormGroup floating>
-          <Input id="exampleEmail" type="text" name="email" value={credentials.email} placeholder='Email' onChange={handleChange} required />
-          <Label for="exampleEmail">Email</Label>
+          <Input type="text" name="email" value={credentials.email} placeholder='Email' onChange={handleChange} required />
+          <Label>Email</Label>
         </FormGroup>
         {" "}
         <FormGroup floating>

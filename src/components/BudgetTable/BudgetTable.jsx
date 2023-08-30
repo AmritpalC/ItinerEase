@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import "./BudgetTable.css"
 import * as itinerariesAPI from "../../utilities/itineraries-api"
 
-import { Table } from 'reactstrap'
+import { Table, Row } from 'reactstrap'
 
 
 export default function BudgetTable({ itinerary, setRefreshItineraries }) {
@@ -47,9 +47,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
   }
 
   return (
-    <>
-      <div>This is the BudgetTable Page</div>
-      <hr />
+    <div className="budget-page">
       <h2>Budget Table for {itinerary.name}</h2>
       <h4>List of budget items:</h4>
       {/* <ul className="budget-list">
@@ -58,70 +56,74 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
         ))}
       </ul> */}
       <hr />
-      <table className="table table-primary table-striped budget-table mb-4">
-        <thead className="t-head table-success">
-          <tr>
-            <th>Item</th>
-            <th>Cost</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {budgetItems.map((item, index) => (
-            <tr key={index}>
-              <td>
-                <input
-                  type="text"
-                  value={item.name}
-                  onChange={(e) =>
-                    handleUpdateItem(index, 'name', e.target.value)
-                  }
-                />
-              </td>
-              <td>
-                <input
-                  type="number"
-                  defaultValue={item.cost.toString()}
-                  onChange={(e) =>
-                    handleUpdateItem(index, 'cost', parseFloat(e.target.value))
-                  }
-                />
-              </td>
-              <td>
-                <button onClick={() => handleRemoveItem(index)}>Remove</button>
-              </td>
-            </tr>
-          ))}
-          <tr className="add-budget-item">
-            <td>
-              <input
-                type="text"
-                placeholder="Item"
-                value={newItem}
-                onChange={(e) => setNewItem(e.target.value)}
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                placeholder="Cost"
-                value={newCost}
-                onChange={(e) => setNewCost(e.target.value)}
-              />
-            </td>
-            <td>
-              <button onClick={handleAddItem}>Add Item</button>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot className="t-foot table-success">
-          <tr>
-            <th colSpan={1}>Total</th>
-            <th>{calculateTotalCost()}</th>
-            <td></td>
-          </tr>
-        </tfoot>
-      </table>
+      {/* <div className="row budget-table">
+        <div className="col-10 offset-1"> */}
+          <table className="table budget-table table-primary table-striped mx-3">
+            <thead className="t-head table-success">
+              <tr>
+                <th>Item</th>
+                <th>Cost</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {budgetItems.map((item, index) => (
+                <tr key={index}>
+                  <td className="item-col">
+                    <input
+                      type="text"
+                      value={item.name}
+                      onChange={(e) =>
+                        handleUpdateItem(index, 'name', e.target.value)
+                      }
+                      />
+                  </td>
+                  <td className="cost-col">
+                    <input
+                      type="number"
+                      defaultValue={item.cost.toString()}
+                      onChange={(e) =>
+                        handleUpdateItem(index, 'cost', parseFloat(e.target.value))
+                      }
+                      />
+                  </td>
+                  <td className="action-col">
+                    <button onClick={() => handleRemoveItem(index)}>Remove</button>
+                  </td>
+                </tr>
+              ))}
+              <tr className="add-budget-item">
+                <td className="item-col">
+                  <input
+                    type="text"
+                    placeholder="Item"
+                    value={newItem}
+                    onChange={(e) => setNewItem(e.target.value)}
+                    />
+                </td>
+                <td className="cost-col">
+                  <input
+                    type="number"
+                    placeholder="Cost"
+                    value={newCost}
+                    onChange={(e) => setNewCost(e.target.value)}
+                    />
+                </td>
+                <td className="action-col">
+                  <button onClick={handleAddItem}>Add</button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot className="t-foot table-success">
+              <tr>
+                <th colSpan={1}>Total</th>
+                <th>{calculateTotalCost()}</th>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        {/* </div>
+      </div> */}
       {/* <div className="add-budget-item">
         <input
           type="text"
@@ -137,6 +139,6 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
         />
         <button onClick={handleAddItem}>Add Item</button>
       </div> */}
-    </>
+    </div>
   )
 }

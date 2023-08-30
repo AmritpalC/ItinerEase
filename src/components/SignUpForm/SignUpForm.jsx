@@ -73,7 +73,7 @@ export default class SignUpForm extends Component {
                         {" "}
                         <FormGroup floating>
                             <Input type="password" name="confirm" value={this.state.confirm} placeholder='Confirm Password' onChange={this.handleChange} required />
-                            <Label>Confirm</Label>
+                            <Label>Confirm Password</Label>
                         </FormGroup>
                         {" "}
                         <Button type="submit" disabled={disable}>Sign Up</Button>

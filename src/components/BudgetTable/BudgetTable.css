@@ -1,7 +1,15 @@
-body.dark .budget-table {
+.budget-table {
+  max-width: 95%;
+}
+
+.budget-page {
+  padding-bottom: 18vmin;
+}
+
+/* body.dark .budget-table {
   background-color: var(--grey);
   color: var(--white);
-}
+} */
 
 .budget-list {
   list-style: none;
@@ -17,4 +25,22 @@ body.dark .budget-table {
 
 .t-head, .t-foot {
   background-color: var(--blue-light);
+}
+
+@media (max-width: 500px) {
+  .budget-table {
+    max-width: 90%;
+  }
+  .item-col {
+    max-width: 38vmin;
+  }
+  .item-col input {
+    max-width: 37vmin;
+  }
+  .cost-col, .action-col {
+    max-width: 20vmin;
+  }
+  .cost-col input {
+    max-width: 19vmin;
+  }
 }

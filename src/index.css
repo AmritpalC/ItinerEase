@@ -30,10 +30,12 @@
   --turquoise: rgb(2, 192, 152);
   --forest: rgb(48, 214, 135);
   --teal-light: rgb(12, 129, 123);
+  --mint-dark: rgb(102, 212, 207);
   --green-dark: rgb(48, 219, 91);
   --blue: rgb(0, 116, 166);
   --blue-light: rgb(0, 64, 221);
   --blue-dark: rgb(64, 156, 255);
+  --cyan-light: rgb(0, 113, 164);
   --cyan-dark: rgb(112, 215, 255);
   --red-light: rgb(215, 0, 21);
   --red-dark: rgb(255, 105, 97);
@@ -140,6 +142,7 @@ code {
   background-color: var(--tan-2);
   border: .1vmin solid var(--tan-3);
   border-radius: 1vmin;
+  font-weight: bold;
 }
 
 body.dark .form-container {
@@ -189,8 +192,8 @@ input:focus {
 button, a.button {
   margin: 1vmin;
   padding: 1vmin;
-  color: var(--white);
-  background-color: var(--purple);
+  color: var(--dark-grey);
+  background-color: var(--purple-dark);
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
@@ -199,6 +202,11 @@ button, a.button {
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
+}
+
+body.dark button, body.dark a.button {
+  background-color: var(--purple-light);
+  color: var(--white);
 }
 
 /* button.btn-sm {
@@ -213,10 +221,25 @@ button.btn-xs {
 
 button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;
-  background-color: var(--cyan);
+  background-color: var(--purple-dark);
+  color: var(--dark-grey);
 }
 
 button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
+  background-color: var(--blue-dark);
+  color: var(--dark-grey);
+  font-weight: bold;
+}
+
+body.dark button:disabled, body.dark form:invalid button[type="submit"] {
+  cursor: not-allowed;
+  background-color: var(--purple-light);
+  color: var(--white);
+}
+
+body.dark button[type="submit"] {
+  background-color: var(--blue-light);
+  color: var(--white);
 }
