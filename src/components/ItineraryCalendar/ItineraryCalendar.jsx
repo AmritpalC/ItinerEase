@@ -123,7 +123,7 @@ export default function ItineraryCalendar({ itinerary }) {
             tileClassName={getTileClassName}
             // tileContent={getTileContent}
           />
-          <div className="my-2"><strong>Selected date: {date.toDateString()}</strong></div>
+          <div className="my-2"><strong>Selected date:</strong>&nbsp; {date.toDateString()}</div>
 
           <Button color="primary" id="add-act-btn" onClick={toggleAddModal}>Add Entry</Button>&nbsp;
           <Button color="success" id="key-btn" onClick={toggleKeyModal}>Key</Button>
@@ -168,8 +168,9 @@ export default function ItineraryCalendar({ itinerary }) {
           <Modal isOpen={showKeyModal} toggle={toggleKeyModal}>
             <ModalHeader toggle={toggleKeyModal}>Calendar Key</ModalHeader>
             <ModalBody>
-              <p><strong className="sel-date">Color 1:</strong> Selected date</p>
-              <p><strong className="act-date">Color 2:</strong> Activity planned</p>
+              <p><strong className="todays-date">Color 1:</strong> Today's date</p>
+              <p><strong className="sel-date">Color 2:</strong> Selected date</p>
+              <p><strong className="act-date">Color 3:</strong> Activity planned</p>
             </ModalBody>
             <ModalFooter>
               <Button color="light" onClick={toggleKeyModal}>Close</Button>
