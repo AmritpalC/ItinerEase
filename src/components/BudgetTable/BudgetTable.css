@@ -23,8 +23,13 @@
   font-weight: bold;
 }
 
-.t-head, .t-foot {
+.t-head tr th, .t-foot tr th {
+  background-color: var(--blue-dark);
+}
+
+body.dark .t-head tr th, body.dark .t-foot tr th {
   background-color: var(--blue-light);
+  color: var(--white);
 }
 
 @media (max-width: 500px) {

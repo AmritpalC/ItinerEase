@@ -8,9 +8,14 @@ import { getGeocode, getLatLng } from "use-places-autocomplete"
 // } from "use-places-autocomplete"
 // import { Container } from "reactstrap";
 
+// const containerStyle = {
+//   width: '400px',
+//   height: '400px'
+// }
+
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '90vmin',
+  height: '90vmin'
 }
 
 const center = {
@@ -113,12 +118,12 @@ export default function PlacesToVisitList() {
         >
           <div>
             <input placeholder="Enter location" />
-            <button type="submit">Go</button>
+            <button type="submit" onSubmit={handlePlaceSelect}>Go</button>
           </div>
         </Autocomplete>
       </div>
       {/* <Autocomplete onLoad={handlePlaceSelect} /> */}
-      <div>
+      <div className="map-container">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={selectedLocation || center}

@@ -59,7 +59,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
       {/* <div className="row budget-table">
         <div className="col-10 offset-1"> */}
           <table className="table budget-table table-primary table-striped mx-3">
-            <thead className="t-head table-success">
+            <thead className="t-head">
               <tr>
                 <th>Item</th>
                 <th>Cost</th>
@@ -118,7 +118,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
               <tr>
                 <th colSpan={1}>Total</th>
                 <th>{calculateTotalCost()}</th>
-                <td></td>
+                <th></th>
               </tr>
             </tfoot>
           </table>

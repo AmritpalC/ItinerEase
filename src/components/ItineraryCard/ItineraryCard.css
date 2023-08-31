@@ -24,10 +24,7 @@ body.dark .itinerary-card-details {
 /* ! Using Reactstrap */
 
 .itinerary-card-reactstrap {
-  /* background-color: var(--forest); */
   background-color: rgba(48, 214, 135, 0.4);
-  /* background-color: rgba(112, 215, 255, 0.3); */
-  /* background-color: rgba(64, 156, 255, 0.2); */
   border: 0.4vmin solid var(--teal-light);
   border-radius: 0.5vmin;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
@@ -35,8 +32,7 @@ body.dark .itinerary-card-details {
 
 body.dark .itinerary-card-reactstrap {
   background-color: var(--teal-light);
-  /* background-color: rgba(12, 129, 123, 0.5); */
-  border-color: var(--cyan);
+  border-color: var(--mint-dark);
   color: var(--white);
   box-shadow: 0 0 7px rgba(255, 255, 255, 0.5);
 }
@@ -46,5 +42,5 @@ body.dark .itinerary-card-reactstrap {
 }
 
 body.dark .itinerary-card-reactstrap:hover {
-  border-color: cornflowerblue;
+  border-color: var(--white);
 }

@@ -3,9 +3,14 @@ import "./RestaurantsList.css"
 import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from '@react-google-maps/api';
 import { getGeocode, getLatLng } from "use-places-autocomplete"
 
+// const containerStyle = {
+//   width: '400px',
+//   height: '400px'
+// }
+
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '90vmin',
+  height: '90vmin'
 }
 
 const center = {
@@ -283,7 +288,7 @@ export default function RestaurantList() {
         <button onClick={() => setSelectedLocation(null)}>Clear</button>
         <button onClick={() => setSelectedLocation(selectedLocation)}>Find Restaurants</button>
       </div>
-      <div>
+      <div className="rest-map-container">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={selectedLocation || center}
