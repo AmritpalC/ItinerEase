@@ -56,7 +56,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
         return null
     }
 
-    // ? 3 second timer for message when itinerary deleted
+    // ? 5 second timer for message when itinerary edited
     useEffect(() => {
         if (messageVisible) {
             const timer = setTimeout(() => {
@@ -91,8 +91,8 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
             {deleteConfirmation ? (
                 <div className='position-absolute top-50 start-50 translate-middle'>
                     <h4>Are you sure you want to delete this itinerary?</h4>
-                    <button onClick={handleDelete} className='mx-3'>Yes</button>
-                    <button onClick={hideConfirmation} className='mx-3'>No</button>
+                    <button onClick={handleDelete} className='mx-3 px-3 btn-b-radius'>Yes</button>
+                    <button onClick={hideConfirmation} className='mx-3 px-3 btn-b-radius'>No</button>
                 </div>
             ) : showEditForm ? (
                 <EditItineraryForm 
@@ -103,7 +103,8 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     onClose={handleFormClose} />
             ) : (
                 <>
-                    <h1 className='px-4 my-3'>Itinerary Details Page for {itinerary.name}</h1>
+                    <h1 className='px-4 mt-3'>Itinerary Details Page for {itinerary.name}</h1>
+                    <h5>Date: {holidayDate}</h5>
                     {!selectedComponent && (
                         <>
                             {/* <h4>Will have all holiday information here in sections</h4> */}
@@ -111,7 +112,6 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                             {/* <h5>ID - {itinerary._id}</h5>
                             <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5> */}
                             {/* <h5>Date: { itinerary.date ? itinerary.date : 'no date' }</h5> */}
-                            <h5>Date: {holidayDate}</h5>
                             <h5>Countdown (days): {itinerary.countdown}!</h5>
                         </>
                     )}

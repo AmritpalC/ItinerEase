@@ -1,5 +1,6 @@
 .itineraries-page-list {
   padding-bottom: 18vmin;
+  /* margin: 0 auto; */
 }
 
 .message {
@@ -11,8 +12,16 @@
   color: var(--blue-light);
 }
 
+.add-btn:hover {
+  text-shadow: .4px .4px var(--blue-light);
+}
+
 body.dark .add-btn {
   color: var(--cyan-dark);
+}
+
+body.dark .add-btn:hover {
+  text-shadow: .4px .4px var(--cyan-dark);
 }
 
 .itineraries-page-title {

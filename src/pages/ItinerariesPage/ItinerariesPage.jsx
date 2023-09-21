@@ -17,7 +17,7 @@ export default function ItinerariesPage() {
     const [alertColor, setAlertColor] = useState("primary") 
     const [loading, setLoading] = useState(true)
 
-    // ? 5 second timer for message when itinerary deleted
+    // ? 5 second timer for message when itinerary deleted or created
     useEffect(() => {
         if (message) {
             setMessageVisible(true)

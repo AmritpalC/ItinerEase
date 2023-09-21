@@ -30,7 +30,6 @@ async function getCalendarEntriesForDay(req, res) {
     const { date } = req.params
     const calendar = await Calendar.findOne({ user })
     const entries = calendar.entries.filter(entry => {
-      // const entryDate = entry.date.toISOString().split('T')[0]
       const entryDate = entry.date.toISOString()
       return entryDate === date
     })
@@ -48,7 +47,6 @@ async function index(req, res) {
     const { user } = req
     const calendar = await Calendar.findOne({ user })
     const entries = calendar.entries.map(entry => entry.date.toISOString())
-    // const entryDate = entry.date.toISOString().split('T')[0]
     res.json(entries)
   } catch (error) {
     console.log(error)

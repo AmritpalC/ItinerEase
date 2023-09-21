@@ -2,12 +2,16 @@
   padding-bottom: 18vmin;
 }
 
+.login-container {
+  padding-bottom: 3vmin;
+}
+
 .home-logo {
   border-radius: 5vmin;
 }
 
 .app-summary {
-  color: var(--purple-light)
+  color: var(--blue-light)
 }
 
 body.dark .app-summary {
@@ -43,6 +47,15 @@ body.dark .accordion-header button:not(.collapsed) {
 body.dark .accordion-body {
   background-color: var(--dark-grey-2);
   color: var(--white);
+}
+
+.login-signup-btn {
+  border-radius: 1vmin;
+  background-color: var(--white);
+}
+
+body.dark .login-signup-btn {
+  background-color: var(--dark-grey-2);
 }
 
 @media (min-width: 768px) {

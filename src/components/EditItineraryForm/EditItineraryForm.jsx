@@ -58,8 +58,8 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
               <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
               <label>Accomodation</label>
               <input type="text" name="accommodation" value={formData.accommodation} onChange={handleChange} />
-              <button type="submit">Update Itinerary</button>
-              <button type="button" onClick={handleFormClose}>Go Back</button>
+              <button type="submit" className='new-or-edit-btn'>Update Itinerary</button>
+              <button type="button" className='new-or-edit-btn' onClick={handleFormClose}>Go Back</button>
           </form>
       </div>
     </div>

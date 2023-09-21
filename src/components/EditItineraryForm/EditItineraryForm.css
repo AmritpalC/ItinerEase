@@ -4,6 +4,16 @@
   gap: 1.25vmin;
 }
 
+.edit-itinerary-form label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-or-edit-btn {
+  border-radius: 1vmin;
+}
+
 /* .itinerary-card {
   text-decoration: none;
 }

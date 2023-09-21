@@ -19,7 +19,6 @@ const itinerarySchema = new Schema({
   date: { type: Date },
   transport: { type: String },
   accommodation: { type: String },
-  // countdown: { type: Number },
   budget: [budgetItemSchema],
   // placesToVisit: [placeSchema],
   // restaurants: [restaurantSchema]

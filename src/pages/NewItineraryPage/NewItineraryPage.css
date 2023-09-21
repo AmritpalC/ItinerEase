@@ -9,8 +9,16 @@
   color: var(--blue-light);
 }
 
+.back-btn:hover {
+  text-shadow: .3px .3px var(--blue-light);
+}
+
 body.dark .back-btn {
   color: var(--cyan-dark);
+}
+
+body.dark .back-btn:hover {
+  text-shadow: .3px .3px var(--cyan-dark);
 }
 
 .new-itinerary-title {
@@ -19,8 +27,13 @@ body.dark .back-btn {
   align-items: center;
 }
 
-/* .create-btn {
-  background-color: var(--blue-light);
-  color: var(--black);
-} */
+.new-itinerary-form label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-btn {
+  border-radius: 1vmin;
+}
 

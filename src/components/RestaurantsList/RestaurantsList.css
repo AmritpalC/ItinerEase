@@ -3,12 +3,81 @@
   justify-content: center;
 }
 
+.rest-list-page {
+  padding-bottom: 18vmin;
+}
+
+#places {
+  list-style: none;
+  margin: 0 1rem;
+  padding-right: 2rem;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background-color: var(--white);
+  border: 1px dotted var(--dark-grey);
+  border-radius: 2vmin;
+}
+
+body.dark #places {
+  background-color: var(--dark-grey-2);
+  border-color: var(--white);
+}
+
+#places li {
+  /* background-color: var(--white); */
+  padding: .2vmin;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1.15rem;
+  border-radius: .5vmin;
+}
+
+#places li:hover {
+  color: var(--blue-light);
+  cursor: pointer;
+}
+
+body.dark #places li:hover {
+  color: var(--cyan-dark);
+}
+
+.x-btn {
+  background-color: var(--white);
+  border-radius: 1vmin;
+}
+
+body.dark .x-btn {
+  background-color: var(--dark-grey-2);
+}
+
+.maps-btn {
+  border-radius: 0.5vmin;
+}
+
+select {
+  padding: 1vmin;
+  border-radius: 1vmin;
+  /* font-weight: bold; */
+  /* background-color: var(--white); */
+}
+
+option {
+
+}
+
+body.dark select {
+  background-color: var(--dark-grey-2);
+  border-color: var(--white);
+  color: var(--white);
+}
+
 /* .restaurants-list {
 
 } */
 
-/* 
-#sidebar {
+
+/* #sidebar {
   flex-basis: 5rem;
   flex-grow: 1;
   padding: 1rem;
@@ -27,30 +96,26 @@ h2 {
   font-size: 1.5rem;
   margin: 0 0 5px 0;
   flex-grow: 0;
-}
+} */
 
-ul {
+/* ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
   overflow-y: scroll;
   flex-grow: 1;
-}
+} */
 
-li {
-  background-color: #f1f1f1;
-  padding: 10px;
+/* li {
+  background-color: var(--white);
+  padding: .2vmin;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   font-size: 1.25rem;
-  cursor: pointer;
-}
+} */
 
-li:nth-child(odd) {
-  background-color: #fcfcfc;
-}
-
+/*
 button {
   width: 100%;
   padding: 1rem;
@@ -71,3 +136,9 @@ button:disabled {
   color: #c5d4f0;
   cursor: auto;
 } */
+
+@media (min-width: 500px) {
+  #places {
+    margin: 0 5rem;
+  }
+}

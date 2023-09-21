@@ -93,36 +93,6 @@ code {
   height: 100%;
 }
 
-/* .align-ctr {
-  text-align: center;
-}
-
-.align-rt {
-  text-align: right;
-}
-
-.smaller {
-  font-size: smaller;
-} */
-
-.flex-ctr-ctr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-/* .flex-j-end {
-  justify-content: flex-end;
-}
-
-.scroll-y {
-  overflow-y: scroll;
-} */
-
 .section-heading {
   display: flex;
   justify-content: space-around;
@@ -180,8 +150,8 @@ input {
 }
 
 body.dark input {
-  background-color: var(--dark-grey);
-  color: white;
+  background-color: var(--dark-grey-2);
+  color: var(--white);
   /* font-weight: bold; */
 }
 
@@ -199,9 +169,12 @@ button, a.button {
   text-decoration: none;
   text-align: center;
   border: .1vmin solid var(--tan-2);
-  border-radius: .5vmin;
   outline: none;
   cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 3px 3px rgba(0, 116, 166, 0.5)
 }
 
 body.dark button, body.dark a.button {

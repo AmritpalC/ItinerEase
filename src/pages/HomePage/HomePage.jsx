@@ -81,24 +81,24 @@ export default function HomePage({ user, setUser }) {
           </AccordionBody>
         </Accordion>
       </div> */}
-      <div className='home-page col-10 offset-1'>
-        { user && (
+      { user && (
+        <div className='home-page col-10 offset-1'>
           <p><strong>If you have not already, create a new itinerary to get started 😃</strong></p>
-          // <h5>Create a new itinerary to get started 😃</h5>
-          )
-        }
-      </div>
+        </div>
+      )}
       
       {!user && (
-        <>
+        <div className='login-container'>
           {/* <h5>Create an account or log in to ItinerEase</h5> */}
-          <button onClick={() => setShowSignUp(!showSignUp)}>{showSignUp ? "Have an account already? Log In" : "Don't have an account? Sign Up"}</button>
+          <button className='login-signup-btn' onClick={() => setShowSignUp(!showSignUp)}>
+            {showSignUp ? "Have an account already? Log In" : "Don't have an account? Sign Up"}
+          </button>
           { showSignUp ?
             <SignUpForm setUser={setUser} />
             :
             <LoginForm setUser={setUser} />
           }
-        </>
+        </div>
       )}
     </>
   )
