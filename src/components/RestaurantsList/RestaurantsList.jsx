@@ -1,7 +1,8 @@
 import { useState, useCallback, useRef } from "react";
+import { Button, Spinner, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Offcanvas, OffcanvasHeader, OffcanvasBody } from 'reactstrap'
 import "./RestaurantsList.css"
-import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from '@react-google-maps/api';
-import { getGeocode, getLatLng } from "use-places-autocomplete"
+import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from "@react-google-maps/api";
+import { getLatLng } from "use-places-autocomplete"
 
 const containerStyle = {
   width: '90vmin',
@@ -13,7 +14,7 @@ const center = {
   lng: -0.119460
 }
 
-export default function RestaurantList() {
+export default function RestaurantList({ itinerary }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_API_KEY,
@@ -22,18 +23,23 @@ export default function RestaurantList() {
 
   const [map, setMap] = useState(null)
   const [selectedLocation, setSelectedLocation] = useState(null)
-  // const [restaurants, setRestaurants] = useState([])
-  // const [currentPage, setCurrentPage] = useState(1)
-  // const [autcomplete, setAutocomplete] = useState(null)
   const locationRef = useRef()
-  // const [restaurantsFound, setRestaurantsFound] = useState(false)
 
   // ? Changing again
-  // const [nextPageToken, setNextPageToken] = useState(null)
-  // const [places, setPlaces] = useState([])
+  const [places, setPlaces] = useState([])
+  const [placesFound, setPlacesFound] = useState(false)
   const [markers, setMarkers] = useState([])
-  const [selectedPlaceType, setSelectedPlaceType] = useState(null)
-  // ? ------
+  const [selectedPlaceType, setSelectedPlaceType] = useState('bakery')
+  const [showPlaceDetails, setShowPlaceDetails] = useState(false)
+
+  // ? Future enhancement - to allow places to be saved
+  // const [showPlaceModal, setShowPlaceModal] = useState(false)
+  // const [placeEntryData, setPlaceEntryData] = useState({
+  //   itinerary: itinerary._id,
+  //   name: "",
+  //   rating: "",
+  //   address: ""
+  // })
 
   const onLoad = useCallback(function callback(map) {
     // ? Commented to prevent this resetting the center and zoom level
@@ -55,192 +61,25 @@ export default function RestaurantList() {
           lng: result.lng
         }
         setSelectedLocation(mapCenter)
-        // findNearbyRestaurants(mapCenter)
-        // setCurrentPage(1)
-        // setNextPageToken(null)
-        // ? Changing again ----
-        // loadNearbyRestaurants(mapCenter)
-        // ? ---------
       }
     } catch (err) {
       console.log("Error fetching location details: ", err)
     }
   }
 
-  // const handleSearchResults = (results, status, pagination ) => {
-  //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-  //     setRestaurants(results)
-
-  //     if (pagination && pagination.hasNextPage) {
-  //       setCurrentPage(currentPage + 1)
-  //       pagination.nextPage()
-  //     }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   if (map && selectedLocation && currentPage === 1) {
-  //     const service = new window.google.maps.places.PlacesService(map)
-  //     service.nearbySearch(
-  //       {
-  //         location: selectedLocation,
-  //         radius: 1000,
-  //         type: "restaurant",
-  //       },
-  //       (results, status, pagination) => handleSearchResults(results, status, pagination)
-  //     )
-  //   }
-  // }, [map, selectedLocation, currentPage])
-
-  // ! Trying again with docs
-  // ? --------
-
-  // useEffect(() => {
-  //   if (map && selectedLocation) {
-  //     const service = new window.google.maps.places.PlacesService(map);
-  //     let getNextPage
-  //     const moreButton = document.getElementById("more");
-  //     // moreButton.onclick = function () {
-  //     //   moreButton.disabled = true;
-  //     //   if (getNextPage) {
-  //     //     getNextPage();
-  //     //   }
-  //     // };
-
-  //     const handleSearchResults = (results, status, pagination) => {
-  //       if (status !== "OK" || !results) return;
-
-  //       addPlaces(results, map);
-  //       moreButton.disabled = !pagination || !pagination.hasNextPage;
-
-  //       if (pagination && pagination.hasNextPage) {
-  //         getNextPage = () => {
-  //           pagination.nextPage()
-  //         }
-  //       }
-  //     };
-
-  //     // Perform a nearby search.
-  //     service.nearbySearch(
-  //       { location: selectedLocation, radius: 1000, type: "restaurant" },
-  //       (results, status, pagination) => handleSearchResults(results, status, pagination)
-  //     );
-  //   }
-  // }, [map, selectedLocation]);
-
-  // !
-  // ? Changing to dropdown for DRYer code
-  // const findNearbyRestaurants = (map, selectedLocation) => {
-  //   if (map && selectedLocation) {
-  //     const service = new window.google.maps.places.PlacesService(map);
-  //     let getNextPage
-  //     const moreButton = document.getElementById("more");
-  //     // moreButton.onclick = function () {
-  //     //   moreButton.disabled = true;
-  //     //   if (getNextPage) {
-  //     //     getNextPage();
-  //     //   }
-  //     // };
-
-  //     const handleSearchResults = (results, status, pagination) => {
-  //       if (status !== "OK" || !results) return;
-
-  //       addPlaces(results, map);
-  //       moreButton.disabled = !pagination || !pagination.hasNextPage;
-
-  //       if (pagination && pagination.hasNextPage) {
-  //         getNextPage = () => {
-  //           pagination.nextPage()
-  //         }
-  //       }
-  //     };
-
-  //     // Perform a nearby search.
-  //     service.nearbySearch(
-  //       { location: selectedLocation, radius: 1000, type: "restaurant" },
-  //       (results, status, pagination) => handleSearchResults(results, status, pagination)
-  //     );
-  //   }
-  // }
-
-  // !
-
-  // const findNearbyRestaurants = (map, selectedLocation) => {
-  //   if (map && selectedLocation) {
-  //     const service = new window.google.maps.places.PlacesService(map);
-
-  //     const handleSearchResults = (results, status, pagination) => {
-  //       if (status !== "OK" || !results) return;
-
-  //       addPlaces(results, map);
-  //     };
-
-  //     // Perform a nearby search.
-  //     service.nearbySearch(
-  //       { location: selectedLocation, radius: 1000, type: "restaurant" },
-  //       (results, status, pagination) => handleSearchResults(results, status, pagination)
-  //     );
-  //   }
-  // }
-
-  // const findRestaurants = () => {
-  //   findNearbyRestaurants(map, selectedLocation)
-  // }
-
-  // const findNearbyCafes = (map, selectedLocation) => {
-  //   if (map && selectedLocation) {
-  //     const service = new window.google.maps.places.PlacesService(map);
-
-  //     const handleSearchResults = (results, status, pagination) => {
-  //       if (status !== "OK" || !results) return;
-
-  //       addPlaces(results, map);
-  //     };
-
-  //     // Perform a nearby search.
-  //     service.nearbySearch(
-  //       { location: selectedLocation, radius: 1000, type: "cafe" },
-  //       (results, status, pagination) => handleSearchResults(results, status, pagination)
-  //     );
-  //   }
-  // }
-
-  // function findCafes() {
-  //   findNearbyCafes(map, selectedLocation)
-  // }
-
-  // const findNearbyTouristAttractions = (map, selectedLocation) => {
-  //   if (map && selectedLocation) {
-  //     const service = new window.google.maps.places.PlacesService(map);
-
-  //     const handleSearchResults = (results, status, pagination) => {
-  //       if (status !== "OK" || !results) return;
-
-  //       addPlaces(results, map);
-  //     };
-
-  //     // Perform a nearby search.
-  //     service.nearbySearch(
-  //       { location: selectedLocation, radius: 1000, type: "tourist_attraction" },
-  //       (results, status, pagination) => handleSearchResults(results, status, pagination)
-  //     );
-  //   }
-  // }
-
-  // function findTouristAttractions() {
-  //   findNearbyTouristAttractions(map, selectedLocation)
-  // }
-
-  // !
-  // ? Drop down attempt
   const findNearbyPlaces = (map, selectedLocation, placeType) => {
     if (map && selectedLocation) {
       const service = new window.google.maps.places.PlacesService(map);
 
       const handleSearchResults = (results, status, pagination) => {
-        if (status !== "OK" || !results) return;
-
+        if (status !== "OK" || !results) {
+          setPlacesFound('none')
+          return;
+        }
+    
+        setPlacesFound(true)
         addPlaces(results, map);
+        console.log(results)
       };
 
       // Perform a nearby search.
@@ -286,20 +125,11 @@ export default function RestaurantList() {
         break
     }
   }
-  // !
 
-  // ? ------
-  // ? ------- changes    ------
+  // ? ------- changes - using state   ------
   function addPlaces(places, map) {
-    const placesList = document.getElementById("places");
-    console.log(placesList)
-
-    while (placesList.firstChild) {
-      placesList.removeChild(placesList.firstChild);
-    }
-
-    // const newPlaces = []
-    const newMarkers = []
+    // const newMarkers = []
+    const newPlaces = []
 
     for (const place of places) {
       if (place.geometry && place.geometry.location) {
@@ -316,232 +146,76 @@ export default function RestaurantList() {
           icon: image,
           title: place.name,
           position: place.geometry.location,
+          cursor: 'default',
         })
 
-        newMarkers.push(marker)
-
-        const li = document.createElement("li");
-
-        li.textContent = place.name;
-        placesList.appendChild(li)
-        li.addEventListener("click", () => {
+        marker.addListener('click', () => {
           map.setCenter(place.geometry.location)
         })
 
-        // newPlaces.push({
-        //   placeId: place.place_id,
-        //   marker,
-        //   ...place,
-        // })
+        markers.push(marker)
 
+        newPlaces.push({
+          placeId: place.place_id,
+          marker,
+          ...place,
+        })
       }
     }
-    setMarkers(newMarkers)
-    // if (placesList.length > 0) {
-    //   setRestaurantsFound(true)
-    // }
-    // setRestaurantsFound(placesList.length > 0)
+    // setMarkers((markers) => [...markers, newMarkers])
+    setMarkers(markers)
+    setPlaces(newPlaces)
   }
-
-  // const clearMarkers = () => {
-  //   if (map && places.length > 0) {
-  //     places.forEach((place) => {
-  //       if (place.marker) {
-  //         place.market.setMap(null)
-  //       }
-  //     })
-  //     setPlaces([])
-  //   }
-  // }
 
   const clearMarkers = () => {
     markers.forEach((marker) => {
+      console.log(marker)
       marker.setMap(null)
     })
     setMarkers([])
-    // setRestaurantsFound(false)
+    setPlaces([])
+    setPlacesFound(false)
   }
 
   function clearSearch() {
-    // const autocomplete = document.getElementById('autocomplete')
-
-    // if (autocomplete) {
-    //   autocomplete.value = ''
-    //   setSelectedLocation(null)
-    // }
     setSelectedLocation(null)
     locationRef.current.value = ''
     clearMarkers()
   }
 
-  // const clearMarkers = () => {
-  //   if (map) {
-  //     const markers = map.getMarkers()
-  //     markers.forEach((marker) => {
-  //       marker.setMap(null)
+  const togglePlaceDetails = (placeId) => {
+    // setShowPlaceDetails(!showPlaceDetails)
+    setShowPlaceDetails((prevState) => ({
+      ...prevState,
+      [placeId]: !prevState[placeId],
+    }))
+  }
+  
+// ? Future enhancement - allow places to be saved
+  // const togglePlaceModal = () => {
+  //   setShowPlaceModal(!showPlaceModal)
+  // }
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target
+  //   setPlaceEntryData({...placeEntryData, [name]: value })
+  // }
+
+  // async function handleEntrySubmit() {
+  //   try {
+  //     // await placesAPI.createPlaceEntry(placeEntryData)
+  //     console.log('Entry data sent to API ->', placeEntryData)
+  //     setPlaceEntryData({
+  //       itinerary: itinerary._id,
+  //       name: "",
+  //       rating: "",
+  //       address: ""
   //     })
+  //     togglePlaceModal()
+  //   } catch (err) {
+  //     console.log(err)
   //   }
   // }
-
-  // ? ----------------
-
-  // const service = new google.maps.places.PlacesService(map);
-  // let getNextPage;
-  // const moreButton = document.getElementById("more");
-
-  // moreButton.onclick = function () {
-  //   moreButton.disabled = true;
-  //   if (getNextPage) {
-  //     getNextPage();
-  //   }
-  // };
-
-  // // Perform a nearby search.
-  // service.nearbySearch(
-  //   { location: selectedLocation, radius: 1000, type: "restaurant" },
-  //   (results, status, pagination) => {
-  //     if (status !== "OK" || !results) return;
-
-  //     addPlaces(results, map);
-  //     moreButton.disabled = !pagination || !pagination.hasNextPage;
-  //     if (pagination && pagination.hasNextPage) {
-  //       getNextPage = () => {
-  //         // Note: nextPage will call the same handler function as the initial call
-  //         pagination.nextPage();
-  //       };
-  //     }
-  //   },
-  // );
-  
-  // function addPlaces(places, map) {
-  //   const placesList = document.getElementById("places");
-
-  //   for (const place of places) {
-  //     if (place.geometry && place.geometry.location) {
-  //       const image = {
-  //         url: place.icon,
-  //         size: new google.maps.Size(71, 71),
-  //         origin: new google.maps.Point(0, 0),
-  //         anchor: new google.maps.Point(17, 34),
-  //         scaledSize: new google.maps.Size(25, 25),
-  //       };
-
-  //       new google.maps.Marker({
-  //         map,
-  //         icon: image,
-  //         title: place.name,
-  //         position: place.geometry.location,
-  //       });
-
-  //       const li = document.createElement("li");
-
-  //       li.textContent = place.name;
-  //       placesList.appendChild(li);
-  //       li.addEventListener("click", () => {
-  //         map.setCenter(place.geometry.location);
-  //       });
-  //     }
-  //   }
-  // }
-
-  // const findNearbyRestaurants = async (location) => {
-  //   const service = new window.google.maps.places.PlacesService(map)
-
-  //   await service.nearbySearch(
-  //     {
-  //       location,
-  //       radius: 1000,
-  //       type: "restaurant"
-  //     },
-  //     (results, status) => {
-  //       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-  //         setRestaurants(results)
-  //       }
-  //     }
-  //   )
-  // }
-
-  // const findNearbyRestaurants = async (location) => {
-  //   const service = new window.google.maps.places.PlacesService(map);
-  
-  //   const performSearch = async (pageToken) => {
-  //     const options = {
-  //       location,
-  //       radius: 1000, // Adjust this value based on your desired search radius
-  //       type: "restaurant",
-  //       pageToken,
-  //     };
-  
-  //     // if (pageToken) {
-  //     //   options.pagetoken = pageToken;
-  //     // }
-  
-  //     return new Promise((resolve, reject) => {
-  //       service.nearbySearch(options, (results, status, pagination) => {
-  //         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-  //           resolve({ results, pagination });
-  //         } else {
-  //           reject(status);
-  //         }
-  //       });
-  //     });
-  //   };
-  
-  //   let allResults = [];
-  //   let nextPageToken = null;
-  
-  //   do {
-  //     try {
-  //       const { results, pagination } = await performSearch(nextPageToken);
-  //       allResults = allResults.concat(results);
-  //       nextPageToken = pagination.hasNextPage ? pagination.nextPageToken : null;
-  //     } catch (error) {
-  //       console.error("Error fetching restaurant results:", error);
-  //       break;
-  //     }
-  //   } while (nextPageToken);
-  //   setRestaurants(allResults)
-  //   console.log(allResults)
-  // }
-
-  // ! --- commented out
-
-  // const loadNearbyRestaurants = async (location) => {
-  //   if (!map) return;
-
-  //   const service = new window.google.maps.places.PlacesService(map);
-
-  //   const options = {
-  //     location,
-  //     radius: 1000,
-  //     type: "restaurant",
-  //   }
-
-  //   if (nextPageToken) {
-  //     options.pageToken = nextPageToken; // Use the nextPageToken for pagination
-  //   }
-
-  //   service.nearbySearch(options, (results, status, pagination) => {
-  //     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-  //       setPlaces((prevPlaces) => [...prevPlaces, ...results]) // Append new results
-  //       setNextPageToken(pagination.hasNextPage ? pagination.nextPageToken : null)
-  //     }
-  //   })
-  // }
-
-  // const handleLoadMoreResults = () => {
-  //   if (nextPageToken) {
-  //     loadNearbyRestaurants(selectedLocation);
-  //   }
-  // };
-
-  // const handleBulletPointClick = (place) => {
-  //   if (map && place.geometry && place.geometry.location) {
-  //     const locatio
-  //   }
-  // }
-  //         li.addEventListener("click", () => {
-  //         map.setCenter(place.geometry.location);
 
   return isLoaded ? (
     <div className="rest-list-page">
@@ -556,36 +230,17 @@ export default function RestaurantList() {
               const place = autocomplete.getPlace()
               handlePlaceSelect(place)
             })
-            // setAutocomplete(autocomplete)
           }}
         >
           <div>
             <input placeholder="Enter location" ref={locationRef} />
-            {/* <button type="submit" onClick={() => setSelectedLocation(null)}>Go</button> */}
-            {/* <button 
-              type="submit"
-              onClick={() => {
-                const autocomplete = document.getElementById("autocomplete")
-                if (autocomplete) {
-                  const place = autocomplete.getPlace()
-                  handlePlaceSelect(place)}
-                }
-              }
-            >
-              Go
-            </button> */}
             {locationRef && (
               <button className="mx-2 px-3 x-btn" onClick={clearSearch}>X</button>
             )}
           </div>
         </Autocomplete>
-        {/* <button className="mb-2 mx-2" onClick={() => setSelectedLocation(null)}>Clear</button> */}
-        {/* <button onClick={() => setSelectedLocation(selectedLocation)}>Find Restaurants</button> */}
-        {/* <button type="submit" className="maps-btn" onClick={findRestaurants}>Find Restaurants</button>
-        <button type="submit" className="maps-btn mx-3 mb-3" onClick={findCafes}>Find Cafes</button>
-        <button type="submit" className="maps-btn" onClick={findTouristAttractions}>Find Tourist Attractions</button> */}
         <select value={selectedPlaceType} onChange={handlePlaceTypeChange} >
-          <option value="bakery">Bakery</option>
+          <option value="bakery">Bakeries</option>
           <option value="bar">Bars</option>
           <option value="cafe">Cafes</option>
           <option value="landmark">Landmarks</option>
@@ -596,10 +251,11 @@ export default function RestaurantList() {
         </select>
         <button type="submit" className="maps-btn mx-3 mb-3" onClick={handleFindPlaces}>Find</button>
         <button className="maps-btn" onClick={clearMarkers}>Clear Markers</button>
-        {/* Commented out */}
-        {/* <button onClick={() => loadNearbyRestaurants(selectedLocation)}>Find Restaurants</button> */}
       </div>
-      <div className="rest-map-container">
+      {placesFound === 'none' && (
+        <div>No places found for selected filter</div>
+      )}
+      <div className="places-map-container mt-2">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={selectedLocation || center}
@@ -609,112 +265,88 @@ export default function RestaurantList() {
         >
           { /* Child components, such as markers, info windows, etc. */ }
           {selectedLocation && <Marker position={selectedLocation} />}
-          {/* {restaurants.length > 0 && (
-            <Marker
-              position={restaurants[0].geometry.location}
-              icon={{
-                url: "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
-                scaledSize: new window.google.maps.Size(30, 30),
-              }}
-            />
-          )} */}
-          {/* {restaurants.map((restaurant) => (
-            <Marker
-              key={restaurant.place_id}
-              position={restaurant.geometry.location}
-              icon={{
-                url: "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
-                scaledSize: new window.google.maps.Size(30, 30),
-              }}
-            />
-          ))} */}
-          {/* {places.map((place) => (
-            <Marker
-              key={place.place_id}
-              position={place.geometry.location}
-              title={place.name}
-              icon={{
-                url: place.icon,
-                size: new window.google.maps.Size(71, 71),
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(17, 34),
-                scaledSize: new window.google.maps.Size(25, 25),
-              }}
-            />
-          ))} */}
         </GoogleMap>
       </div>
+      {/* <Button color="primary" id="add-place-btn" className="mt-3" onClick={togglePlaceModal}>Save Place</Button> */}
       <hr/>
-      {/* {restaurantsFound && ( */}
-        <div id="sidebar">
-          <h2>Results</h2>
-          {/* Commented */}
-          <ul id="places"></ul>
-          <button id="more">Load more results</button>
-        </div>
-      {/* )} */}
-      {/* Commented */}
-      {/* {places.length > 0 && (
-        <div id="sidebar">
+      {placesFound === true && (
+        <div className="results-container responsive">
           <h2>Results</h2>
           <ul id="places">
-            {places.map((place, index) => (
-              // <li key={index}>{place.name}</li>
+            {places.map((place) => (
               <li key={place.place_id}>
-                <strong>Name:</strong> {place.name} - <strong>Rating:</strong> {place.rating} ({place.user_ratings_total} reviews) - 
-                <br></br>
-                <strong>Address:</strong> {place.vicinity} - <strong>Price:</strong> {place.price_level} £££
+                <div onClick={ () => {map.setCenter(place.geometry.location)}}>
+                  <strong>{place.name}</strong>
+                </div>
+                <div>
+                  Rating: {place.rating} <strong> | &nbsp;</strong>
+                  <Button
+                    onClick={() => togglePlaceDetails(place.place_id)}
+                    id="place-more-btn"                
+                  >
+                    More
+                  </Button>
+                  <Offcanvas
+                    key={place.place_id}
+                    direction="end"
+                    isOpen={showPlaceDetails[place.place_id]}
+                    toggle={() => togglePlaceDetails(place.place_id)}
+                  >
+                    <OffcanvasHeader toggle={() => togglePlaceDetails(place.place_id)}>
+                      {place.name}
+                    </OffcanvasHeader>
+                    <OffcanvasBody>
+                      <strong>Rating:</strong> {place.rating}<br></br>
+                      <strong>Ratings Total:</strong> {place.user_ratings_total > 0 ? `${place.user_ratings_total} reviews` : `No reviews`}<br></br>
+                      <strong>Address:</strong> {place.vicinity}<br></br>
+                      {place.price_level && (
+                        <span>
+                          <strong>Price Level:</strong> {place.price_level}
+                          <br></br>
+                        </span>
+                      )}
+                    </OffcanvasBody>
+                  </Offcanvas>
+                </div>
               </li>
             ))}
-          </ul> */}
-          {/* {!nextPageToken && (
-            <h4>No Next Page Token</h4>
-          )} */}
-          {/* Commented */}
-          {/* {nextPageToken ? (
-            <button id="more" onClick={handleLoadMoreResults}>
-              Load more results
-            </button>
-          ) : (
-            <h4>No Next Page Token</h4>
-          )}
+          </ul>
         </div>
-      )} */}
-      {/* {restaurants.length > 0 && (
-        <>
-          <div className="restaurants-list">
-            <h2>Local Restaurants</h2>
-            <ul>
-              {restaurants.map((restaurant) => (
-                <li key={restaurant.place_id}><strong>Name:</strong> {restaurant.name} - <strong>Rating:</strong> {restaurant.rating} - <strong>Address:</strong> {restaurant.vicinity}</li>
-              ))}
-            </ul>
-          </div>
-          <div>Current Page: {currentPage}</div>
-          <button 
-            onClick={() => {
-              if (currentPage > 1) {
-                setCurrentPage(currentPage - 1)
-                // findNearbyRestaurants(selectedLocation, currentPage - 1)
-              }
-            }}
-          >
-            Previous Page
-          </button>
-          <button 
-            onClick={() => {
-              setCurrentPage(currentPage + 1)
-              // const nextPage = currentPage + 1
-              // setCurrentPage(nextPage)
-              // findNearbyRestaurants(selectedLocation, nextPage)
-            }}
-          >
-            Next Page
-          </button>
-        </>
-      )} */}
+      )}
+
+      {/* <Modal isOpen={showPlaceModal} toggle={togglePlaceModal}>
+        <ModalHeader toggle={togglePlaceModal}>Save Place Entry</ModalHeader>
+        <ModalBody>
+          <FormGroup>
+            <Label for="entryName">Name</Label>
+            <Input type="text" id="entryName" name="name" value={placeEntryData.name} onChange={handleInputChange}/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="entryRating">Activity</Label>
+            <Input type="text" id="entryRating" name="rating" value={placeEntryData.rating} onChange={handleInputChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="entryAddress">Address</Label>
+            <Input type="text" id="entryAddress" name="address" value={placeEntryData.address} onChange={handleInputChange} />
+          </FormGroup>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={handleEntrySubmit}>Add</Button>
+          <Button color="secondary" onClick={togglePlaceModal}>Cancel</Button>
+        </ModalFooter>
+      </Modal> */}
+
     </div>
   ) : (
-    <div>Loading...</div>
+    <div>
+      <Button color="primary" disabled>
+          <Spinner size="sm">
+              Loading...
+          </Spinner>
+          <span>
+              {' '}Loading
+          </span>
+      </Button>
+    </div>
   )
 }

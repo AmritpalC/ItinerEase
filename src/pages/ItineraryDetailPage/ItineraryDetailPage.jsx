@@ -10,14 +10,17 @@ import BudgetTable from '../../components/BudgetTable/BudgetTable'
 import PlacesToVisitList from '../../components/PlacesToVisitList/PlacesToVisitList'
 import RestaurantList from '../../components/RestaurantsList/RestaurantsList'
 import ItineraryCalendar from '../../components/ItineraryCalendar/ItineraryCalendar'
+import RemindersList from '../../components/RemindersList/RemindersList'
 
 import coins from '../../assets/coins.png'
-import itineraryDark from '../../assets/itinerary-dark.png'
-import itineraryLight from '../../assets/itinerary-light.png'
+import reminderDark from '../../assets/reminder-dark.png'
+import reminderLight from '../../assets/reminder-light.png'
 import landmarkDark from '../../assets/landmark-dark.png'
 import landmarkLight from '../../assets/landmark-light.png'
 import pizzaDark from '../../assets/pizza-dark.png'
 import pizzaLight from '../../assets/pizza-light.png'
+import calendarDark from '../../assets/calendar-dark.png'
+import calendarLight from '../../assets/calendar-light.png'
 
 import './ItineraryDetailPage.css'
 
@@ -48,10 +51,12 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
             return <ItineraryCalendar itinerary={itinerary} />
         } else if (selectedComponent === 'budget') {
             return <BudgetTable itinerary={itinerary} setRefreshItineraries={setRefreshItineraries} />
-        } else if (selectedComponent === 'places') {
-            return <PlacesToVisitList itinerary={itinerary} />
+        // } else if (selectedComponent === 'places') {
+        //     return <PlacesToVisitList itinerary={itinerary} />
         } else if (selectedComponent === 'restaurants') {
             return <RestaurantList itinerary={itinerary} />
+        } else if (selectedComponent === 'reminders') {
+            return <RemindersList itinerary={itinerary} />
         }
         return null
     }
@@ -107,11 +112,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     <h5>Date: {holidayDate}</h5>
                     {!selectedComponent && (
                         <>
-                            {/* <h4>Will have all holiday information here in sections</h4> */}
                             {messageVisible && message && <Alert className="message"><strong>{message}</strong></Alert>}
-                            {/* <h5>ID - {itinerary._id}</h5>
-                            <h5>User: { itinerary.user ? itinerary.user : 'no user' }</h5> */}
-                            {/* <h5>Date: { itinerary.date ? itinerary.date : 'no date' }</h5> */}
                             <h5>Countdown (days): {itinerary.countdown}!</h5>
                         </>
                     )}
@@ -124,35 +125,26 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     {selectedComponent ? (
                         renderComponent()
                     ) : (
-                        // <div className="itinerary-sections my-3">
-                        //     <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>🗓️ - Itinerary - {itinerary.destination}</div>
-                        //     <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>💷 - Budget</div>
-                        //     <div className="itinerary-item" onClick={() => handleComponentClick('places')}>🏰 - Places to Visit {itinerary.pointsOfInterest}</div>
-                        //     <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>🍱 - Restaurants {itinerary.restaurants}</div>
-                        // </div>
                         <div className="itinerary-sections px-4 my-3">
                             <div className="itinerary-item" onClick={() => handleComponentClick('itinerary')}>
-                                <img src={darkMode ? itineraryDark : itineraryLight} alt="Itinerary" title="Itinerary" className='img-fluid' />                               
-                                <span>Itinerary</span>
+                                <img src={darkMode ? calendarDark : calendarLight} alt="Itinerary" title="Itinerary" className='img-fluid' />                               
+                                <span>&nbsp;Itinerary</span>
                             </div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('budget')}>
                                 <img src={coins} alt="Budget" title="Budget" className='img-fluid' />                               
-                                <span>&nbsp;Budget</span>
-                            </div>
-                            <div className="itinerary-item" onClick={() => handleComponentClick('places')}>
-                                <img src={darkMode ? landmarkDark : landmarkLight} alt="Places to Visit" title="Places to Visit" className='img-fluid' />                               
-                                <span>Places to Visit</span>
+                                <span>&nbsp;&nbsp;Budget</span>
                             </div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>
-                                <img src={darkMode ? pizzaDark : pizzaLight} alt="Restaurants" title="Restaurants" className='img-fluid' />                               
-                                <span>Restaurants</span>
+                                <img src={darkMode ? landmarkDark : landmarkLight} alt="Places to Visit" title="Places to Visit" className='img-fluid' />                               
+                                <span className='p-t-visit'>Places to Visit</span>
+                                <img src={darkMode ? pizzaDark : pizzaLight} alt="Restaurants" title="Restaurants" className='img-fluid' />
+                            </div>
+                            <div className="itinerary-item" onClick={() => handleComponentClick('reminders')}>
+                                <img src={darkMode ? reminderDark : reminderLight} alt="Reminders" title="Reminders" className='img-fluid' />                               
+                                <span>Reminders</span>
                             </div>
                         </div>
                     )}
-
-                    {/* { selectedComponent && (
-                        <button onClick={() => setSelectedComponent(null)}>Back to Itinerary</button>
-                    )} */}
 
                     {!selectedComponent && (
                         <>

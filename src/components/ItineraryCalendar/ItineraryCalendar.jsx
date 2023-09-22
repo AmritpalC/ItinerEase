@@ -6,7 +6,6 @@ import "./ItineraryCalendar.css"
 
 import * as calendarsAPI from "../../utilities/calendars-api"
 import { getUser } from '../../utilities/users-service'
-// import { formatDate } from "react-calendar/dist/cjs/shared/dateFormatter";
 
 export default function ItineraryCalendar({ itinerary }) {
 
@@ -49,18 +48,6 @@ export default function ItineraryCalendar({ itinerary }) {
   const getTileClassName = ({ date }) => {
     return highlightedDates.includes(date.toISOString()) ? 'highlighted' : ''
   }
-
-  // ? Markers - markers vs tile colours
-
-  // const getTileContent = ({ date }) => {
-  //   return (
-  //     highlightedDates.includes(date.toISOString()) && (
-  //       <div className="marker">
-  //         <span className="dot"></span>
-  //       </div>
-  //     )
-  //   )
-  // }
 
   async function handleEntrySubmit() {
     try {

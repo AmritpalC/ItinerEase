@@ -100,6 +100,15 @@ body.dark #go-back-btn, body.dark #edit-btn, body.dark #del-btn {
   .itinerary-item {
     height: 110px;
   }
+  /* .p-t-visit {
+    max-width: 130px;
+  } */
+}
+
+@media (max-width: 568px) {
+  .p-t-visit {
+    max-width: 22vw;
+  }
 }
 
 @media (max-width: 500px) {
@@ -108,5 +117,8 @@ body.dark #go-back-btn, body.dark #edit-btn, body.dark #del-btn {
   }
   #go-back-btn, #edit-btn, #del-btn {
     margin-bottom: 2vmin;
+  }
+  .p-t-visit {
+    max-width: 20vw;
   }
 }
