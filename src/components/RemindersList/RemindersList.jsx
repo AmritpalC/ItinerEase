@@ -33,6 +33,15 @@ export default function RemindersList( { itinerary, setRefreshItineraries }) {
     setRefreshItineraries(true)
   }
 
+  async function handleCheckboxChange(index) {
+    const updatedItems = [...reminderItems];
+    updatedItems[index].completed = !updatedItems[index].completed;
+    setReminderItems(updatedItems);
+    await itinerariesAPI.updateItinerary(itinerary._id, { reminders: updatedItems });
+    setRefreshItineraries(true);
+  }
+
+
   return (
     <div className="reminders-page">
         <h1>Reminder List</h1>
@@ -55,11 +64,16 @@ export default function RemindersList( { itinerary, setRefreshItineraries }) {
         </div>
         <hr/>
         <ul className="reminders-list pt-3 px-2">
-          {reminderItems.map((item) => (
+          {reminderItems.map((item, index) => (
             <>
               <li key={item._id} className="row to-do-item">
                 <span className="col-2">
-                  <Input type="checkbox" id={`checkbox-${item._id}`} />
+                  <Input 
+                    type="checkbox"
+                    id={`checkbox-${item._id}`}
+                    checked={item.completed}
+                    onChange={() => handleCheckboxChange(index)}
+                  />
                 </span>
                 <span className="col-4">
                   <Label htmlFor={`checkbox-${item._id}`}>{item.name}</Label>
@@ -68,7 +82,7 @@ export default function RemindersList( { itinerary, setRefreshItineraries }) {
                   <Label>{item.date ? new Date(item.date).toLocaleDateString() : ''}</Label>
                 </span>
                 <span className="col-2">
-                  <Badge pill id="del-to-do-btn" onClick={handleRemoveItem}>X</Badge>
+                  <Badge pill id="del-to-do-btn" onClick={() => handleRemoveItem(index)}><strong>X</strong></Badge>
                 </span>
               </li>
               <hr/>

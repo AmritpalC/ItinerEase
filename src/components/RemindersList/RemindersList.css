@@ -4,14 +4,19 @@
 
 .reminder-input {
   max-width: 39%;
+  vertical-align: middle;
 }
 
 .reminder-date {
   max-width: 39%;
+  vertical-align: middle;
 }
 
 .reminder-add-btn {
   max-width: 14%;
+  border-radius: 1vmin;
+  vertical-align: middle;
+  margin-top: 0 !important;
 }
 
 .reminders-list {
@@ -29,11 +34,10 @@ body.dark .reminders-list {
   border-color: var(--white);
 }
 
-/* .to-do-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-} */
+.to-do-item Input, .to-do-item .form-label {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
 .form-check-input {
   padding: 3vmin;
@@ -56,6 +60,7 @@ body.dark .form-check-input:checked {
 #del-to-do-btn {
   background-color: var(--pink-dark) !important;
   color: var(--dark-grey);
+  border-radius: 50%;
 }
 
 #del-to-do-btn:hover {
