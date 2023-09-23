@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Calendar from "react-calendar"
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input } from "reactstrap"
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Badge } from "reactstrap"
 
 import "./ItineraryCalendar.css"
 
@@ -100,15 +100,25 @@ export default function ItineraryCalendar({ itinerary }) {
     setEntryData({...entryData, [name]: value })
   }
 
+  const formattedDate = itinerary ? new Date(itinerary.date) : null
+  const holidayDate = formattedDate ? formattedDate.toDateString() : 'no date'
+
     return (
         <div className="calendar-page">
-        {/* Commented out so can re-use calendar component without itinerary prop */}
-          {/* { itinerary && <h2>Itinerary Calendar Page for {itinerary.name}</h2>} */}
+          <h1>Itinerary</h1>
+          {itinerary && (
+            <>
+              <Badge color="info" className="mb-2">Date: {holidayDate}</Badge>
+              <Badge color="primary" className="mb-2 mx-2">Destination: {itinerary.destination}</Badge>
+              <Badge color="success" className="mb-2 me-2">Accommodation: {itinerary.accommodation}</Badge>
+              <Badge color="secondary" className="mb-2">Transport: {itinerary.transport}</Badge>
+            </>
+          )}
+          <hr/>
           <Calendar
             onChange={handleDateChange}
             value={date}
             tileClassName={getTileClassName}
-            // tileContent={getTileContent}
           />
           <div className="my-2"><strong>Selected date:</strong>&nbsp; {date.toDateString()}</div>
 

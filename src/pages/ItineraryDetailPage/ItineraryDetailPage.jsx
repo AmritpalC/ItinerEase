@@ -7,7 +7,7 @@ import * as itinerariesAPI from '../../utilities/itineraries-api'
 import EditItineraryForm from '../../components/EditItineraryForm/EditItineraryForm'
 
 import BudgetTable from '../../components/BudgetTable/BudgetTable'
-import PlacesToVisitList from '../../components/PlacesToVisitList/PlacesToVisitList'
+// import PlacesToVisitList from '../../components/PlacesToVisitList/PlacesToVisitList'
 import RestaurantList from '../../components/RestaurantsList/RestaurantsList'
 import ItineraryCalendar from '../../components/ItineraryCalendar/ItineraryCalendar'
 import RemindersList from '../../components/RemindersList/RemindersList'
@@ -56,7 +56,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
         } else if (selectedComponent === 'restaurants') {
             return <RestaurantList itinerary={itinerary} />
         } else if (selectedComponent === 'reminders') {
-            return <RemindersList itinerary={itinerary} />
+            return <RemindersList itinerary={itinerary} setRefreshItineraries={setRefreshItineraries} />
         }
         return null
     }
@@ -108,11 +108,11 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     onClose={handleFormClose} />
             ) : (
                 <>
-                    <h1 className='px-4 mt-3'>Itinerary Details Page for {itinerary.name}</h1>
-                    <h5>Date: {holidayDate}</h5>
+                    <h1 className='px-4 mt-3'>Itinerary for {itinerary.name}</h1>
                     {!selectedComponent && (
                         <>
                             {messageVisible && message && <Alert className="message"><strong>{message}</strong></Alert>}
+                            <h5>Date: {holidayDate}</h5>
                             <h5>Countdown (days): {itinerary.countdown}!</h5>
                         </>
                     )}
@@ -137,7 +137,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                             <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>
                                 <img src={darkMode ? landmarkDark : landmarkLight} alt="Places to Visit" title="Places to Visit" className='img-fluid' />                               
                                 <span className='p-t-visit'>Places to Visit</span>
-                                <img src={darkMode ? pizzaDark : pizzaLight} alt="Restaurants" title="Restaurants" className='img-fluid' />
+                                <img src={darkMode ? pizzaDark : pizzaLight} alt="Places to Visit" title="Restaurants" className='img-fluid' />
                             </div>
                             <div className="itinerary-item" onClick={() => handleComponentClick('reminders')}>
                                 <img src={darkMode ? reminderDark : reminderLight} alt="Reminders" title="Reminders" className='img-fluid' />                               

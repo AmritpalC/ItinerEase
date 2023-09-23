@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const reminderItemSchema = require('./reminderItemSchema')
 
+// ? Future enhancement
 // const placeSchema = require('./placeSchema');
 // const restaurantSchema = require('./restaurantSchema');
 
@@ -22,8 +24,7 @@ const itinerarySchema = new Schema({
   budget: [budgetItemSchema],
   // placesToVisit: [placeSchema],
   // restaurants: [restaurantSchema]
-  placesToVisit: [ { type: String } ],
-  restaurants: [ { type: String } ]
+  reminders: [reminderItemSchema]
 }, {
   timestamps: true,
   toJSON: { virtuals: true }

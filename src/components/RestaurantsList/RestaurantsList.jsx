@@ -105,17 +105,26 @@ export default function RestaurantList({ itinerary }) {
       case "cafe":
         findNearbyPlaces(map, selectedLocation, "cafe")
         break
+      case "convenience_store":
+        findNearbyPlaces(map, selectedLocation, "convenience_store")
+        break
       case "landmark":
         findNearbyPlaces(map, selectedLocation, "landmark")
         break
       case "museum":
         findNearbyPlaces(map, selectedLocation, "museum")
         break
+      case "night_club":
+        findNearbyPlaces(map, selectedLocation, "night_club")
+        break
       case "park":
         findNearbyPlaces(map, selectedLocation, "park")
         break
       case "restaurant":
         findNearbyPlaces(map, selectedLocation, "restaurant")
+        break
+      case "supermarket":
+        findNearbyPlaces(map, selectedLocation, "supermarket")
         break
       case "tourist_attraction":
         findNearbyPlaces(map, selectedLocation, "tourist_attraction")
@@ -220,7 +229,9 @@ export default function RestaurantList({ itinerary }) {
   return isLoaded ? (
     <div className="rest-list-page">
       <div>
+        <h1>Search Places</h1>
         <div>Enter a location and search the local area, or use the drop-down to filter for certain places</div>
+        <hr/>
         <Autocomplete
           className="my-2"
           id="autocomplete"
@@ -243,10 +254,13 @@ export default function RestaurantList({ itinerary }) {
           <option value="bakery">Bakeries</option>
           <option value="bar">Bars</option>
           <option value="cafe">Cafes</option>
+          <option value="convenience_store">Convenience Stores</option>
           <option value="landmark">Landmarks</option>
           <option value="museum">Museums</option>
+          <option value="night_club">Night Clubs</option>
           <option value="park">Parks</option>
           <option value="restaurant">Restaurants</option>
+          <option value="supermarket">Supermarkets</option>
           <option value="tourist_attraction">Tourist Attractions</option>
         </select>
         <button type="submit" className="maps-btn mx-3 mb-3" onClick={handleFindPlaces}>Find</button>

@@ -1,5 +1,84 @@
-.map-container {
-  display: flex;
-  justify-content: center;
+.reminders-page {
   padding-bottom: 18vmin;
+}
+
+.reminder-input {
+  max-width: 39%;
+}
+
+.reminder-date {
+  max-width: 39%;
+}
+
+.reminder-add-btn {
+  max-width: 14%;
+}
+
+.reminders-list {
+  list-style: none;
+  margin: 0 1rem;
+  /* padding-right: 2rem; */
+  /* padding-left: 0 !important;
+  padding-right: 0 !important; */
+  background-color: var(--white);
+  border-radius: 2vmin;
+}
+
+body.dark .reminders-list {
+  background-color: var(--dark-grey-2);
+  border-color: var(--white);
+}
+
+/* .to-do-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+} */
+
+.form-check-input {
+  padding: 3vmin;
+}
+
+.form-check-input:hover {
+  cursor: pointer;
+}
+
+.form-check-input:checked {
+  background-color: var(--teal-light) !important;
+  border-color: var(--forest) !important;
+}
+
+body.dark .form-check-input:checked {
+  background-color: var(--green-dark) !important;
+  border-color: var(--green) !important;
+}
+
+#del-to-do-btn {
+  background-color: var(--pink-dark) !important;
+  color: var(--dark-grey);
+}
+
+#del-to-do-btn:hover {
+  background-color: var(--purple-dark) !important;
+  border: 1px solid var(--dark-grey);
+}
+
+body.dark #del-to-do-btn {
+  background-color: var(--pink-light) !important;
+  color: var(--white);
+}
+
+body.dark #del-to-do-btn:hover {
+  background-color: var(--purple-light) !important;
+  border: 1px solid var(--white);
+}
+
+@media (min-width:768px) {
+  .to-do-item {
+    font-size: larger;
+  }
+
+  .form-check-input {
+    padding: 2vmin;
+  }
 }
