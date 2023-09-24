@@ -1,6 +1,5 @@
 .itineraries-page-list {
   padding-bottom: 18vmin;
-  /* margin: 0 auto; */
 }
 
 .message {
@@ -29,14 +28,3 @@ body.dark .add-btn:hover {
   grid-template-columns: 1fr auto;
   align-items: center;
 }
-
-
-/* Alert {
-  background-color: var(--blue);
-  color: var(--dark-grey);
-}
-
-body.dark Alert {
-  background-color: var(--purple);
-  color: white;
-} */

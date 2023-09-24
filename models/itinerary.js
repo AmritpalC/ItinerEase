@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 const reminderItemSchema = require('./reminderItemSchema')
 
 // ? Future enhancement
-// const placeSchema = require('./placeSchema');
-// const restaurantSchema = require('./restaurantSchema');
+// const placeSchema = require('./place');
 
 const budgetItemSchema = new Schema({
   name: { type: String },
@@ -22,8 +21,7 @@ const itinerarySchema = new Schema({
   transport: { type: String },
   accommodation: { type: String },
   budget: [budgetItemSchema],
-  // placesToVisit: [placeSchema],
-  // restaurants: [restaurantSchema]
+  // placesToVisit: [placeSchema], ---> Future enhancement
   reminders: [reminderItemSchema]
 }, {
   timestamps: true,

@@ -14,7 +14,4 @@ router.post('/new', calendarsCtrl.create)
 // DELETE /api/calendars/:id
 router.delete('/:id', calendarsCtrl.delete)
 
-// // PUT /api/calendars/:id
-// router.put('/:id', calendarsCtrl.update)
-
 module.exports = router

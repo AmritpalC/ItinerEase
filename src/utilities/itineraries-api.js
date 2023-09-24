@@ -1,6 +1,6 @@
 // network logic 
 import sendRequest from "./send-request";
-// This is the base path of the Express route we'll define
+// Base path of the Express route
 const BASE_URL = '/api/itineraries';
 
 export function getAllForUser() {

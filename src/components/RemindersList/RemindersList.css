@@ -22,9 +22,6 @@
 .reminders-list {
   list-style: none;
   margin: 0 1rem;
-  /* padding-right: 2rem; */
-  /* padding-left: 0 !important;
-  padding-right: 0 !important; */
   background-color: var(--white);
   border-radius: 2vmin;
 }
@@ -58,24 +55,24 @@ body.dark .form-check-input:checked {
 }
 
 #del-to-do-btn {
-  background-color: var(--pink-dark) !important;
-  color: var(--dark-grey);
+  background-color: var(--tan-2) !important;
+  color: var(--blue-light);
   border-radius: 50%;
 }
 
 #del-to-do-btn:hover {
-  background-color: var(--purple-dark) !important;
-  border: 1px solid var(--dark-grey);
+  border: 1px solid var(--purple-light);
+  color: var(--purple-light);
 }
 
 body.dark #del-to-do-btn {
-  background-color: var(--pink-light) !important;
-  color: var(--white);
+  background-color: var(--dark-grey) !important;
+  color: var(--cyan-dark);
 }
 
 body.dark #del-to-do-btn:hover {
-  background-color: var(--purple-light) !important;
-  border: 1px solid var(--white);
+  border: 1px solid var(--purple-dark);
+  color: var(--purple-dark)
 }
 
 @media (min-width:768px) {

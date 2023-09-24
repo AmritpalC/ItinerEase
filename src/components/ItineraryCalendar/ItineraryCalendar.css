@@ -15,6 +15,10 @@ body.dark .form-control {
   color: var(--white);
 }
 
+body.dark .modal-content .btn-close {
+  background-color: var(--white);
+}
+
 #add-act-btn {
   background-color: var(--blue-light);
 }

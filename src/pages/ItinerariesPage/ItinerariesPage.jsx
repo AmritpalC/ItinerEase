@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
-// import { checkToken } from "../../utilities/users-service"
 import * as itinerariesAPI from "../../utilities/itineraries-api"
 import ItineraryCard from "../../components/ItineraryCard/ItineraryCard"
-// import ItineraryDetailPage from "../ItineraryDetailPage/ItineraryDetailPage"
 import './ItinerariesPage.css'
 import { Alert, Button, Spinner } from 'reactstrap'
 
@@ -29,11 +27,6 @@ export default function ItinerariesPage() {
         }
     }, [message])
 
-    // async function handleCheckToken() {
-    //     const expDate = await checkToken()
-    //     console.log(expDate)
-    // }
-
     useEffect(function() {
         async function getItineraries() {
             const itineraries = await itinerariesAPI.getAllForUser()
@@ -49,7 +42,6 @@ export default function ItinerariesPage() {
                 <h1>My Holidays</h1>
                 <Link to="/itineraries/new" className="add-btn"><h1>+</h1></Link>
             </div>
-            {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
             {messageVisible && <Alert color={alertColor}><strong>{message}</strong></Alert>}
             <hr />
             {loading ? (

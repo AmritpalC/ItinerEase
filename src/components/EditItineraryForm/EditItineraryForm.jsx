@@ -16,11 +16,6 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
     accommodation: itinerary.accommodation,
   })
 
-  // function formattedDate(dateString) {
-  //   const [year, month, day] = dateString.split('T')[0].split('-')
-  //   return `${day}/${month}/${year}`
-  // }
-
   function handleChange(e) {
     setFormData((prevFormData) => ({
       ...prevFormData, [e.target.name]: e.target.value 

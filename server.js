@@ -32,23 +32,13 @@ const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/itineraries', ensureLoggedIn, require('./routes/api/itineraries'));
 app.use('/api/calendars', ensureLoggedIn, require('./routes/api/calendars'));
 
-// API prefix will be used on every route so as not to clash with any client
-// side routing
-app.get('/api/example', (req, res) => {
-    return res.json([
-        {
-            message: 'Hit api/example route!'
-        }
-    ])
-})
-
+// API prefix will be used on every route so as not to clash with any client side routing
 // If no API routes are hit, then serve the client
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-
 
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server

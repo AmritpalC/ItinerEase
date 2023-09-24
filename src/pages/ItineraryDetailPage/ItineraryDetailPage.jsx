@@ -1,13 +1,11 @@
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { Button, Alert } from 'reactstrap'
-
+import './ItineraryDetailPage.css'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 
 import EditItineraryForm from '../../components/EditItineraryForm/EditItineraryForm'
-
 import BudgetTable from '../../components/BudgetTable/BudgetTable'
-// import PlacesToVisitList from '../../components/PlacesToVisitList/PlacesToVisitList'
 import RestaurantList from '../../components/RestaurantsList/RestaurantsList'
 import ItineraryCalendar from '../../components/ItineraryCalendar/ItineraryCalendar'
 import RemindersList from '../../components/RemindersList/RemindersList'
@@ -22,9 +20,6 @@ import pizzaLight from '../../assets/pizza-light.png'
 import calendarDark from '../../assets/calendar-dark.png'
 import calendarLight from '../../assets/calendar-light.png'
 
-import './ItineraryDetailPage.css'
-
-
 export default function ItineraryDetailPage({ itinerariesList, setRefreshItineraries, darkMode }) {
     const navigate = useNavigate()
     const [deleteConfirmation, setDeleteConfirmation] = useState(false)
@@ -37,12 +32,9 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
 
     const location = useLocation()
     const message = location.state?.message
-
     const [messageVisible, setMessageVisible] = useState(false)
-    const [loading, setLoading] = useState(true)
 
     const handleGoBack = () => {navigate('/itineraries')}
-
     const [selectedComponent, setSelectedComponent] = useState(null)
     const handleComponentClick = (componentName) => {setSelectedComponent(componentName)}
     
@@ -51,8 +43,6 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
             return <ItineraryCalendar itinerary={itinerary} />
         } else if (selectedComponent === 'budget') {
             return <BudgetTable itinerary={itinerary} setRefreshItineraries={setRefreshItineraries} />
-        // } else if (selectedComponent === 'places') {
-        //     return <PlacesToVisitList itinerary={itinerary} />
         } else if (selectedComponent === 'restaurants') {
             return <RestaurantList itinerary={itinerary} />
         } else if (selectedComponent === 'reminders') {
@@ -82,7 +72,6 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
         try {
             await itinerariesAPI.deleteItinerary(itinerary._id)
             navigate('/itineraries', { state: { message: 'Itinerary Deleted'}})
-            // setMessageVisible(true)
         } catch (err) {
             console.log(err)
         }

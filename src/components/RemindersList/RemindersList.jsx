@@ -70,6 +70,7 @@ export default function RemindersList( { itinerary, setRefreshItineraries }) {
                 <span className="col-2">
                   <Input 
                     type="checkbox"
+                    className="checkbox"
                     id={`checkbox-${item._id}`}
                     checked={item.completed}
                     onChange={() => handleCheckboxChange(index)}
@@ -92,12 +93,3 @@ export default function RemindersList( { itinerary, setRefreshItineraries }) {
     </div>
   )
 }
-
-
-
-// const handleUpdateItem = async (index, field, value) => {
-//   const updatedItems = [...budgetItems]
-//   updatedItems[index][field] = field === 'cost' ? parseFloat(value) || 0 : value || ''
-//   setBudgetItems(updatedItems)
-//   await itinerariesAPI.updateItinerary(itinerary._id, { budget: updatedItems })
-// };

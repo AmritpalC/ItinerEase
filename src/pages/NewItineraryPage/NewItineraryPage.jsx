@@ -1,10 +1,9 @@
 // import { useState, useEffect } from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import { getUser } from '../../utilities/users-service'
 import * as itinerariesAPI from '../../utilities/itineraries-api'
 import './NewItineraryPage.css'
-import { getUser } from '../../utilities/users-service'
-import { Link } from 'react-router-dom'
 
 export default function NewItineraryPage({ setRefreshItineraries }) {
     const navigate = useNavigate()
@@ -57,21 +56,6 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
                     <button type="submit" className="create-btn">Create Itinerary</button>
                 </form>
             </div>
-            {/* <div className='new-itinerary-form'>
-                <form onSubmit={handleSubmit}>
-                    <label className='col-3'>Name</label>
-                    <input className="col-9 my-1" type="text" name="name" value={formData.name} onChange={handleChange} required />
-                    <label className='col-3'>Destination</label>
-                    <input className="col-9 my-1" type="text" name="destination" value={formData.destination} onChange={handleChange} required />
-                    <label className='col-3'>Date</label>
-                    <input className="col-9 my-1" type="date" name="date" value={formData.date} onChange={handleChange} />
-                    <label className='col-3'>Transport</label>
-                    <input className="col-9 my-1" type="text" name="transport" value={formData.transport} onChange={handleChange} />
-                    <label className='col-3'>Accommodation</label>
-                    <input className="col-9 my-1" type="text" name="accommodation" value={formData.accommodation} onChange={handleChange} />
-                    <button type="submit" className="create-btn">Create Itinerary</button>
-                </form>
-            </div> */}
             <p className='error-message'>&nbsp;{formData.error}</p>
         </div>
     )

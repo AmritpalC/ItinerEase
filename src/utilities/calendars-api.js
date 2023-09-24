@@ -1,6 +1,6 @@
 // network logic 
 import sendRequest from "./send-request";
-// This is the base path of the Express route we'll define
+// Base path of the Express route
 const BASE_URL = '/api/calendars';
 
 export function getAllCalendarEntries() {
@@ -18,7 +18,3 @@ export async function createCalendarEntry(entryData) {
 export function deleteCalendarEntry(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }
-
-// export function updateCalendar(id, itinerary) {
-//   return sendRequest(`${BASE_URL}/${id}`, 'PUT', itinerary)
-// }

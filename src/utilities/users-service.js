@@ -1,10 +1,7 @@
-// sign up related app logic
-
-// Import all named exports attached to a usersAPI object
-// This syntax can be helpful documenting where the methods come from 
+// ? Importing all named exports attached to a usersAPI object
 import * as usersAPI from './users-api';
 
-// ? Log in related
+// ? Sign up and Log in related app logic
 
 export async function signUp(userData) {
   // Delegate the network request code to the users-api.js API module
@@ -53,7 +50,6 @@ export function getUser() {
 export function checkToken() {
   // Just so that you don't forget how to use .then
   return usersAPI.checkToken()
-    // checkToken returns a string, but let's 
-    // make it a Date object for more flexibility
+    // checkToken returns a string, but making it a Date object for more flexibility
     .then(dateStr => new Date(dateStr));
 }

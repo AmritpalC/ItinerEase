@@ -24,8 +24,6 @@ export default function RestaurantList({ itinerary }) {
   const [map, setMap] = useState(null)
   const [selectedLocation, setSelectedLocation] = useState(null)
   const locationRef = useRef()
-
-  // ? Changing again
   const [places, setPlaces] = useState([])
   const [placesFound, setPlacesFound] = useState(false)
   const [markers, setMarkers] = useState([])
@@ -82,7 +80,7 @@ export default function RestaurantList({ itinerary }) {
         console.log(results)
       };
 
-      // Perform a nearby search.
+      // Performing a nearby search using the placeType as selected from the drop down
       service.nearbySearch(
         { location: selectedLocation, radius: 1000, type: placeType },
         (results, status, pagination) => handleSearchResults(results, status, pagination)
@@ -137,7 +135,6 @@ export default function RestaurantList({ itinerary }) {
 
   // ? ------- changes - using state   ------
   function addPlaces(places, map) {
-    // const newMarkers = []
     const newPlaces = []
 
     for (const place of places) {
@@ -171,7 +168,6 @@ export default function RestaurantList({ itinerary }) {
         })
       }
     }
-    // setMarkers((markers) => [...markers, newMarkers])
     setMarkers(markers)
     setPlaces(newPlaces)
   }
@@ -193,7 +189,6 @@ export default function RestaurantList({ itinerary }) {
   }
 
   const togglePlaceDetails = (placeId) => {
-    // setShowPlaceDetails(!showPlaceDetails)
     setShowPlaceDetails((prevState) => ({
       ...prevState,
       [placeId]: !prevState[placeId],

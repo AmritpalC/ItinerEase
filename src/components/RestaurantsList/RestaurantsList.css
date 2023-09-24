@@ -25,7 +25,6 @@ body.dark #places {
 }
 
 #places li {
-  /* background-color: var(--white); */
   padding: .2vmin;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -59,8 +58,6 @@ body.dark .x-btn {
 select {
   padding: 1vmin;
   border-radius: 1vmin;
-  /* font-weight: bold; */
-  /* background-color: var(--white); */
 }
 
 body.dark select {
@@ -95,6 +92,15 @@ body.dark .modal-content {
 body.dark .form-control {
   background-color: var(--dark-grey);
   color: var(--white);
+}
+
+body.dark .offcanvas {
+  background-color: var(--dark-grey);
+  color: var(--white);
+}
+
+body.dark .offcanvas button {
+  background-color: var(--white);
 }
 
 @media (min-width: 500px) {

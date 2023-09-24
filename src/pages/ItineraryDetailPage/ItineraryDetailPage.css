@@ -8,7 +8,6 @@
 
 .itinerary-item {
   height: 120px;
-  /* border: 0.5vmin solid var(--turquoise); */
   border: 0.5vmin solid var(--teal-light);
   border-radius: 2vmin;
   background-color: var(--white);
@@ -24,27 +23,16 @@
 }
 
 body.dark .itinerary-item {
-  /* background-color: #1F1F1F; */
   background-color: var(--dark-grey-2);
-  /* border-color: var(--teal-light); */
   border-color: var(--mint-dark);
-  /* border-color: var(--turquoise); */
 }
 
 .itinerary-item:hover {
-  /* border-color: var(--blue); */
   border-color: var(--cyan-light);
-  /* border-color: var(--turquoise); */
-  /* border-color: var(--teal-light); */
-  /* box-shadow: 3px 3px 5px rgba(0, 116, 166, 0.5); */
 }
 
 body.dark .itinerary-item:hover {
-  /* border-color: var(--cyan); */
   border-color: var(--cyan-dark);
-  /* border-color: var(--green-dark); */
-  /* border-color: var(--turquoise);
-  border-color: var(--mint-dark); */
 }
 
 .message {
@@ -96,13 +84,12 @@ body.dark #go-back-btn, body.dark #edit-btn, body.dark #del-btn {
   color: var(--dark-grey-2)
 }
 
+/* ! Media Queries */
+
 @media (max-width: 768px) {
   .itinerary-item {
     height: 110px;
   }
-  /* .p-t-visit {
-    max-width: 130px;
-  } */
 }
 
 @media (max-width: 568px) {

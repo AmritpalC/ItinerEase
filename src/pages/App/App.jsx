@@ -2,11 +2,10 @@ import './App.css'
 import { useState, useEffect } from 'react'
 
 // Router
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 
 // Custom Components
-import AuthPage from '../AuthPage/AuthPage'
 import HomePage from '../HomePage/HomePage'
 import ItinerariesPage from '../ItinerariesPage/ItinerariesPage'
 import NewItineraryPage from '../NewItineraryPage/NewItineraryPage'
@@ -14,9 +13,6 @@ import CalendarPage from '../CalendarPage/CalendarPage'
 import NavBar from '../../components/NavBar/NavBar'
 
 import ItineraryDetailPage from '../ItineraryDetailPage/ItineraryDetailPage'
-
-// Test data
-// import { itineraries } from '../../data'
 
 // ? Actual Data
 import * as itinerariesAPI from '../../utilities/itineraries-api'
@@ -55,7 +51,6 @@ export default function App() {
             user={user} setUser={setUser}
             darkMode={darkMode} setDarkMode={setDarkMode} 
           />
-          {/* <hr className='my-2'/> */}
           <Routes>
             <Route 
               path="/" 
@@ -71,11 +66,9 @@ export default function App() {
             />
             <Route path="/itineraries/new" element={<NewItineraryPage setRefreshItineraries={setRefreshItineraries} />} />
             <Route path="/calendar" element={<CalendarPage />} />
-            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
           </Routes>
         </>
         :
-        // <AuthPage setUser={setUser} />
         <HomePage setUser={setUser} />
       }
     </main>

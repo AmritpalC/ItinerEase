@@ -9,12 +9,4 @@ const reminderItemSchema = new Schema({
   timestamps: true,
 });
 
-// const reminderSchema = new Schema({
-//   itinerary: { type: Schema.Types.ObjectId, ref: 'Itinerary', required: true },
-//   name: { type: String, required: true },
-//   list: [reminderItemSchema],
-// }, {
-//   timestamps: true,
-// });
-
 module.exports = reminderItemSchema;

@@ -4,8 +4,8 @@
 
 // const placeSchema = new Schema({
 //   name: { type: String, required: true },
+//   rating: { type: Number },
 //   address: { type: String },
-//   description: { type: String }
 // }, {
 //   timestamps: true
 // });

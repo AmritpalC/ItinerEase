@@ -1,4 +1,4 @@
-/* CSS Custom Properties */
+/* ? CSS Custom Properties */
 :root {
   --white: #FFFFFF;
   --tan-1: #FBF9F6;
@@ -33,23 +33,6 @@
   --pink-dark: rgb(255, 100, 130);
 }
 
-/* 
-  blue-light - 0040DD (0, 64, 221)
-  blue-dark - 409CFF (64, 156, 255)
-  cyan-dark - 70D7FF (112, 215, 255)
-  purple-light - 641590 (100, 21, 144)
-  purple-dark - DA8FFF (218, 143, 255)
-  yellow-dark - FFD426 (255, 212, 38)
-  yellow-light - A05A00 (160, 90, 0)
-  orange-dark - FFB340 (255, 179, 64)
-  orange-light - C93400 (201, 52, 0)
-  green-dark - 30DB5B (48, 219, 91)
-  teal-light - 0C817B (12, 129, 123)
-  red-light - D70015 (215, 0, 21)
-  red-dark - FF6961 (255, 105, 97)
-  dark-grey (blue): 1A1628 (26, 22, 40);
-*/
-
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -69,8 +52,6 @@ body {
 
 body.dark {
   background-color: var(--dark-grey) !important;
-  /* background-color: var(--dark-greyy); */
-  /* background-color: var(--dark-blue-grey); */
   color: var(--white) !important;
 }
 
@@ -117,32 +98,19 @@ p.error-message {
   text-align: center;
 }
 
-/* form {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1.25vmin;
-} */
-
-/* label {
-  font-size: 3vmin;
-  display: flex;
-  align-items: center;
-} */
-
 input {
   padding: 1vmin;
   font-size: 3vmin;
   border: .1vmin solid var(--tan-3);
   border-radius: .5vmin;
   color: var(--dark-grey);
-  background-image: none !important; /* prevent lastpass */
+  background-image: none !important;
   outline: none;
 }
 
 body.dark input {
   background-color: var(--dark-grey-2);
   color: var(--white);
-  /* font-weight: bold; */
 }
 
 input:focus {
@@ -171,16 +139,6 @@ body.dark button, body.dark a.button {
   background-color: var(--purple-light);
   color: var(--white);
 }
-
-/* button.btn-sm {
-  font-size: 1.5vmin;
-  padding: .6vmin .8vmin;
-}
-
-button.btn-xs {
-  font-size: 1vmin;
-  padding: .4vmin .5vmin;
-} */
 
 button:disabled, form:invalid button[type="submit"] {
   cursor: not-allowed;
