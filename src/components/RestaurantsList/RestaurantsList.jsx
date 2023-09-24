@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from "react";
-import { Button, Spinner, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input, Offcanvas, OffcanvasHeader, OffcanvasBody } from 'reactstrap'
+import { Button, Spinner, Offcanvas, OffcanvasHeader, OffcanvasBody } from 'reactstrap'
 import "./RestaurantsList.css"
 import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from "@react-google-maps/api";
 import { getLatLng } from "use-places-autocomplete"
@@ -30,14 +30,7 @@ export default function RestaurantList({ itinerary }) {
   const [selectedPlaceType, setSelectedPlaceType] = useState('bakery')
   const [showPlaceDetails, setShowPlaceDetails] = useState(false)
 
-  // ? Future enhancement - to allow places to be saved
-  // const [showPlaceModal, setShowPlaceModal] = useState(false)
-  // const [placeEntryData, setPlaceEntryData] = useState({
-  //   itinerary: itinerary._id,
-  //   name: "",
-  //   rating: "",
-  //   address: ""
-  // })
+  // ? Future enhancement - allow places to be saved - removed to maintain clean code
 
   const onLoad = useCallback(function callback(map) {
     // ? Commented to prevent this resetting the center and zoom level
@@ -133,7 +126,7 @@ export default function RestaurantList({ itinerary }) {
     }
   }
 
-  // ? ------- changes - using state   ------
+  // ? ----- adding markers and places to state   ------
   function addPlaces(places, map) {
     const newPlaces = []
 
@@ -194,32 +187,6 @@ export default function RestaurantList({ itinerary }) {
       [placeId]: !prevState[placeId],
     }))
   }
-  
-// ? Future enhancement - allow places to be saved
-  // const togglePlaceModal = () => {
-  //   setShowPlaceModal(!showPlaceModal)
-  // }
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target
-  //   setPlaceEntryData({...placeEntryData, [name]: value })
-  // }
-
-  // async function handleEntrySubmit() {
-  //   try {
-  //     // await placesAPI.createPlaceEntry(placeEntryData)
-  //     console.log('Entry data sent to API ->', placeEntryData)
-  //     setPlaceEntryData({
-  //       itinerary: itinerary._id,
-  //       name: "",
-  //       rating: "",
-  //       address: ""
-  //     })
-  //     togglePlaceModal()
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
 
   return isLoaded ? (
     <div className="rest-list-page">
@@ -276,7 +243,6 @@ export default function RestaurantList({ itinerary }) {
           {selectedLocation && <Marker position={selectedLocation} />}
         </GoogleMap>
       </div>
-      {/* <Button color="primary" id="add-place-btn" className="mt-3" onClick={togglePlaceModal}>Save Place</Button> */}
       <hr/>
       {placesFound === true && (
         <div className="results-container responsive">
@@ -322,29 +288,6 @@ export default function RestaurantList({ itinerary }) {
           </ul>
         </div>
       )}
-
-      {/* <Modal isOpen={showPlaceModal} toggle={togglePlaceModal}>
-        <ModalHeader toggle={togglePlaceModal}>Save Place Entry</ModalHeader>
-        <ModalBody>
-          <FormGroup>
-            <Label for="entryName">Name</Label>
-            <Input type="text" id="entryName" name="name" value={placeEntryData.name} onChange={handleInputChange}/>
-          </FormGroup>
-          <FormGroup>
-            <Label for="entryRating">Activity</Label>
-            <Input type="text" id="entryRating" name="rating" value={placeEntryData.rating} onChange={handleInputChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="entryAddress">Address</Label>
-            <Input type="text" id="entryAddress" name="address" value={placeEntryData.address} onChange={handleInputChange} />
-          </FormGroup>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={handleEntrySubmit}>Add</Button>
-          <Button color="secondary" onClick={togglePlaceModal}>Cancel</Button>
-        </ModalFooter>
-      </Modal> */}
-
     </div>
   ) : (
     <div>
