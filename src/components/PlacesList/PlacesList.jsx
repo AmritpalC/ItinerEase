@@ -1,8 +1,8 @@
 import { useState, useCallback, useRef } from "react";
 import { Button, Spinner, Offcanvas, OffcanvasHeader, OffcanvasBody } from 'reactstrap'
-import "./RestaurantsList.css"
 import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from "@react-google-maps/api";
 import { getLatLng } from "use-places-autocomplete"
+import "./PlacesList.css"
 
 const containerStyle = {
   width: '90vmin',
@@ -14,7 +14,7 @@ const center = {
   lng: -0.119460
 }
 
-export default function RestaurantList({ itinerary }) {
+export default function PlacesList({ itinerary }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.REACT_APP_API_KEY,

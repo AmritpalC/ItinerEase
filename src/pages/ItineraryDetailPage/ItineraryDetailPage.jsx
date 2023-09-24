@@ -6,7 +6,7 @@ import * as itinerariesAPI from '../../utilities/itineraries-api'
 
 import EditItineraryForm from '../../components/EditItineraryForm/EditItineraryForm'
 import BudgetTable from '../../components/BudgetTable/BudgetTable'
-import RestaurantList from '../../components/RestaurantsList/RestaurantsList'
+import PlacesList from '../../components/PlacesList/PlacesList'
 import ItineraryCalendar from '../../components/ItineraryCalendar/ItineraryCalendar'
 import RemindersList from '../../components/RemindersList/RemindersList'
 
@@ -43,8 +43,8 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
             return <ItineraryCalendar itinerary={itinerary} />
         } else if (selectedComponent === 'budget') {
             return <BudgetTable itinerary={itinerary} setRefreshItineraries={setRefreshItineraries} />
-        } else if (selectedComponent === 'restaurants') {
-            return <RestaurantList itinerary={itinerary} />
+        } else if (selectedComponent === 'places') {
+            return <PlacesList itinerary={itinerary} />
         } else if (selectedComponent === 'reminders') {
             return <RemindersList itinerary={itinerary} setRefreshItineraries={setRefreshItineraries} />
         }
@@ -123,7 +123,7 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                                 <img src={coins} alt="Budget" title="Budget" className='img-fluid' />                               
                                 <span>&nbsp;&nbsp;Budget</span>
                             </div>
-                            <div className="itinerary-item" onClick={() => handleComponentClick('restaurants')}>
+                            <div className="itinerary-item" onClick={() => handleComponentClick('places')}>
                                 <img src={darkMode ? landmarkDark : landmarkLight} alt="Places to Visit" title="Places to Visit" className='img-fluid' />                               
                                 <span className='p-t-visit'>Places to Visit</span>
                                 <img src={darkMode ? pizzaDark : pizzaLight} alt="Places to Visit" title="Restaurants" className='img-fluid' />
