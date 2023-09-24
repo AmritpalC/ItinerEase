@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from "react";
 import { Button, Spinner, Offcanvas, OffcanvasHeader, OffcanvasBody } from 'reactstrap'
 import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from "@react-google-maps/api";
-import { getLatLng } from "use-places-autocomplete"
+import { getLatLng, getGeocode } from "use-places-autocomplete"
 import "./PlacesList.css"
 
 const containerStyle = {
