@@ -14,6 +14,15 @@ export default function ItineraryCalendar({ itinerary }) {
   const [showKeyModal, setShowKeyModal] = useState(false)
   const [entries, setEntries] = useState([])
 
+  // ? Trying to get calendar to open on itinerary date if it exists, otherwise today
+  useEffect(() => {
+    if (itinerary) {
+      setDate(new Date(itinerary.date))
+    } else {
+      setDate(new Date())
+    }
+  }, [itinerary])
+
   // ? To match my calendarEntry Model
   const [entryData, setEntryData] = useState({
     user: getUser()._id,
@@ -73,6 +82,7 @@ export default function ItineraryCalendar({ itinerary }) {
       await calendarsAPI.deleteCalendarEntry(entryId)
       console.log('Entry deleted successfully ->', entryId)
       fetchEntriesForDay(date)
+      fetchHighlightedDates()
     } catch (err) {
       console.log('Error deleting entry:', err)
     }
@@ -105,16 +115,16 @@ export default function ItineraryCalendar({ itinerary }) {
 
     return (
         <div className="calendar-page">
-          <h1>Itinerary</h1>
           {itinerary && (
             <>
+              <h1>Itinerary</h1>
               <Badge color="info" className="mb-2">Date: {holidayDate}</Badge>
               <Badge color="primary" className="mb-2 mx-2">Destination: {itinerary.destination}</Badge>
               <Badge color="success" className="mb-2 me-2">Accommodation: {itinerary.accommodation}</Badge>
               <Badge color="secondary" className="mb-2">Transport: {itinerary.transport}</Badge>
+              <hr/>
             </>
           )}
-          <hr/>
           <Calendar
             onChange={handleDateChange}
             value={date}
@@ -149,7 +159,7 @@ export default function ItineraryCalendar({ itinerary }) {
             <ModalBody>
               <FormGroup>
                 <Label for="entryTime">Time</Label>
-                <Input type="time" id="entryTime" name="time" value={entryData.time} onChange={handleInputChange}/>
+                <Input type="time" id="entryTime" name="time" value={entryData.time} onChange={handleInputChange} className="date-input" />
               </FormGroup>
               <FormGroup>
                 <Label for="entryActivity">Activity</Label>

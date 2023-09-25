@@ -10,8 +10,11 @@ module.exports = {
 
 async function create(req, res) {
   try {
-  const itinerary = await Itinerary.create(req.body)
-  res.json(itinerary)
+    // if (req.body.date === "") {
+    //   delete req.body.date
+    // }
+    const itinerary = await Itinerary.create(req.body)
+    res.json(itinerary)
   } catch (error) {
     console.log(error)
     // Bad request
@@ -22,7 +25,7 @@ async function create(req, res) {
 async function index(req, res) {
   try {
     const userId = req.user._id
-    const itineraries = await Itinerary.find({ user: userId }).sort('destination')
+    const itineraries = await Itinerary.find({ user: userId }).sort('date')
     res.json(itineraries)
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' })

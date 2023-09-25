@@ -17,7 +17,7 @@ const itinerarySchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   name: { type: String, required: true },
   destination: { type: String, required: true },
-  date: { type: Date },
+  date: { type: Date, required: true },
   transport: { type: String },
   accommodation: { type: String },
   budget: [budgetItemSchema],

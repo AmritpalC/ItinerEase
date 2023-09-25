@@ -101,8 +101,8 @@ export default function ItineraryDetailPage({ itinerariesList, setRefreshItinera
                     {!selectedComponent && (
                         <>
                             {messageVisible && message && <Alert className="message"><strong>{message}</strong></Alert>}
-                            <h5>Date: {holidayDate}</h5>
-                            <h5>Countdown (days): {itinerary.countdown}!</h5>
+                            <h5>{holidayDate}</h5>
+                            <h5>Countdown: {itinerary.countdown}!</h5>
                         </>
                     )}
                     {selectedComponent && (

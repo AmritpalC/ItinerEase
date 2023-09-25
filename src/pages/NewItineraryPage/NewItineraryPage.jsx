@@ -23,6 +23,7 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
         
         try {   
             await itinerariesAPI.createItinerary(formData)
+            console.log(formData)
             setRefreshItineraries(true)
             navigate('/itineraries', {state: {message: 'Itinerary Created!'}})
         } catch (error) {
@@ -31,7 +32,12 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
     }
 
     function handleChange(e) {
-        setFormData({...formData, [e.target.name]: e.target.value })
+        const { name, value } = e.target
+        
+        if (name === 'name' && (value.includes('/') || value.includes('?'))) {
+            return
+        }
+        setFormData({...formData, [name]: value })
     }
     
     return (
@@ -44,11 +50,11 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
             <div>
                 <form className='new-itinerary-form' onSubmit={handleSubmit}>
                     <label>Name</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder='Required' required />
                     <label>Destination</label>
-                    <input type="text" name="destination" value={formData.destination} onChange={handleChange} required />
-                    <label>Date</label>
-                    <input type="date" name="date" value={formData.date} onChange={handleChange} />
+                    <input type="text" name="destination" value={formData.destination} onChange={handleChange} placeholder='Required' required />
+                    <label>Date (required)</label>
+                    <input type="date" name="date" value={formData.date} onChange={handleChange} required className='date-input' />
                     <label>Transport</label>
                     <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
                     <label>Accommodation</label>

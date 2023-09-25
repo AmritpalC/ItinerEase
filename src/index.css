@@ -113,6 +113,10 @@ body.dark input {
   color: var(--white);
 }
 
+body.dark .date-input {
+  color-scheme: dark;
+}
+
 input:focus {
   border-color: var(--purple);
 }

@@ -17,8 +17,14 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
   })
 
   function handleChange(e) {
+    const { name, value } = e.target
+
+    if (name === 'name' && (value.includes('/') || value.includes('?'))) {
+        return
+    }
+
     setFormData((prevFormData) => ({
-      ...prevFormData, [e.target.name]: e.target.value 
+      ...prevFormData, [name]: value,
     }))
   }
 
@@ -48,7 +54,7 @@ export default function EditItineraryForm({ itinerary, setRefreshItineraries, se
               <label>Destination</label>
               <input type="text" name="destination" value={formData.destination} onChange={handleChange} required />
               <label>Date</label>
-              <input type="date" name="date" value={formData.date} onChange={handleChange} />
+              <input type="date" name="date" value={formData.date} onChange={handleChange} required className='date-input' />
               <label>Transport</label>
               <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
               <label>Accomodation</label>

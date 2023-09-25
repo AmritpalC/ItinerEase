@@ -55,7 +55,7 @@ export default function RemindersList( { itinerary, setRefreshItineraries }) {
             onChange={(e) => setNewItem(e.target.value)}
           />
           <input
-            className="reminder-date mx-2"
+            className="reminder-date date-input mx-2"
             type="date"
             value={newDate ? newDate : null}
             onChange={(e) => setNewDate(e.target.value)}
