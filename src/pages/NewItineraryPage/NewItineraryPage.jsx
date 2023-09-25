@@ -54,7 +54,7 @@ export default function NewItineraryPage({ setRefreshItineraries }) {
                     <label>Destination</label>
                     <input type="text" name="destination" value={formData.destination} onChange={handleChange} placeholder='Required' required />
                     <label>Date (required)</label>
-                    <input type="date" name="date" value={formData.date} onChange={handleChange} required className='date-input' />
+                    <input type="date" className='date-input' name="date" value={formData.date} onChange={handleChange} required />
                     <label>Transport</label>
                     <input type="text" name="transport" value={formData.transport} onChange={handleChange} />
                     <label>Accommodation</label>
