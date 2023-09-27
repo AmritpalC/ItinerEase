@@ -33,12 +33,12 @@ body.dark #places {
   border-radius: .5vmin;
 }
 
-#places li:hover {
+#places .place-name:hover {
   color: var(--blue-light);
   cursor: pointer;
 }
 
-body.dark #places li:hover {
+body.dark #places .place-name:hover {
   color: var(--cyan-dark);
 }
 

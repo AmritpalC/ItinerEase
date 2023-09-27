@@ -1,5 +1,5 @@
-import { useState, useCallback, useRef } from "react";
-import { Button, Spinner, Offcanvas, OffcanvasHeader, OffcanvasBody } from 'reactstrap'
+import { useState, useCallback, useRef, useEffect } from "react";
+import { Button, Spinner, Offcanvas, OffcanvasHeader, OffcanvasBody, Badge } from 'reactstrap'
 import { GoogleMap, useJsApiLoader, Marker, Autocomplete } from "@react-google-maps/api";
 import { getLatLng } from "use-places-autocomplete"
 import "./PlacesList.css"
@@ -39,26 +39,62 @@ export default function PlacesList({ itinerary }) {
     // const bounds = new window.google.maps.LatLngBounds(center)
     // map.fitBounds(bounds)
     setMap(map)
+    console.log('onLoad -> map loaded once -> result:', map)
   }, [])
 
   const onUnmount = useCallback(function callback(map) {
+    console.log('on unMount Map ->', map)
     setMap(null)
   }, [])
+
+  // ? ----- fixing API when not in Strict Mode ----- ? //
 
   const handlePlaceSelect = async (place) => {
     try {
       if (map && place.geometry) {
+        console.log('HPS -> Map found')
         const result = await getLatLng(place)
         const mapCenter = {
           lat: result.lat,
           lng: result.lng
         }
         setSelectedLocation(mapCenter)
+      } else {
+        console.log('Map is null or place.geometry is not available')
       }
     } catch (err) {
       console.log("Error fetching location details: ", err)
     }
   }
+
+  // ? ----- Autocomplete function -----
+
+  function handleAutocompleteLoad(autocomplete) {
+    autocomplete.setFields(['geometry'])
+    autocomplete.addListener('place_changed', async () => {
+      const place = autocomplete.getPlace()
+      console.log('Auto - this is the place result ->', place)
+      console.log('Auto - this is the map result ->', map)
+      await handlePlaceSelect(place)
+    })
+  }
+
+  // ? ----- fix for API when not in Strict Mode -> ensures Autocomplete can access map on first load ----- ? //
+
+  useEffect(() => {
+    if(map) {
+      const autocomplete = new window.google.maps.places.Autocomplete(
+        locationRef.current,
+        { fields: ["geometry"]}
+      )
+      autocomplete.addListener("place_changed", async () => {
+        const place = autocomplete.getPlace()
+        await handlePlaceSelect(place)
+      })
+    }
+  }, [map])
+
+  // ? ----- Places functions -----
 
   const findNearbyPlaces = (map, selectedLocation, placeType) => {
     if (map && selectedLocation) {
@@ -128,9 +164,10 @@ export default function PlacesList({ itinerary }) {
     }
   }
 
-  // ? ----- adding markers and places to state   ------
+  // ? ----- adding markers and places to state ------
   function addPlaces(places, map) {
     const newPlaces = []
+    // const newMarkers = []
 
     for (const place of places) {
       if (place.geometry && place.geometry.location) {
@@ -155,6 +192,7 @@ export default function PlacesList({ itinerary }) {
         })
 
         markers.push(marker)
+        // newMarkers.push(marker)
 
         newPlaces.push({
           placeId: place.place_id,
@@ -164,6 +202,8 @@ export default function PlacesList({ itinerary }) {
       }
     }
     setMarkers(markers)
+    // setMarkers(newMarkers)
+    console.log(markers)
     setPlaces(newPlaces)
   }
 
@@ -194,22 +234,17 @@ export default function PlacesList({ itinerary }) {
     <div className="rest-list-page">
       <div>
         <h1>Search Places</h1>
-        <div>Enter a location and search the local area, or use the drop-down to filter for certain places</div>
+        <div className="mx-2">Enter a location and search the local area, or use the drop-down to filter for certain places</div>
+        <Badge color="primary" className="mt-2">Destination: {itinerary.destination}</Badge>
         <hr/>
         <Autocomplete
           className="my-2"
           id="autocomplete"
-          onLoad={(autocomplete) => {
-            autocomplete.setFields(['geometry'])
-            autocomplete.addListener('place_changed', () => {
-              const place = autocomplete.getPlace()
-              handlePlaceSelect(place)
-            })
-          }}
+          onLoad={handleAutocompleteLoad}
         >
           <div>
             <input placeholder="Enter location" ref={locationRef} />
-            {locationRef && (
+            {selectedLocation !== null && (
               <button className="mx-2 px-3 x-btn" onClick={clearSearch}>X</button>
             )}
           </div>
@@ -252,7 +287,7 @@ export default function PlacesList({ itinerary }) {
           <ul id="places">
             {places.map((place) => (
               <li key={place.place_id}>
-                <div onClick={ () => {map.setCenter(place.geometry.location)}}>
+                <div className="place-name" onClick={ () => {map.setCenter(place.geometry.location)}}>
                   <strong>{place.name}</strong>
                 </div>
                 <div>
