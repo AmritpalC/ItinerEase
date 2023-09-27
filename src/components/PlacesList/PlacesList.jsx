@@ -167,7 +167,6 @@ export default function PlacesList({ itinerary }) {
   // ? ----- adding markers and places to state ------
   function addPlaces(places, map) {
     const newPlaces = []
-    // const newMarkers = []
 
     for (const place of places) {
       if (place.geometry && place.geometry.location) {
