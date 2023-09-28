@@ -174,6 +174,7 @@ export default function PlacesList({ itinerary }) {
           anchor: new window.google.maps.Point(17, 34),
           scaledSize: new window.google.maps.Size(25, 25),
         }
+        console.log(place)
 
         const marker = new window.google.maps.Marker({
           map,
@@ -192,6 +193,7 @@ export default function PlacesList({ itinerary }) {
                   ? `(${place.user_ratings_total} reviews)` : `No reviews`
                 }</p>
               <p>${place.vicinity}</p>
+              <p><a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${place.place_id}" target="_blank">Open in Google Maps</a></p>
             </div>`
         })
 
