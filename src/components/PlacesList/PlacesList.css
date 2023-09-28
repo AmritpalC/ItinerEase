@@ -66,6 +66,10 @@ body.dark select {
   color: var(--white);
 }
 
+body.dark .info-window {
+  color: var(--dark-grey);
+}
+
 #add-place-btn {
   background-color: var(--blue-light);
   font-weight: bold;

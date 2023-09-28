@@ -39,7 +39,6 @@ export default function PlacesList({ itinerary }) {
     // const bounds = new window.google.maps.LatLngBounds(center)
     // map.fitBounds(bounds)
     setMap(map)
-    console.log('onLoad -> map loaded once -> result:', map)
   }, [])
 
   const onUnmount = useCallback(function callback(map) {
@@ -52,7 +51,6 @@ export default function PlacesList({ itinerary }) {
   const handlePlaceSelect = async (place) => {
     try {
       if (map && place.geometry) {
-        console.log('HPS -> Map found')
         const result = await getLatLng(place)
         const mapCenter = {
           lat: result.lat,
@@ -108,7 +106,6 @@ export default function PlacesList({ itinerary }) {
     
         setPlacesFound(true)
         addPlaces(results, map);
-        console.log(results)
       };
 
       // Performing a nearby search using the placeType as selected from the drop down
@@ -186,8 +183,21 @@ export default function PlacesList({ itinerary }) {
           cursor: 'default',
         })
 
+        const infoWindow = new window.google.maps.InfoWindow({
+          content: `
+            <div class="info-window">
+              <h5>${place.name}</h5>
+              <p>Rating: ${place.rating} ${
+                place.user_ratings_total > 0 
+                  ? `(${place.user_ratings_total} reviews)` : `No reviews`
+                }</p>
+              <p>${place.vicinity}</p>
+            </div>`
+        })
+
         marker.addListener('click', () => {
           map.setCenter(place.geometry.location)
+          infoWindow.open(map, marker)
         })
 
         markers.push(marker)
@@ -201,14 +211,12 @@ export default function PlacesList({ itinerary }) {
       }
     }
     setMarkers(markers)
-    // setMarkers(newMarkers)
     console.log(markers)
     setPlaces(newPlaces)
   }
 
   const clearMarkers = () => {
     markers.forEach((marker) => {
-      console.log(marker)
       marker.setMap(null)
     })
     setMarkers([])
