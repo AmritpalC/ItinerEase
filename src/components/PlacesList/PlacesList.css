@@ -85,6 +85,10 @@ body.dark #place-more-btn {
   background-color: var(--dark-grey);
 }
 
+body.dark .g-maps-link {
+  color: var(--cyan-dark);
+}
+
 body .modal-content {
   background-color: var(--white);
 }

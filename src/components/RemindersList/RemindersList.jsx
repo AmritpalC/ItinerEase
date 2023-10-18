@@ -57,7 +57,7 @@ export default function RemindersList( { itinerary, setRefreshItineraries }) {
           <input
             className="reminder-date date-input mx-2"
             type="date"
-            value={newDate ? newDate : null}
+            value={newDate ? newDate : ''}
             onChange={(e) => setNewDate(e.target.value)}
           />
           <button className="reminder-add-btn me-1" type="submit" onClick={handleAddItem}>Add</button>

@@ -24,8 +24,10 @@ export default function App() {
   const [refreshItineraries, setRefreshItineraries] = useState(false)
 
   useEffect(() => {
-    getItineraries()
-  }, [])
+    if (user){
+      getItineraries()
+    }
+  }, [user])
 
   useEffect(() => {
     if (refreshItineraries) {
@@ -58,7 +60,7 @@ export default function App() {
             />
             <Route 
               path="/itineraries" 
-              element={<ItinerariesPage itinerariesList={itinerariesList}/>} 
+              element={<ItinerariesPage />} 
             />
             <Route 
               path="/itineraries/:itineraryName" 

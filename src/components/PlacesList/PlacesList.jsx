@@ -191,9 +191,15 @@ export default function PlacesList({ itinerary }) {
               <p>Rating: ${place.rating} ${
                 place.user_ratings_total > 0 
                   ? `(${place.user_ratings_total} reviews)` : `No reviews`
-                }</p>
+              }</p>
               <p>${place.vicinity}</p>
-              <p><a href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${place.place_id}" target="_blank">Open in Google Maps</a></p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${place.place_id}"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open in Google Maps
+              </a>
             </div>`
         })
 
@@ -326,6 +332,14 @@ export default function PlacesList({ itinerary }) {
                           <br></br>
                         </span>
                       )}
+                      <a 
+                        className="g-maps-link"
+                        href={`https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${place.place_id}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Open in Google Maps
+                      </a>
                     </OffcanvasBody>
                   </Offcanvas>
                 </div>

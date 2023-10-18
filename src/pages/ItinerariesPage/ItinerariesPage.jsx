@@ -29,9 +29,15 @@ export default function ItinerariesPage() {
 
     useEffect(function() {
         async function getItineraries() {
-            const itineraries = await itinerariesAPI.getAllForUser()
-            setItinerariesList(itineraries)
-            setLoading(false)
+            try {
+                const itineraries = await itinerariesAPI.getAllForUser()
+                console.log(itineraries)
+                setItinerariesList(itineraries)
+                setLoading(false)
+            }
+            catch (err) {
+                console.log('Error fetching itineraries ->', err)
+            }
         }
         getItineraries()
     }, [])
