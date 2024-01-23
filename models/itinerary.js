@@ -21,7 +21,7 @@ const itinerarySchema = new Schema({
   transport: { type: String },
   accommodation: { type: String },
   budget: [budgetItemSchema],
-  // placesToVisit: [placeSchema], ---> Future enhancement
+  // ? placesToVisit: [placeSchema], ---> Future enhancement
   reminders: [reminderItemSchema]
 }, {
   timestamps: true,
