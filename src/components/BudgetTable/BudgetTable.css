@@ -19,12 +19,23 @@
 }
 
 .t-head tr th, .t-foot tr th {
-  background-color: var(--blue-dark);
+  background-color: var(--mint-dark);
 }
 
 body.dark .t-head tr th, body.dark .t-foot tr th {
-  background-color: var(--blue-light);
+  background-color: var(--teal-light);
   color: var(--white);
+}
+
+.action-col button {
+  background-color: var(--teal-light);
+  color: var(--white);
+  border-radius: 0.5vmin;
+}
+
+body.dark .action-col button {
+  background-color: var(--mint-dark);
+  color: var(--dark-grey);
 }
 
 @media (max-width: 500px) {

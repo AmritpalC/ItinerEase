@@ -47,7 +47,7 @@ export default function BudgetTable({ itinerary, setRefreshItineraries }) {
     <div className="budget-page">
       <h2>Budget Table</h2>
       <hr />
-      <table className="table budget-table table-primary table-striped mx-3">
+      <table className="table budget-table table-success table-striped mx-3">
         <thead className="t-head">
           <tr>
             <th>Item</th>
