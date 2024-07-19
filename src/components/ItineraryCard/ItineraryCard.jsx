@@ -9,7 +9,7 @@ export default function ItineraryCard({ itinerary }) {
 
   return (
     <Link to={{ pathname: `/itineraries/${itinerary.name}`, state: { itinerary } }} className="itinerary-card">
-      <Card className="my-4 col-10 offset-1">
+      <Card className="my-4 col-10 offset-1 col-lg-8 offset-lg-2">
         <CardBody className="itinerary-card-reactstrap">
           <CardTitle tag="h4">
             {itinerary.name}

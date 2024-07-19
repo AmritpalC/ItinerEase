@@ -28,7 +28,7 @@ export default function HomePage({ user, setUser }) {
       <h4 className='app-summary'>Holiday Planning Made Easy</h4>
       <hr/>
       <div className='row my-4'>
-        <Accordion open={open} toggle={toggle} className='col-10 offset-1'>
+        <Accordion open={open} toggle={toggle} className='col-10 offset-1 col-lg-8 offset-lg-2'>
           <AccordionItem>
             <AccordionHeader targetId='1'>About ItinerEase</AccordionHeader>
             <AccordionBody accordionId='1'><strong>ItinerEase</strong> is your all-in-one travel planning companion. 
@@ -53,7 +53,7 @@ export default function HomePage({ user, setUser }) {
         </Accordion>
       </div>
       { user && (
-        <div className='home-page col-10 offset-1'>
+        <div className='home-page col-10 offset-1 col-lg-8 offset-lg-2'>
           <p><strong>If you have not already, create a new itinerary to get started 😃</strong></p>
         </div>
       )}
